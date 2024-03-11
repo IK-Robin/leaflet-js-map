@@ -7,7 +7,7 @@ window.addEventListener("DOMContentLoaded", function () {
   const latituide = document.getElementById("latituide");
   const ikr_map_form = document.getElementById("ikr_map_form");
 
-  const maphiddenId_add  =document.getElementById('maphiddenId_add');
+  const maphiddenId_add = document.getElementById("maphiddenId_add");
 
   const ikr_edit_popup = document.getElementById("ikr_edit_popup");
 
@@ -19,12 +19,11 @@ window.addEventListener("DOMContentLoaded", function () {
   const longtuide_edit = this.document.getElementById("langtuide_edit");
   const popup_text_edit = document.getElementById("popup_text_edit");
 
-  // select the delete marker form 
-  const deletemarker_form = document.getElementById('deletemarker_form');
-  const marker_id = document.getElementById('marker_id');
+  // select the delete marker form
+  const deletemarker_form = document.getElementById("deletemarker_form");
+  const marker_id = document.getElementById("marker_id");
 
-  const save  = document.getElementById('save');
-
+  const save = document.getElementById("save");
 
   // Autocomplete
   new Autocomplete("search", {
@@ -148,7 +147,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
   // MAP
   const config = {
-    minZoom: 5,
+    minZoom: 2,
     maxZoom: 18,
   };
   // magnification with which the map will start
@@ -178,26 +177,21 @@ window.addEventListener("DOMContentLoaded", function () {
   // get the html element
 
   const marker_add = document.getElementById("add_marker");
-  const marker_del = document.getElementById("delet_marker");
 
   marker_add.addEventListener("click", (madd) => {
     if (addMarker) {
-      marker_add.innerText = "stop adding marker";
-      addMarker = false;
-    } else {
-      marker_add.innerText = " add marker";
-      addMarker = true;
-    }
-  });
+      marker_add.innerText = "add marker";
+      
+      ikr_edit_popup.style.display = 'none';
+      ikr_map_form.style.display = 'block';
 
-  marker_del.addEventListener("click", () => {
-    if (deletMarker) {
-      marker_del.innerText = "stop delet";
       addMarker = false;
-      deletMarker = false;
     } else {
-      deletMarker = true;
-      marker_del.innerText = "delete marker";
+      marker_add.innerText = "stop adding marker";
+      ikr_edit_popup.style.display = 'block';
+      
+      ikr_map_form.style.display = 'none';
+      addMarker = true;
     }
   });
 
@@ -242,42 +236,37 @@ window.addEventListener("DOMContentLoaded", function () {
     latituide.value = ev.latlng.lat;
     langtuide.value = ev.latlng.lng;
 
-    const eidtMarker = document.querySelector(".editMarker");
    
-
-    console.log(ev.latlng.lat, ev.latlng.lng);
     var newMarker;
     if (addMarker) {
       // Add new marker
       newMarker = L.marker(ev.latlng).addTo(map);
-   
+
       newMarker.dragging.enable();
       let randomMarkerId = Math.floor(Math.random() * 9000000 + 1000000);
-      maphiddenId_add.value =  randomMarkerId;
-   
-      newMarker.bindPopup(
-        `<div class="popupWindow"> hello popup <br><button class="editMarker" data-id="${randomMarkerId}">Edit</button> <button class="deletMarker" data-id="${randomMarkerId}">Delete</button><br>
+      maphiddenId_add.value = randomMarkerId;
+
+      newMarker
+        .bindPopup(
+          `<div class="popupWindow"> hello popup <br><button class="editMarker" data-id="${randomMarkerId}">Edit</button> <button class="deletMarker" data-id="${randomMarkerId}">Delete</button><br>
           
         </div>`
-    ).addTo(map);
-        // markerBuind();
-  
+        )
+        .addTo(map);
+      // markerBuind();
+
       // Make this marker draggable
       newMarker.dragging.enable();
 
-      
-     
-
-     
-      makeAjaxRequestGlobal(ikr_map_form,get_url.action);
+      makeAjaxRequestGlobal(ikr_map_form, get_url.action);
 
       newMarker.on("click", function (e) {
         // Get the popup content
 
         const markerPosition = e.target.getLatLng();
-      //   map.flyTo(markerPosition, 18, {
-      //     duration: 1 // Adjust the duration of the animation as needed
-      // });
+        //   map.flyTo(markerPosition, 18, {
+        //     duration: 1 // Adjust the duration of the animation as needed
+        // });
         // map.setView(markerPosition, 18);
         const popupContent = e.target.getPopup();
         console.log(e);
@@ -287,40 +276,33 @@ window.addEventListener("DOMContentLoaded", function () {
         // Close the popup
 
         const editMarker =
-            popupContent._contentNode.childNodes[0].childNodes[2];
+          popupContent._contentNode.childNodes[0].childNodes[2];
         const deleteMarker =
-            popupContent._contentNode.childNodes[0].childNodes[4];
-
-
+          popupContent._contentNode.childNodes[0].childNodes[4];
 
         editMarker.addEventListener("click", (editM) => {
-            ikr_edit_popup.style.display = "block";
-            // hide the popup on click edit btn
-            marker.closePopup();
-            // get the dataset id of clicked button
-            let id = editMarker.dataset.id;
-            
-                latituide_edit.value = e.latlng.lat;
-                longtuide_edit.value = e.latlng.lng;
-                
-                hiddenMarkerId.value = editMarker.dataset.id;
-            
+          ikr_edit_popup.style.display = "block";
+          // hide the popup on click edit btn
+          marker.closePopup();
+          // get the dataset id of clicked button
+          let id = editMarker.dataset.id;
+
+          latituide_edit.value = e.latlng.lat;
+          longtuide_edit.value = e.latlng.lng;
+
+          hiddenMarkerId.value = editMarker.dataset.id;
         });
 
-        // delet the marker 
-        deleteMarker.addEventListener('click',(ev) =>{
-          // remove the marker 
+        // delet the marker
+        deleteMarker.addEventListener("click", (ev) => {
+          // remove the marker
           map.removeLayer(newMarker);
-          // remove from db 
+          // remove from db
           marker_id.value = deleteMarker.dataset.id;
-          makeAjaxRequestGlobal(deletemarker_form,get_url.deletMarker);
+          makeAjaxRequestGlobal(deletemarker_form, get_url.deletMarker);
         });
-
-    });
-     
-    
+      });
     }
-   
   });
 
   //===================================
@@ -350,119 +332,122 @@ window.addEventListener("DOMContentLoaded", function () {
     setTimeout(() => {
       markerBuind();
     }, 100);
-    ikr_edit_popup.style.display ='none';
+    ikr_edit_popup.style.display = "none";
   });
 
-
-  // make a function to add marker to the map  
+  // make a function to add marker to the map
   function markerBuind() {
     // Clear existing markers from the map
     map.eachLayer(function (layer) {
-        if (layer instanceof L.Marker) {
-            map.removeLayer(layer);
-        }
+      if (layer instanceof L.Marker) {
+        map.removeLayer(layer);
+      }
     });
 
     // Fetch new data and add markers
     fetchAjaxRequest(get_url.dataF, (data) => {
-        data.forEach((m) => {
-            const newMarker = L.marker([m.lat, m.lng], { id: m.marker_id}).addTo(map);
+      data.forEach((m) => {
+        const newMarker = L.marker([m.lat, m.lng], { id: m.marker_id }).addTo(
+          map
+        );
 
-            // enable dragging for each marker
-            newMarker.dragging.enable();
+        // enable dragging for each marker
+        newMarker.dragging.enable();
 
-            if (m.popup_text == null || m.popup_text === "") {
-                // Hide the popup
-                newMarker.unbindPopup();
-            } else {
-                // Bind popup with text and add marker ID to it
-                newMarker.bindPopup(
-                    `<div class="popupWindow">${m.popup_text}<br><button class="editMarker" data-id="${m.marker_id}">Edit</button> <button class="deletMarker" data-id="${m.marker_id}">Delete</button><br>
+        if (m.popup_text == null || m.popup_text === "") {
+          // Hide the popup
+          newMarker.unbindPopup();
+        } else {
+          // Bind popup with text and add marker ID to it
+          newMarker.bindPopup(
+            `<div class="popupWindow">${m.popup_text}<br><button class="editMarker" data-id="${m.marker_id}">Edit</button> <button class="deletMarker" data-id="${m.marker_id}">Delete</button><br>
                       
                     </div>`
-                );
+          );
+        }
+
+        newMarker.on("click", function (e) {
+          // Get the popup content
+
+          const markerPosition = e.target.getLatLng();
+          const zoomLevel = map.getZoom(); // Get the current zoom level
+
+          if (zoomLevel < 13) {
+            map.setView(markerPosition, 18); // Set the view to the marker position with a zoom level of 18
+          } else {
+            const currentCenter = map.getCenter();
+            const isSamePosition = markerPosition.equals(currentCenter);
+
+            if (!isSamePosition) {
+              map.flyTo(markerPosition, 18, {
+                duration: 0.5, // Adjust the duration of the animation as needed
+              });
             }
+          }
 
-            newMarker.on("click", function (e) {
-                // Get the popup content
+          const popupContent = e.target.getPopup();
 
-                const markerPosition = e.target.getLatLng();
-              //   map.flyTo(markerPosition, 18, {
-              //     duration: 1 // Adjust the duration of the animation as needed
-              // });
-                // map.setView(markerPosition, 18);
-                const popupContent = e.target.getPopup();
+          const marker = e.target._popup._source;
 
-                const marker = e.target._popup._source;
+          // Close the popup
 
-                // Close the popup
+          const editMarker =
+            popupContent._contentNode.childNodes[0].childNodes[2];
+          const deleteMarker =
+            popupContent._contentNode.childNodes[0].childNodes[4];
 
-                const editMarker =
-                    popupContent._contentNode.childNodes[0].childNodes[2];
-                const deleteMarker =
-                    popupContent._contentNode.childNodes[0].childNodes[4];
+          editMarker.addEventListener("click", (editM) => {
+            ikr_edit_popup.style.display = "block";
+            // hide the popup on click edit btn
+            marker.closePopup();
+            // get the dataset id of clicked button
+            let id = editMarker.dataset.id;
+            if (id == m.marker_id) {
+              latituide_edit.value = m.lat;
+              longtuide_edit.value = m.lng;
+              popup_text_edit.value = m.popup_text;
+              hiddenMarkerId.value = m.marker_id;
+            }
+          });
 
-
-
-                editMarker.addEventListener("click", (editM) => {
-                    ikr_edit_popup.style.display = "block";
-                    // hide the popup on click edit btn
-                    marker.closePopup();
-                    // get the dataset id of clicked button
-                    let id = editMarker.dataset.id;
-                    if (id == m.marker_id) {
-                        latituide_edit.value = m.lat;
-                        longtuide_edit.value = m.lng;
-                        popup_text_edit.value = m.popup_text;
-                        hiddenMarkerId.value = m.marker_id;
-                    }
-                });
-
-                // delet the marker 
-                deleteMarker.addEventListener('click',(ev) =>{
-                  // remove the marker 
-                  map.removeLayer(newMarker);
-                  // remove from db 
-                  marker_id.value = deleteMarker.dataset.id;
-                  makeAjaxRequestGlobal(deletemarker_form,get_url.deletMarker);
-                });
-
-            });
-
-            // add marker draging event  listener
-            newMarker.on('dragend', function(event) {
-                  const marker = event.target;
-                  const position = marker.getLatLng();
-              // get the marker id from the marker  
-                  const popupContent = event.target.getPopup(); 
-                  const markerId =popupContent._source.options.id;
-
-                  if ( markerId == m.marker_id ) {
-                    latituide_edit.value = position.lat;
-                    longtuide_edit.value = position.lng;
-                    popup_text_edit.value = m.popup_text;
-                    hiddenMarkerId.value = m.marker_id;
-
-                    makeAjaxRequestGlobal(ikr_map_form_edit, get_url.editMarker);
-                  
-                  }
-                });
-
-
+          // delet the marker
+          deleteMarker.addEventListener("click", (ev) => {
+            // remove the marker
+            map.removeLayer(newMarker);
+            // remove from db
+            marker_id.value = deleteMarker.dataset.id;
+            makeAjaxRequestGlobal(deletemarker_form, get_url.deletMarker);
+          });
         });
-    });
-}
 
+        // add marker draging event  listener
+        newMarker.on("dragend", function (event) {
+          const marker = event.target;
+          const position = marker.getLatLng();
+          // get the marker id from the marker
+          const popupContent = event.target.getPopup();
+          const markerId = popupContent._source.options.id;
+
+          if (markerId == m.marker_id) {
+            latituide_edit.value = position.lat;
+            longtuide_edit.value = position.lng;
+            popup_text_edit.value = m.popup_text;
+            hiddenMarkerId.value = m.marker_id;
+
+            makeAjaxRequestGlobal(ikr_map_form_edit, get_url.editMarker);
+          }
+        });
+      });
+    });
+  }
 
   //===================================
-  // save the map 
+  // save the map
   // ===================================
-  save.addEventListener('click',(ev) =>{
-
+  save.addEventListener("click", (ev) => {
     markerBuind();
   });
 
-  
   //===================================
   // hide the edit popup
   // ===================================
