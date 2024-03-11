@@ -30,12 +30,12 @@
 	height: 301px;
 	text-align: center;
 	opacity: 1;
-	position: absolute;
+	position: relative;
 	z-index: 999;
-	top: 68px;
-	left: 0;
+	/* top: 68px; */
+	/* left: 0; */
 	display: none;
-	right: 0;
+	/* right: 0; */
 }
 
 .editClose_btn {

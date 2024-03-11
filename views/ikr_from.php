@@ -12,6 +12,6 @@
 </form>
 
 
-<form id="deletemarker_form" action=""> /a>
+<form id="deletemarker_form" action=""> 
     <input id="marker_id" type="hidden" name="markerID">
 </form>

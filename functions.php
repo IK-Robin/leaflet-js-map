@@ -83,13 +83,13 @@ function ikr_leafletjs_map()
 {
 
   ?>
- <?php include_once ROBIN_DIR_PATH. './views/ikr_edit_marker.php' ?>
+ 
   <?php include_once ROBIN_DIR_PATH . './views/ikr_leaflet_main_page.php'; ?>
   <!-- add input form    -->
 
   <?php include ROBIN_DIR_PATH . '/views/ikr_from.php' ?>
   
-
+  <?php include_once ROBIN_DIR_PATH. './views/ikr_edit_marker.php' ?>
   <?php
 
 }
