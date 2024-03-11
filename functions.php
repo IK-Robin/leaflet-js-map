@@ -5,13 +5,14 @@ Add all menue pages  here
 ============================*/
 function ikr_add_menu_page()
 {
-  add_menu_page('Leaflet map', 'Leaflet-map', 'manage_options', 'leaflet-map', 'ikr_leafletjs_map', 'dashicons-admin-site', 10); // Page title, page slug, user role
+  add_menu_page('Leaflet map', 'Leaflet-map', 'manage_options', 'wp-store-locator-map', 'ikr_leafletjs_map', 'dashicons-admin-site', 10); // Page title, page slug, user role
 
   // Add submenu for 'All Map'
-  add_submenu_page('leaflet-map', "Leaflet-map", "Leaflet-map", 'manage_options', 'leaflet-map', 'ikr_leafletjs_map');
+  
+  add_submenu_page('wp-store-locator-map', "Dashboard", "Dashboard", 'manage_options', 'wp-store-locator-map', 'ikr_leafletjs_map');
 
   // Add submenu for 'All Maps'
-  add_submenu_page('leaflet-map', 'Shortcode', 'Shortcode', 'manage_options', 'Shortcode', 'ikr_leaflet_shortcode');
+  add_submenu_page('wp-store-locator-map', 'Shortcode', 'Shortcode', 'manage_options', 'Shortcode', 'ikr_leaflet_shortcode');
 }
 
 
@@ -27,7 +28,7 @@ function leaflet_js_map_enqueue_scripts()
   $page_param = isset($_GET['page']) ? $_GET['page'] : '';
 
 
-   if ($page_param == "leaflet-map") {
+   if ($page_param == "wp-store-locator-map") {
 
 
   // Enqueue Leaflet CSS
