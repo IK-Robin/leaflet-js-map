@@ -12,6 +12,7 @@ function ikr_add_menu_page()
   add_submenu_page('wp-store-locator-map', "Dashboard", "Dashboard", 'manage_options', 'wp-store-locator-map', 'ikr_leafletjs_map');
 
   // Add submenu for 'All Maps'
+  add_submenu_page('wp-store-locator-map', 'Add New Map', 'Add New Map', 'manage_options', 'Add-New-Map', 'ikr_leaflet_Add_New_Map');
   add_submenu_page('wp-store-locator-map', 'Shortcode', 'Shortcode', 'manage_options', 'Shortcode', 'ikr_leaflet_shortcode');
 }
 
@@ -28,7 +29,7 @@ function leaflet_js_map_enqueue_scripts()
   $page_param = isset($_GET['page']) ? $_GET['page'] : '';
 
 
-   if ($page_param == "wp-store-locator-map") {
+   if ($page_param == "Add-New-Map") {
 
 
   // Enqueue Leaflet CSS
@@ -83,7 +84,15 @@ function ikr_leafletjs_map()
 {
 
   ?>
- 
+ echo 
+  <?php
+
+}
+
+function ikr_leaflet_Add_New_Map ( ){
+
+  ?> 
+  
   <?php include_once ROBIN_DIR_PATH . './views/ikr_leaflet_main_page.php'; ?>
   <!-- add input form    -->
 
@@ -91,8 +100,8 @@ function ikr_leafletjs_map()
   
   <?php include_once ROBIN_DIR_PATH. './views/ikr_edit_marker.php' ?>
   <?php
-
 }
+
 
 function ikr_leaflet_shortcode()
 {
