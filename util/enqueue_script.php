@@ -14,8 +14,7 @@ function leaflet_js_map_enqueue_scripts()
    if ($page_param == "Add-New-Map") {
 
 
-  // Enqueue Leaflet CSS
-  wp_enqueue_style('leaflet-css', 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css');
+
 
   // Enqueue Leaflet JS directly from CDN
   wp_enqueue_script('leaflet-js', 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js', array(), '1.7.1', true);
@@ -38,16 +37,28 @@ function leaflet_js_map_enqueue_scripts()
   wp_enqueue_script('autocomplete-script', 'https://cdn.jsdelivr.net/gh/tomickigrzegorz/autocomplete@1.8.6/dist/js/autocomplete.min.js', array(), '1.8.6', true);
 
 
-  // autocomplete css 
-  wp_enqueue_style('autoComplet', 'https://cdn.jsdelivr.net/gh/tomickigrzegorz/autocomplete@1.9.0/dist/css/autocomplete.min.css');
-
-
-  // enqueue Css 
-  wp_enqueue_style('leaflet-custom-css', plugin_dir_url(__FILE__) . '../css/style.css', array(), '1.0.0', 'all');
+ 
   }
 
 
 }
 
 add_action('admin_enqueue_scripts', 'leaflet_js_map_enqueue_scripts');
+
+
+
+
+function ikr_enqueue_css_leaflet_map(){
+    // Enqueue Leaflet CSS
+    wp_enqueue_style('leaflet-css', 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css');
+ // autocomplete css 
+ wp_enqueue_style('autoComplet', 'https://cdn.jsdelivr.net/gh/tomickigrzegorz/autocomplete@1.9.0/dist/css/autocomplete.min.css');
+
+ // enqueue Css 
+ wp_enqueue_style('leaflet-custom-css', plugin_dir_url(__FILE__) . '../css/style.css', array(), '1.0.0', 'all');
+//  enqueue dashbord css 
+
+}
+
+add_action( "admin_enqueue_scripts","ikr_enqueue_css_leaflet_map" );
 ?>
