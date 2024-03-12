@@ -237,6 +237,17 @@ window.addEventListener("DOMContentLoaded", function () {
     langtuide.value = ev.latlng.lng;
 
    
+    // Add a click event listener to the map
+
+  const latlng = ev.latlng;
+
+  // Perform reverse geocoding using Leaflet's built-in method
+ console.log(ev);
+
+
+
+
+
     var newMarker;
     if (addMarker) {
       // Add new marker
