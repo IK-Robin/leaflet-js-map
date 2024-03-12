@@ -354,7 +354,7 @@ window.addEventListener("DOMContentLoaded", function () {
         map.removeLayer(layer);
         
           // Open the popup associated with the marker
-          layer.openPopup();
+
       
       }
     });
@@ -383,8 +383,7 @@ window.addEventListener("DOMContentLoaded", function () {
         }
 
        // Open popup for each marker
-       newMarker.openPopup();
- 
+
        
 
         newMarker.on("click", function (e) {
@@ -393,18 +392,18 @@ window.addEventListener("DOMContentLoaded", function () {
           const markerPosition = e.target.getLatLng();
           const zoomLevel = map.getZoom(); // Get the current zoom level
 
-          if (zoomLevel < 13) {
-            map.setView(markerPosition, 18); // Set the view to the marker position with a zoom level of 18
-          } else {
-            const currentCenter = map.getCenter();
-            const isSamePosition = markerPosition.equals(currentCenter);
+          // if (zoomLevel < 13) {
+          //   map.setView(markerPosition, 18); // Set the view to the marker position with a zoom level of 18
+          // } else {
+          //   const currentCenter = map.getCenter();
+          //   const isSamePosition = markerPosition.equals(currentCenter);
 
-            if (!isSamePosition) {
-              map.flyTo(markerPosition, 18, {
-                duration: 0.5, // Adjust the duration of the animation as needed
-              });
-            }
-          }
+          //   if (!isSamePosition) {
+          //     map.flyTo(markerPosition, 18, {
+          //       duration: 0.5, // Adjust the duration of the animation as needed
+          //     });
+          //   }
+          // }
 
           const popupContent = e.target.getPopup();
 
