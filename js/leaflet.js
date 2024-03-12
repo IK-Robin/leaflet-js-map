@@ -352,6 +352,10 @@ window.addEventListener("DOMContentLoaded", function () {
     map.eachLayer(function (layer) {
       if (layer instanceof L.Marker) {
         map.removeLayer(layer);
+        
+          // Open the popup associated with the marker
+          layer.openPopup();
+      
       }
     });
 
@@ -375,7 +379,13 @@ window.addEventListener("DOMContentLoaded", function () {
                       
                     </div>`
           );
+          
         }
+
+       // Open popup for each marker
+       newMarker.openPopup();
+ 
+       
 
         newMarker.on("click", function (e) {
           // Get the popup content
@@ -449,6 +459,7 @@ window.addEventListener("DOMContentLoaded", function () {
           }
         });
       });
+     
     });
   }
 
