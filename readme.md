@@ -1,8 +1,8 @@
 
 <!-- add some keywork for github search  -->
-# MapIt
+# IKRMAP
 
-This Map is a simple web application that allows users to explore interactive maps and find points of interest.
+IKRMAP Map is a simple web application that allows users to explore interactive maps and find points of interest.
 
 ## Features
 
