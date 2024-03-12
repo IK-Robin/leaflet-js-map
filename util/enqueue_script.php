@@ -43,8 +43,12 @@ function leaflet_js_map_enqueue_scripts()
   }
 
   // enqueue dahsbodr page js 
-  if($page_param === 'wp-store-locator-map'){
-    wp_enqueue_script('ikr_leaflet_dahsbord', plugin_dir_url(__FILE__) . '../js/ikr_dashbord.js', array('leaflet'), '1.0.0', true);
+  if($page_param == 'wp-store-locator-map'){
+    wp_enqueue_script('ikr_leaflet_dahsbord', plugin_dir_url(__FILE__) . '../js/ikr_dashbord.js', array(), '1.0.0', true);
+    wp_localize_script( 'ikr_leaflet_dahsbord', 'get_url', [
+      'default_form' => 'ikr_default_setting',
+      'featchdata' =>'fetch_data_server_default'
+    ] );
   }
 
 

@@ -9,7 +9,7 @@
       
       <h3> Default Setting</h3>
       <div class="default_setting_form">
-         <from id="defaultSetting">
+         <form id="defaultSetting">
             <div class="default_f_section">
                <label for="default_lat"> Default Latitude </label> 
                <input type="text" name="default_lat"  id ="default_lat">
@@ -41,9 +41,9 @@
             </div>
 
 
-
+            <input type="submit" value="Save">
 
             
-         </from>
+         </form>
       </div>
    </div>
