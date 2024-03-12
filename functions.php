@@ -29,7 +29,7 @@ function ikr_leafletjs_map()
 {
 
   ?>
- echo 
+  <?php include_once ROBIN_DIR_PATH . './views/ikr_dashbord.php'; ?>
   <?php
 
 }
