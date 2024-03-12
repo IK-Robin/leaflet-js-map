@@ -35,3 +35,4 @@ add data attribut to the edit button to get the exect match of the marker to fea
 5 add email  and phone number on the website. 
 6. make sure that all links are clickable 
 7.add the primary view of the map 
+8. Add zoom controls to allow users to interactively explore the map at different levels of detail</s>
