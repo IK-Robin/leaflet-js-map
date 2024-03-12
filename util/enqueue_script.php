@@ -54,6 +54,9 @@ function ikr_enqueue_css_leaflet_map(){
  // autocomplete css 
  wp_enqueue_style('autoComplet', 'https://cdn.jsdelivr.net/gh/tomickigrzegorz/autocomplete@1.9.0/dist/css/autocomplete.min.css');
 
+// enqueue dashbord css 
+wp_enqueue_style( 'ikr_dahsbord_css', plugin_dir_url( __FILE__ ) . '../css/ikr_dashbord.css', [], '1.0.1', 'all' );
+
  // enqueue Css 
  wp_enqueue_style('leaflet-custom-css', plugin_dir_url(__FILE__) . '../css/style.css', array(), '1.0.0', 'all');
 //  enqueue dashbord css 
