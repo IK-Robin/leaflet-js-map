@@ -50,8 +50,8 @@ function ikr_leaflet_js_db_connection() {
             'Latitude' => 23.8536047088421,
             'Longitude' => 89.24606323242189,
             'zoom' => 2,
-            'width' => 500,
-            'height' => 3200,
+            'width' => 100,
+            'height' => 300,
             'link' => '',
         ));
     }
