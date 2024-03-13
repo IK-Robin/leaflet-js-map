@@ -139,12 +139,52 @@ add_action('wp_ajax_nopriv_ikr_delete_marker', 'ikr_delete_marker');
 /* *******************************************
 add default setting 
 ********************************************* */
-function ikr_default_setting (){
+function ikr_default_setting() {
     global $wpdb;
     $table_name = $wpdb->prefix . "ikr_default_setting";
-    // $latitude = isset($_POST['lat']) ? sanitize_text_field($_POST['lat']) : '';
+    
+    // Get the values from $_POST
+    $lat = isset($_POST['default_lat']) ? sanitize_text_field($_POST['default_lat']) : '';
+    $lng = isset($_POST['default_lng']) ? sanitize_text_field($_POST['default_lng']) : '';
+    $zoom = isset($_POST['default_zoom']) ? sanitize_text_field($_POST['default_zoom']) : '';
+    $width = isset($_POST['default_width']) ? sanitize_text_field($_POST['default_width']) : '';
+    $height = isset($_POST['default_height']) ? sanitize_text_field($_POST['default_height']) : '';
+    $link = isset($_POST['default_link']) ? sanitize_text_field($_POST['default_link']) : '';
+    
+    // Update the data in the database
+    $wpdb->update(
+        $table_name,
+        array(
+            'Latitude' => $lat,
+            'Longitude' => $lng,
+            'zoom' => $zoom,
+            'width' => $width,
+            'height' => $height,
+            'link' =>$link,
+        ),
+        array( 'id' => 1 ), // Update row with id = 1
+        array(
+            '%s', // Latitude
+            '%s', // Longitude
+            '%s', // zoom
+            '%s', // width
+            '%s' ,// height
+            '%s'// link
+        ),
+        array( '%d' ) // Where id is an integer
+    );
 
+    // Debugging
+  
 
+    // Redirect the user after form submission
+
+    exit;
 }
+
+
+add_action('wp_ajax_ikr_default_setting', 'ikr_default_setting');
+add_action('wp_ajax_nopriv_ikr_default_setting', 'ikr_default_setting');
+
 
 ?>
