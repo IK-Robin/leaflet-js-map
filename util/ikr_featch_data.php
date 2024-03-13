@@ -51,7 +51,7 @@ function load_data_from_db() {
             'address' => $address,
             'phone' => $phone,
             'email' =>$email,
-            'url' => $url,
+            'urls' => $url,
             'marker_id' => $mapHiddenId  ,
         ]
     );
