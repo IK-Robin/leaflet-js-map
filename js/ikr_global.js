@@ -7,7 +7,22 @@
 
 
 
-// create ajax function
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // create ajax function
 
 function makeAjaxRequestGlobal(fromdata, action, callback) {
     var formData = new FormData(fromdata);
@@ -31,7 +46,7 @@ function makeAjaxRequestGlobal(fromdata, action, callback) {
   
   // featch data functuon
   
-  function fetchAjaxRequest(actions, callback) {
+  function fetchAjaxRequest_single_request(actions, callback) {
     xhr = new XMLHttpRequest();
     xhr.open("POST", ajaxurl, true);
     xhr.setRequestHeader(
@@ -54,3 +69,32 @@ function makeAjaxRequestGlobal(fromdata, action, callback) {
     xhr.send(`action=${actions}`); // Send the AJAX request to fetch data
   }
   
+// ajax call with  multiple actions: async  await method
+  
+function fetchAjaxRequest(actions) {
+  return new Promise((resolve, reject) => {
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", ajaxurl, true);
+    xhr.setRequestHeader(
+      "Content-Type",
+      "application/x-www-form-urlencoded; charset=UTF-8"
+    );
+
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          var response = JSON.parse(xhr.responseText);
+          if (response.success) {
+            resolve(response.data);
+          } else {
+            reject(response.error);
+          }
+        } else {
+          reject(xhr.statusText);
+        }
+      }
+    };
+
+    xhr.send(`action=${actions}`);
+  });
+}
