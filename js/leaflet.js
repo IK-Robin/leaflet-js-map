@@ -450,18 +450,18 @@ try{
         // enable dragging for each marker
         newMarker.dragging.enable();
 
-        if (m.popup_text == null || m.popup_text === "") {
+
           // Hide the popup
-          newMarker.unbindPopup();
-        } else {
+          
+       
           // Bind popup with text and add marker ID to it
           newMarker.bindPopup(
-            `<div class="popupWindow">${m.popup_text}<br><button class="editMarker" data-id="${m.marker_id}">Edit</button> <button class="deletMarker" data-id="${m.marker_id}">Delete</button><br>
+            `<div class="popupWindow">${m.email}<br><button class="editMarker" data-id="${m.marker_id}">Edit</button> <button class="deletMarker" data-id="${m.marker_id}">Delete</button><br>
                       
                     </div>`
           );
           
-        }
+        
 
        // Open popup for each marker
 
