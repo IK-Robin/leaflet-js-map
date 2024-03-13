@@ -44,3 +44,8 @@ add data attribut to the edit button to get the exect match of the marker to fea
 6. make sure that all links are clickable 
 7.add the primary view of the map 
 8. Add zoom controls to allow users to interactively explore the map at different levels of detail</s>
+
+
+
+## work
+add automaticly row in the bd 
