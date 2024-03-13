@@ -19,10 +19,25 @@ function load_data_from_db() {
     $latitude = isset($_POST['lat']) ? sanitize_text_field($_POST['lat']) : '';
 
     $longitude = isset($_POST['lng']) ? sanitize_text_field($_POST['lng']) : '';
+    
+    $address = isset($_POST['address']) ? sanitize_text_field($_POST['address']) : '';
 
-    $popup_text = isset($_POST['popup-text']) ? sanitize_text_field($_POST['popup-text']) : '';
+    $phone = isset($_POST['phone']) ? sanitize_text_field($_POST['phone']) : '';
+    
+    $url = isset($_POST['url']) ? sanitize_text_field($_POST['url']) : '';
+
+   
+
+
+
+    $email = isset($_POST['email']) ? sanitize_text_field($_POST['email']) : '';
 
     $mapHiddenId = isset($_POST['mapHiddenId']) ? sanitize_text_field($_POST['mapHiddenId']) : '';
+
+
+
+
+
 
    
     $table_name = $wpdb->prefix . "ikr_leaflet_js_db";
@@ -33,8 +48,10 @@ function load_data_from_db() {
         [
             'lat' => $latitude,
             'lng' => $longitude,
-            'popup_text' =>$popup_text,
-            // add a random marker_id
+            'address' => $address,
+            'phone' => $phone,
+            'email' =>$email,
+            'url' => $url,
             'marker_id' => $mapHiddenId  ,
         ]
     );
@@ -68,8 +85,26 @@ add_action('wp_ajax_nopriv_load_data_from_db', 'load_data_from_db');
 
     $longitude = isset($_POST['lng']) ? sanitize_text_field($_POST['lng']) : '';
 
-    $popup_text = isset($_POST['popup-text']) ? sanitize_text_field($_POST['popup-text']) : '';
+    $address = isset($_POST['address_edit']) ? sanitize_text_field($_POST['address_edit']) : '';
+
+    $phone = isset($_POST['phone_edit']) ? sanitize_text_field($_POST['phone_edit']) : '';
+    
+    $url = isset($_POST['url_edit']) ? sanitize_text_field($_POST['url_edit']) : '';
+
+    $email = isset($_POST['email_edit']) ? sanitize_text_field($_POST['email_edit']) : '';
+
+
+
+
+
+
+
+
     $markerid = isset($_POST['markerid']) ? sanitize_text_field($_POST['markerid']) : '';
+
+
+
+
 
     $table_name = $wpdb->prefix . "ikr_leaflet_js_db";
     
@@ -80,7 +115,10 @@ add_action('wp_ajax_nopriv_load_data_from_db', 'load_data_from_db');
         [
             'lat' => $latitude,
             'lng' => $longitude,
-            'popup_text' =>$popup_text,
+            'address' => $address,
+            'phone' => $phone,
+            'email' =>$email,
+            'url' => $url
             
 
         ], array('marker_id' =>$markerid),
