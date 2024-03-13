@@ -105,7 +105,7 @@ add_action('wp_ajax_fetch_data_from_server', 'fetch_data_from_server');
 add_action('wp_ajax_nopriv_fetch_data_from_server', 'fetch_data_from_server');
 function fetch_data_server_default() {
     global $wpdb;
-    $table_name = $wpdb->prefix . "ikr_leaflet_js_db";
+    $table_name = $wpdb->prefix . "ikr_default_setting";
     $data = $wpdb->get_results("SELECT * FROM $table_name", ARRAY_A);
     wp_send_json_success($data);
 }
@@ -141,7 +141,7 @@ add default setting
 ********************************************* */
 function ikr_default_setting (){
     global $wpdb;
-    $table_name = $wpdb->prefix . "default_map_setting";
+    $table_name = $wpdb->prefix . "ikr_default_setting";
     // $latitude = isset($_POST['lat']) ? sanitize_text_field($_POST['lat']) : '';
 
 
