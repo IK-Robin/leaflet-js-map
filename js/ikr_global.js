@@ -33,12 +33,10 @@ function makeAjaxRequestGlobal(fromdata, action, callback) {
   
     xhr.onreadystatechange = function () {
       if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-        var response = JSON.parse(xhr.responseText);
-        if (response.success) {
-          // Call the provided callback function with the response data
-        } else {
-          // Handle error message or any other action
-        }
+        callback(true);
+        // console.log('object');
+        // var response = JSON.parse(xhr.responseText);
+       
       }
     };
     xhr.send(formData);
