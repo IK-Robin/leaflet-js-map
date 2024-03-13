@@ -3,6 +3,7 @@
  */
 
 window.addEventListener("DOMContentLoaded", function () {
+  const mapWidth = document.getElementById('map');
   const langtuide = document.getElementById("langtuide");
   const latituide = document.getElementById("latituide");
   const ikr_map_form = document.getElementById("ikr_map_form");
@@ -157,13 +158,12 @@ window.addEventListener("DOMContentLoaded", function () {
 // Create a map instance
 const map = L.map("map");
 
-// Assuming you have a function to get configuration data, for example:
 
 
 // Set the view of the map using the configuration data
 
 
-console.log(map);
+
 async function add_defaultView() {
   try {
     const data1 = await fetchAjaxRequest(get_url.featchdata);
@@ -177,6 +177,9 @@ async function add_defaultView() {
   const width = data.width;
   const height = data.height;
  // calling map
+ mapWidth.style.width = width + '%';
+ mapWidth.style.height = height + 'px';
+
 
  function getConfigData() {
   // This function should return an object with latitude, longitude, and zoom level
@@ -325,13 +328,11 @@ add_defaultView();
  
 
 
-  let markers = [];
-  let newMarker;
 
   // Array to store marker references
 
   let addMarker = false;
-  let deletMarker = false;
+
 
   // get the html element
 
