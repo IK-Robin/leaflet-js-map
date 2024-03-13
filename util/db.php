@@ -37,7 +37,7 @@ function ikr_leaflet_js_db_connection() {
             zoom FLOAT NOT NULL DEFAULT '12',
             width FLOAT NOT NULL DEFAULT '50',
             height FLOAT NOT NULL DEFAULT '50',
-            other VARCHAR(100) DEFAULT NULL,
+            link VARCHAR(1000) DEFAULT NULL,
             PRIMARY KEY (id)
         ) $charset_collate;";
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
@@ -49,7 +49,8 @@ function ikr_leaflet_js_db_connection() {
             'Longitude' => 89.24606323242189,
             'zoom' => 12,
             'width' => 50,
-            'height' => 50
+            'height' => 50,
+            'link' => '',
         ));
     } 
 }
