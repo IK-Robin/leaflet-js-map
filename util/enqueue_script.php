@@ -11,6 +11,8 @@ function leaflet_js_map_enqueue_scripts()
 // enque ue global js  
   wp_enqueue_script( 'ikr_global', plugin_dir_url( __FILE__ ) . '../js/ikr_global.js', [], '1.0.0', false );
 
+
+
    if ($page_param == "Add-New-Map") {
 
 
@@ -30,6 +32,7 @@ function leaflet_js_map_enqueue_scripts()
     'dataF' => 'fetch_data_from_server',
     'editMarker' => 'ikr_edit_marker_detail',
     'deletMarker' => 'ikr_delete_marker',
+    'featchdata' =>'fetch_data_server_default',
   ] );
 
 
@@ -47,7 +50,7 @@ function leaflet_js_map_enqueue_scripts()
     wp_enqueue_script('ikr_leaflet_dahsbord', plugin_dir_url(__FILE__) . '../js/ikr_dashbord.js', array(), '1.0.0', true);
     wp_localize_script( 'ikr_leaflet_dahsbord', 'get_url', [
       'default_form' => 'ikr_default_setting',
-      'featchdata' =>'fetch_data_server_default'
+      'featchdata' =>'fetch_data_server_default',
     ] );
   }
 
