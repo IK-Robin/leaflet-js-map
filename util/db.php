@@ -32,11 +32,11 @@ function ikr_leaflet_js_db_connection() {
         $charset_collate = $wpdb->get_charset_collate();
         $sql_2 = "CREATE TABLE $table_two (
             id INT(10) NOT NULL AUTO_INCREMENT,
-            Latitude FLOAT NOT NULL DEFAULT '23.8536047088421',
-            Longitude FLOAT NOT NULL DEFAULT '89.24606323242189',
-            zoom FLOAT NOT NULL DEFAULT '12',
-            width FLOAT NOT NULL DEFAULT '50',
-            height FLOAT NOT NULL DEFAULT '50',
+            Latitude FLOAT(100) NOT NULL DEFAULT '23.8536047088421',
+            Longitude FLOAT(100) NOT NULL DEFAULT '89.24606323242189',
+            zoom FLOAT(100) NOT NULL DEFAULT '12',
+            width FLOAT(100) NOT NULL DEFAULT '50',
+            height FLOAT(100) NOT NULL DEFAULT '50',
             link VARCHAR(1000) DEFAULT NULL,
             PRIMARY KEY (id)
         ) $charset_collate;";
@@ -48,8 +48,8 @@ function ikr_leaflet_js_db_connection() {
             'Latitude' => 23.8536047088421,
             'Longitude' => 89.24606323242189,
             'zoom' => 12,
-            'width' => 50,
-            'height' => 50,
+            'width' => 500,
+            'height' => 100,
             'link' => '',
         ));
     } 
