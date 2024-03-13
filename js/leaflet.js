@@ -146,53 +146,184 @@ window.addEventListener("DOMContentLoaded", function () {
   });
 
   // MAP
-  const config = {
-    minZoom: 2,
-    maxZoom: 18,
-  };
+
   // magnification with which the map will start
-  const zoom = 2;
+
   // co-ordinates
-  const lat = 23.8536047088421;
-  const lng = 89.24606323242189;
+  
 
 
+// add default setting on load 
+// Create a map instance
+const map = L.map("map");
+
+// Assuming you have a function to get configuration data, for example:
 
 
-async function fetchData() {
+// Set the view of the map using the configuration data
+
+
+console.log(map);
+async function add_defaultView() {
   try {
     const data1 = await fetchAjaxRequest(get_url.featchdata);
-    console.log("Data from first AJAX request:", data1);
+    
+    data1.forEach(data =>{
+      console.log(data);
+      const lat = data.Latitude;
+      
+  const lng = data.Longitude;
+  const zoom = data.zoom;
+  const width = data.width;
+  const height = data.height;
+ // calling map
 
-  } catch (error) {
-    console.error("Error fetching data from first AJAX request:", error);
-  }
-
-  try {
-    const data2 = await fetchAjaxRequest(get_url.dataF);
-    console.log("Data from second AJAX request:", data2);
-  } catch (error) {
-    console.error("Error fetching data from second AJAX request:", error);
-  }
+ function getConfigData() {
+  // This function should return an object with latitude, longitude, and zoom level
+  return {
+    lat:lat,
+    lng: lng,
+    zoom: zoom
+  };
 }
 
-fetchData();
+// Get the configuration data
+const config = getConfigData();
 
 
 
-
-
-
-
-  // calling map
-  const map = L.map("map", config).setView([lat, lng], zoom);
-
+ map.setView([config.lat, config.lng], config.zoom);
   // Used to load and display tile layers on the map
   // Most tile servers require attribution, which you can set under `Layer`
   L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
     attribution:
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
   }).addTo(map);
+    });
+
+    markerBuind();
+
+
+
+
+    map.on("click", (ev) => {
+      // fill the input  with lat and lng of clicked place
+      latituide.value = ev.latlng.lat;
+      langtuide.value = ev.latlng.lng;
+  
+     
+      // Add a click event listener to the map
+  
+    const latlng = ev.latlng;
+  
+    // Perform reverse geocoding using Leaflet's built-in method
+   console.log(ev);
+  
+  
+  
+  
+  
+      var newMarker;
+      if (addMarker) {
+        // Add new marker
+        newMarker = L.marker(ev.latlng).addTo(map);
+  
+        newMarker.dragging.enable();
+        let randomMarkerId = Math.floor(Math.random() * 9000000 + 1000000);
+        maphiddenId_add.value = randomMarkerId;
+  
+        newMarker
+          .bindPopup(
+            `<div class="popupWindow"> hello popup <br><button class="editMarker" data-id="${randomMarkerId}">Edit</button> <button class="deletMarker" data-id="${randomMarkerId}">Delete</button><br>
+            
+          </div>`
+          )
+          .addTo(map);
+        // markerBuind();
+  
+        // Make this marker draggable
+        newMarker.dragging.enable();
+  
+        makeAjaxRequestGlobal(ikr_map_form, get_url.action);
+  
+        newMarker.on("click", function (e) {
+          // Get the popup content
+  
+          const markerPosition = e.target.getLatLng();
+          //   map.flyTo(markerPosition, 18, {
+          //     duration: 1 // Adjust the duration of the animation as needed
+          // });
+          // map.setView(markerPosition, 18);
+          const popupContent = e.target.getPopup();
+          console.log(e);
+  
+          const marker = e.target._popup._source;
+  
+          // Close the popup
+  
+          const editMarker =
+            popupContent._contentNode.childNodes[0].childNodes[2];
+          const deleteMarker =
+            popupContent._contentNode.childNodes[0].childNodes[4];
+  
+          editMarker.addEventListener("click", (editM) => {
+            ikr_edit_popup.style.display = "block";
+            // hide the popup on click edit btn
+            marker.closePopup();
+            // get the dataset id of clicked button
+            let id = editMarker.dataset.id;
+  
+            latituide_edit.value = e.latlng.lat;
+            longtuide_edit.value = e.latlng.lng;
+  
+            hiddenMarkerId.value = editMarker.dataset.id;
+          });
+  
+          // delet the marker
+          deleteMarker.addEventListener("click", (ev) => {
+            // remove the marker
+            map.removeLayer(newMarker);
+            // remove from db
+            marker_id.value = deleteMarker.dataset.id;
+            makeAjaxRequestGlobal(deletemarker_form, get_url.deletMarker);
+          });
+        });
+      }
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  } catch (error) {
+    console.error("Error fetching data from first AJAX request:", error);
+  }
+
+ 
+}
+
+add_defaultView();
+
+
+
+
+
+
+
+ 
+
 
   let markers = [];
   let newMarker;
@@ -225,7 +356,7 @@ fetchData();
 
   // featch data on load and add marker
 
-  markerBuind();
+
 
   // // Create markers for each marker data
   // markerData.forEach(mData => {
@@ -259,90 +390,7 @@ fetchData();
 
   // add marker on click
 
-  map.on("click", (ev) => {
-    // fill the input  with lat and lng of clicked place
-    latituide.value = ev.latlng.lat;
-    langtuide.value = ev.latlng.lng;
-
-   
-    // Add a click event listener to the map
-
-  const latlng = ev.latlng;
-
-  // Perform reverse geocoding using Leaflet's built-in method
- console.log(ev);
-
-
-
-
-
-    var newMarker;
-    if (addMarker) {
-      // Add new marker
-      newMarker = L.marker(ev.latlng).addTo(map);
-
-      newMarker.dragging.enable();
-      let randomMarkerId = Math.floor(Math.random() * 9000000 + 1000000);
-      maphiddenId_add.value = randomMarkerId;
-
-      newMarker
-        .bindPopup(
-          `<div class="popupWindow"> hello popup <br><button class="editMarker" data-id="${randomMarkerId}">Edit</button> <button class="deletMarker" data-id="${randomMarkerId}">Delete</button><br>
-          
-        </div>`
-        )
-        .addTo(map);
-      // markerBuind();
-
-      // Make this marker draggable
-      newMarker.dragging.enable();
-
-      makeAjaxRequestGlobal(ikr_map_form, get_url.action);
-
-      newMarker.on("click", function (e) {
-        // Get the popup content
-
-        const markerPosition = e.target.getLatLng();
-        //   map.flyTo(markerPosition, 18, {
-        //     duration: 1 // Adjust the duration of the animation as needed
-        // });
-        // map.setView(markerPosition, 18);
-        const popupContent = e.target.getPopup();
-        console.log(e);
-
-        const marker = e.target._popup._source;
-
-        // Close the popup
-
-        const editMarker =
-          popupContent._contentNode.childNodes[0].childNodes[2];
-        const deleteMarker =
-          popupContent._contentNode.childNodes[0].childNodes[4];
-
-        editMarker.addEventListener("click", (editM) => {
-          ikr_edit_popup.style.display = "block";
-          // hide the popup on click edit btn
-          marker.closePopup();
-          // get the dataset id of clicked button
-          let id = editMarker.dataset.id;
-
-          latituide_edit.value = e.latlng.lat;
-          longtuide_edit.value = e.latlng.lng;
-
-          hiddenMarkerId.value = editMarker.dataset.id;
-        });
-
-        // delet the marker
-        deleteMarker.addEventListener("click", (ev) => {
-          // remove the marker
-          map.removeLayer(newMarker);
-          // remove from db
-          marker_id.value = deleteMarker.dataset.id;
-          makeAjaxRequestGlobal(deletemarker_form, get_url.deletMarker);
-        });
-      });
-    }
-  });
+ 
 
   //===================================
 
