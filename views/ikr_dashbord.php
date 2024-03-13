@@ -9,7 +9,7 @@
       
       <h3> Default Setting</h3>
       <div class="default_setting_form">
-         <form id="defaultSetting">
+         <form  id="defaultSetting">
             <div class="default_f_section">
                <label for="default_lat"> Default Latitude </label> 
                <input type="text" name="default_lat"  id ="default_lat">
@@ -23,21 +23,28 @@
             </div>
             <div class="default_f_section">
               <label for="default_zoom">Default Zoom: </label>
-              <input type="number"   min="1" max="18" name="default_zoom" value="12" id = "default_zoom">
+              <input type="number"   min="1" max="18" name="default_zoom" id = "default_zoom">
             <p>   Default Zoom for maps. Values can include 1 to 18  You can also change this for each map </p>
             </div>
             
             <div class="default_f_section">
               <label for="default_width">Default Width: </label>
-              <input type="number" min="1" max="100" value="50" name="default_width" id = "default_width">
+              <input type="number" min="1" max="100"  name="default_width" id = "default_width">
             <p>   Default Width for maps. Values can include in %. You can also change this for each map Width. </p>
             </div>
             
             <div class="default_f_section">
               <label for="default_height">Default Height: </label>
-              <input type="number" value="50" min="1" max="100"  name="default_height" id="default_height">
+              <input type="number" min="1" max="100"  name="default_height" id="default_height">
 
             <p>   Default Height for maps. Values can include in %. You can also change this for each map Height. </p>
+            </div>
+            
+            <div class="default_f_section">
+              <label for="default_link">Default url: </label>
+              <input type="number" min="1" max="100"  name="default_link" id="default_link">
+
+            <p>   Default url for maps. Values can include any link such as your website link. You can also change this for each map url. </p>
             </div>
 
 
