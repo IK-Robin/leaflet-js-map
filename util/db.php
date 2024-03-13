@@ -1,42 +1,44 @@
 <?php
-
 /******************************** 
- * This is the file for creating a database table for Leaflet.js map
+ * This file is for creating a database table for Leaflet.js map
 ****/
-// Create db table property 
+// Create database tables
 
 function ikr_leaflet_js_db_connection() {
     global $wpdb;
 
     // Table 1: ikr_leaflet_js_db
-    $table_name = $wpdb->prefix . 'ikr_leaflet_js_db';
-    if ($wpdb->get_var("SHOW TABLES LIKE '$table_name'") !== $table_name) {
+    $table_name_1 = $wpdb->prefix . 'ikr_leaflet_js_db';
+    $charset_collate = $wpdb->get_charset_collate();
+
+    if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_1'") != $table_name_1) {
         // If the table doesn't exist, create it
-        $charset_collate = $wpdb->get_charset_collate();
-        $sql = "CREATE TABLE $table_name (
-            id int(10) NOT NULL AUTO_INCREMENT,
-            lat varchar(100) NOT NULL,
-            lng varchar(100) NOT NULL,
-            popup_text varchar(1000) NOT NULL,
-            marker_id varchar(100) NOT NULL,
+        $sql_1 = "CREATE TABLE $table_name_1 (
+            id INT(10) NOT NULL AUTO_INCREMENT,
+            lat VARCHAR(100) NOT NULL,
+            lng VARCHAR(100) NOT NULL,
+            address VARCHAR(100) NOT NULL,
+            phone VARCHAR(100) NOT NULL,
+            email VARCHAR(100) NOT NULL,
+            urls VARCHAR(1000) NOT NULL,
+            marker_id VARCHAR(100) NOT NULL,
             PRIMARY KEY (id)
         ) $charset_collate;";
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-        dbDelta($sql);
+        dbDelta($sql_1);
     }
 
     // Table 2: ikr_default_setting
-    $table_two =  $wpdb->prefix . 'ikr_default_setting';
-    if ($wpdb->get_var("SHOW TABLES LIKE '$table_two'") !== $table_two) {
+    $table_name_2 =  $wpdb->prefix . 'ikr_default_setting';
+    if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_2'") != $table_name_2) {
         // If the table doesn't exist, create it
-        $charset_collate = $wpdb->get_charset_collate();
-        $sql_2 = "CREATE TABLE $table_two (
+        $sql_2 = "CREATE TABLE $table_name_2 (
             id INT(10) NOT NULL AUTO_INCREMENT,
-            Latitude FLOAT(100) NOT NULL DEFAULT '23.8536047088421',
-            Longitude FLOAT(100) NOT NULL DEFAULT '89.24606323242189',
-            zoom FLOAT(100) NOT NULL DEFAULT '12',
-            width FLOAT(100) NOT NULL DEFAULT '50',
-            height FLOAT(100) NOT NULL DEFAULT '50',
+            Latitude FLOAT NOT NULL DEFAULT 23.8536047088421,
+            Longitude FLOAT NOT NULL DEFAULT 89.24606323242189,
+            zoom FLOAT NOT NULL DEFAULT 12,
+            width FLOAT NOT NULL DEFAULT 50,
+            height FLOAT NOT NULL DEFAULT 50,
             link VARCHAR(1000) DEFAULT NULL,
             PRIMARY KEY (id)
         ) $charset_collate;";
@@ -44,22 +46,17 @@ function ikr_leaflet_js_db_connection() {
         dbDelta($sql_2);
 
         // Add default row values
-        $wpdb->insert($table_two, array(
+        $wpdb->insert($table_name_2, array(
             'Latitude' => 23.8536047088421,
             'Longitude' => 89.24606323242189,
-            'zoom' => 12,
+            'zoom' => 2,
             'width' => 500,
-            'height' => 100,
+            'height' => 3200,
             'link' => '',
         ));
-    } 
+    }
 }
 
 // Call the function to create/update tables
 ikr_leaflet_js_db_connection();
-
-
-
-
 ?>
-
