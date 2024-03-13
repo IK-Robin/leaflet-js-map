@@ -151,10 +151,38 @@ window.addEventListener("DOMContentLoaded", function () {
     maxZoom: 18,
   };
   // magnification with which the map will start
-  const zoom = 1;
+  const zoom = 2;
   // co-ordinates
   const lat = 23.8536047088421;
   const lng = 89.24606323242189;
+
+
+
+
+async function fetchData() {
+  try {
+    const data1 = await fetchAjaxRequest(get_url.featchdata);
+    console.log("Data from first AJAX request:", data1);
+
+  } catch (error) {
+    console.error("Error fetching data from first AJAX request:", error);
+  }
+
+  try {
+    const data2 = await fetchAjaxRequest(get_url.dataF);
+    console.log("Data from second AJAX request:", data2);
+  } catch (error) {
+    console.error("Error fetching data from second AJAX request:", error);
+  }
+}
+
+fetchData();
+
+
+
+
+
+
 
   // calling map
   const map = L.map("map", config).setView([lat, lng], zoom);
@@ -359,8 +387,12 @@ window.addEventListener("DOMContentLoaded", function () {
       }
     });
 
-    // Fetch new data and add markers
-    fetchAjaxRequest(get_url.dataF, (data) => {
+    async function  createMarkers(){
+try{
+  const data = await     fetchAjaxRequest(get_url.dataF);
+  console.log(data);
+
+
       data.forEach((m) => {
         const newMarker = L.marker([m.lat, m.lng], { id: m.marker_id }).addTo(
           map
@@ -459,7 +491,20 @@ window.addEventListener("DOMContentLoaded", function () {
         });
       });
      
-    });
+   
+
+
+}catch (err) {
+  console.log(err);
+}
+    
+    
+    }
+
+    createMarkers(); 
+
+    // Fetch new data and add markers
+    
   }
 
   //===================================
