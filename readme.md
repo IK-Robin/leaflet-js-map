@@ -62,8 +62,11 @@ To get started with ikrMap, simply install this plugin in your wordpress directo
    6. After saving the map Use The Shortcode any where your website like page or post.
 
   ## EASY EDIT
+    You can easily customize the marker position detail  using the provided fields in the popup that appears when Click on The marker you can see Two button "Edit" and "Delete" 
+    If you Click the Edit button Then show a popup window  which contain all information of that marker.You Can Change Any Information There And Click The Update button to save the change. 
+## Delete 
+If you change your mind to delete the marker then you can  easily do it from here just click the marker it open a popup you just click "Delete" button to delete The  a marker from the map? 
 
- 
 ## Dashbord 
 The dashboard is indecate that  you can click on it to view more information about a location or zoom into a particular area. I
 
