@@ -17,13 +17,13 @@
     <label for="phone"> phone</label>
     <input type="text" id="phone_edit" placeholder="your phone number" name="phone">
 
+    <input type="email" id="email_edit" name="email"placeholder="Enter your email here" value=" ">
     
 
     <label for="url"> url</label>
     <input type="text" name="url" placeholder="Your site url" id="input_url_edit">
 
 
-    <input type="email" id="popup_text_edit" name="popup-text"placeholder="Enter your email here" value=" ">
 
 
         
