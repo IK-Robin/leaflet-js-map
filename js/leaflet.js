@@ -169,8 +169,9 @@ ikr_edit_popup.style.display ='none';
         const width = data.width;
         const height = data.height;
         // calling map
-        mapWidth.style.width = width + "%";
-        mapWidth.style.height = height + "px";
+        // stop width and height  is not set in config file
+        // mapWidth.style.width = width + "%";
+        // mapWidth.style.height = height + "px";
 
         function getConfigData() {
           // This function should return an object with latitude, longitude, and zoom level
