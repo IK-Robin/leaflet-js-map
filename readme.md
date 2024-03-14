@@ -60,10 +60,21 @@ To get started with ikrMap, simply install this plugin in your wordpress directo
    4. To fill Marker Detail you Can see a Popup Window Show on Top Right Corner you Can Enter All Details Of Your Marker Like Popup Text , Lat & Lng .
    5. Now Click on Save Marker button to save The Marker.
    6. After saving the map Use The Shortcode any where your website like page or post.
+## CHANGE MARKER POSITION
+You can change the position of a marker using the following method:
+  - Stape 1 jsut drag the marker  from the map to the desired location.
+  - Step 2 Add the Latitude and Longitude of that place in the input field provided below the map click the update button.
+
 
   ## EASY EDIT
-    You can easily customize the marker position detail  using the provided fields in the popup that appears when Click on The marker you can see Two button "Edit" and "Delete" 
-    If you Click the Edit button Then show a popup window  which contain all information of that marker.You Can Change Any Information There And Click The Update button to save the change. 
+    You can easily customize the marker position detail  using the provided fields in the 
+
+    popup that appears when Click on The marker you can see Two button "Edit" and "Delete"
+
+    If you Click the Edit button Then show a popup window  which contain all information 
+    
+    of that marker.You Can Change Any Information There And Click The Update button to 
+    save the change. 
 ## Delete 
 If you change your mind to delete the marker then you can  easily do it from here just click the marker it open a popup you just click "Delete" button to delete The  a marker from the map? 
 
