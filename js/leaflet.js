@@ -60,48 +60,9 @@ window.addEventListener("DOMContentLoaded", function () {
       const api = `https://nominatim.openstreetmap.org/search?format=geojson&limit=5&q=${encodeURI(
         currentValue
       )}`;
+// hide edit form 
+ikr_edit_popup.style.display ='none';
 
-      // You can also use static files
-      // const api = './search.json'
-
-      /**
-       * jquery
-       * If you want to use jquery you have to add the
-       * jquery library to head html
-       * https://cdnjs.com/libraries/jquery
-       */
-      // return $.ajax({
-      //   url: api,
-      //   method: 'GET',
-      // })
-      //   .done(function (data) {
-      //     return data
-      //   })
-      //   .fail(function (xhr) {
-      //     console.error(xhr);
-      //   });
-
-      // OR ----------------------------------
-
-      /**
-       * axios
-       * If you want to use axios you have to add the
-       * axios library to head html
-       * https://cdnjs.com/libraries/axios
-       */
-      // return axios.get(api)
-      //   .then((response) => {
-      //     return response.data;
-      //   })
-      //   .catch(error => {
-      //     console.log(error);
-      //   });
-
-      // OR ----------------------------------
-
-      /**
-       * Promise
-       */
       return new Promise((resolve) => {
         fetch(api)
           .then((response) => response.json())
@@ -144,6 +105,7 @@ window.addEventListener("DOMContentLoaded", function () {
      langtuide.value = lng;
      address.value = display_name;
 
+     
     //  add random id 
     let randomMarkerId = Math.floor(Math.random() * 9000000 + 1000000);
           maphiddenId_add.value = randomMarkerId;
@@ -259,7 +221,8 @@ window.addEventListener("DOMContentLoaded", function () {
           hiddenMarkerId.value = randomMarkerId;
           newMarker
             .bindPopup(
-              `<div class="popupWindow"> hello popup <br><button class="editMarker" data-id="${randomMarkerId}">Edit</button> <button class="deletMarker" data-id="${randomMarkerId}">Delete</button><br>
+              `<div class="popupWindow"><strong> Address:</strong><br>
+              <strong>Sales Phone : </strong> <br> <strong> GeneralHours :</strong> <br> <strong> Website:</strong> <br><button class="editMarker" data-id="${randomMarkerId}">Edit</button> <button class="deletMarker" data-id="${randomMarkerId}">Delete</button><br>
             
           </div>`
             )
@@ -460,7 +423,22 @@ window.addEventListener("DOMContentLoaded", function () {
 
           // Bind popup with text and add marker ID to it
           newMarker.bindPopup(
-            `<div class="popupWindow">Address:${m.address}<br><button class="editMarker" data-id="${m.marker_id}">Edit</button> <button class="deletMarker" data-id="${m.marker_id}">Delete</button><br>
+            `<div class="popupWindow">
+            
+          <p> <strong> Address:</strong>  ${m.address}</p> 
+            <p>  <strong>Sales Phone : </strong>  ${m.phone}</p>
+           <p> <strong> GeneralHours :</strong>   ${m.email} </p>
+            
+           <p>  <strong> Website:</strong> ${m.urls} </p>
+            
+            
+            <br>
+            
+            
+            
+            
+            
+            <button class="editMarker" data-id="${m.marker_id}">Edit</button> <button class="deletMarker" data-id="${m.marker_id}">Delete</button><br>
                       
                     </div>`
           );
@@ -563,6 +541,8 @@ window.addEventListener("DOMContentLoaded", function () {
     markerBuind();
     addMarker = false;
     marker_add.innerText = 'Add New Marker';
+    ikr_edit_popup.style.display ='none';
+
   });
 
   //===================================
