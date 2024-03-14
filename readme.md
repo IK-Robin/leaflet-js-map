@@ -10,6 +10,17 @@ IKRMAP Map is a simple web application that allows users to explore interactive 
 - Search for specific locations
 - View points of interest
 - Zoom in and out for detailed exploration
+- Default viwe to see the  whole world or focus on a particular region.
+- Customize map Width and Height 
+-default Zoom 
+-Default latitude and  Longitude (center point)
+-Customizable map marker and popup  text
+-Add custom markers 
+-Add Custom marker detail  popups
+-Add Default Url s that can be opened when clicking on links in popups
+-Save current view as default view
+-Edit marker popup text  directly from map
+-Delete a marker or marker popup on click the marker you want
 
 ## Technologies Used
 
@@ -21,7 +32,16 @@ IKRMAP Map is a simple web application that allows users to explore interactive 
 
 ## Getting Started
 
-To get started with ikrMap, simply clone the repository and open the `index.html` file in your web browser.
+To get started with ikrMap, simply install this plugin in your wordpress directory  and follow these steps:
+
+1. Install Wordpress if not already installed.
+2. Navigate to your WordPress plugins installation page.
+3. Click "Add New Plugin" button.
+4. Click "upload Plugin" button and select `ikrmap.zip` file.
+5. After uploading is complete, click "Install Now" button.
+6. Once installed, activate the plugin through the 'Installed Plugins' page in WordPress.
+7. Open any post/page where you have added shortcode `[IKRMAP]`
+8. You will now see an embedded map on your webpage!
 
 
 ## Dashbord 
