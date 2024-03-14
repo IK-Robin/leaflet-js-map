@@ -38,7 +38,7 @@ window.addEventListener("DOMContentLoaded", function () {
   const email_edit = document.getElementById('email_edit');
 
 
-  const deletMarker = document.getElementById('deletMarker');
+  const deletMarker_edit = document.getElementById('deletMarker');
 
 
 
@@ -287,9 +287,8 @@ window.addEventListener("DOMContentLoaded", function () {
             // Close the popup
 
             const editMarker =
-              popupContent._contentNode.childNodes[0].childNodes[2];
-            const deleteMarker =
-              popupContent._contentNode.childNodes[0].childNodes[4];
+              popupContent._contentNode.childNodes[0].querySelector('.editMarker');
+              const deleteMarker =popupContent._contentNode.childNodes[0].querySelector('.deletMarker');
 
             editMarker.addEventListener("click", (editM) => {
               ikr_edit_popup.style.display = "block";
@@ -302,6 +301,8 @@ window.addEventListener("DOMContentLoaded", function () {
               longtuide_edit.value = e.latlng.lng;
 
               hiddenMarkerId.value = editMarker.dataset.id;
+              marker_id.value = editMarker.dataset.id;
+              console.log(marker_id);
             });
 
             // delet the marker
@@ -420,6 +421,17 @@ window.addEventListener("DOMContentLoaded", function () {
     ikr_edit_popup.style.display = "none";
   });
 
+
+  deletMarker_edit.addEventListener('click',(ev) =>{
+    makeAjaxRequestGlobal(deletemarker_form, get_url.deletMarker,c =>{
+      if(c){
+        markerBuind();
+      }
+    });
+    ikr_edit_popup.style.display ='none';
+
+  });  
+
   // make a function to add marker to the map
   function markerBuind() {
     // Clear existing markers from the map
@@ -500,7 +512,7 @@ window.addEventListener("DOMContentLoaded", function () {
                 phone_edit.value = m.phone;
                 email_edit.value = m.email;
                 input_url_edit.value = m.phone;
-
+                marker_id.value =  m.marker_id;
                 hiddenMarkerId.value = m.marker_id;
               }
             });
