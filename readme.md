@@ -45,19 +45,28 @@ To get started with ikrMap, simply install this plugin in your wordpress directo
 
 
    ## Edit The Map Detail 
-   If you Want to Edit the Map marker or Default View  details ,you need to go to wp-admin -> leaflet map -> Edit.
+   If you Want to Edit the Map marker or Default View  details ,you need to go to wp-admin -> Dashbord.
+   You can edit the map details by following these steps:
+   1. Go to -> leaflet map -> Dashboard.
+   2.Add to this page you can see default latitude, default longitude. Add your default map latitude, longitude view to the center point. "Latitude & Longitude": These set the center of the map.
+   3. "Default Zoom"  : This sets the zoom level of the map when it first loads.
+      
+      "Width & Height" : Set the width and height for the map on font end.
+
+
+
+
+
+
    You can edit all details about the map by going into the Leaflet Map -> Edit -> Visual  tab. Here you can change the following settings : 
    You can edit the map details by following these steps:
    
    1. Go to Dashboard -> leaflet map -> Edit
-   2. If you need to add new Marker Then click on "Add New Marker"  Button.
-        - Now You just Click  On Map To Set Lat & Lng For Your Marker And Type A Popup Text In The Field Below It.
-        Fill up all fields including Latitude ,Longitude and Popup Text .
+   2. Click on "Add New Marker".
+   3. After Click on "Add New Marker"  Button Now You can click anyWhere  On The Map To Place A Marker.
+   4. To fill Marker Detail you Can see a Popup Window Show on Top Right Corner you Can Enter All Details Of Your Marker Like Popup Text , Lat & Lng .
+   5. Now Click on Save Marker button to save The Marker.
 
-
-        - After Clicking  On This Button A Popup Will Appear Where You Can Enter All Details Of Your Marker Like
-          Fill up all the fields including Popup Text , Lat & Lng .
-        - 
 
   
  
