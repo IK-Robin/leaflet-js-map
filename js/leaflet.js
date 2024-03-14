@@ -4,11 +4,24 @@
 
 window.addEventListener("DOMContentLoaded", function () {
   const mapWidth = document.getElementById("map");
+  const ikr_map_form = document.getElementById("ikr_map_form");
+  const maphiddenId_add = document.getElementById("maphiddenId_add");
   const langtuide = document.getElementById("langtuide");
   const latituide = document.getElementById("latituide");
-  const ikr_map_form = document.getElementById("ikr_map_form");
+  const address = document.getElementById("address");
+  const phone = document.getElementById("phone");
+  const email = document.getElementById("email");
+  const input_url = document.getElementById("input_url");
+  
 
-  const maphiddenId_add = document.getElementById("maphiddenId_add");
+
+
+
+
+
+
+
+
 
   const ikr_edit_popup = document.getElementById("ikr_edit_popup");
 
@@ -121,8 +134,20 @@ window.addEventListener("DOMContentLoaded", function () {
     },
 
     onSubmit: ({ object }) => {
-      const { display_name } = object.properties;
+      console.log(object);
+      const { display_name,name } = object.properties;
+      console.log(name);
       const cord = object.geometry.coordinates;
+
+     const  [lng,lat ] = cord;
+     latituide.value = lat;
+     langtuide.value = lng;
+     address.value = display_name;
+
+    //  add random id 
+    let randomMarkerId = Math.floor(Math.random() * 9000000 + 1000000);
+          maphiddenId_add.value = randomMarkerId;
+
 
       // custom id for marker
       const customId = Math.random();
@@ -370,6 +395,12 @@ window.addEventListener("DOMContentLoaded", function () {
 
     setTimeout(() => {
       markerBuind();
+      langtuide.value ='';
+      langtuide.value ='';
+      address.value ='';
+      phone.value ='';
+      email.value ='';
+      input_url.value ='';
     }, 100);
   });
 
@@ -380,10 +411,11 @@ window.addEventListener("DOMContentLoaded", function () {
   ikr_map_form_edit.addEventListener("submit", (evn) => {
     evn.preventDefault();
     makeAjaxRequestGlobal(ikr_map_form_edit, get_url.editMarker,c =>{
-      if(c){
-        markerBuind();
-      }
     });
+    setTimeout(() =>{
+      markerBuind();
+
+    },100)
    
     ikr_edit_popup.style.display = "none";
   });
@@ -416,7 +448,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
           // Bind popup with text and add marker ID to it
           newMarker.bindPopup(
-            `<div class="popupWindow">${m.email}<br><button class="editMarker" data-id="${m.marker_id}">Edit</button> <button class="deletMarker" data-id="${m.marker_id}">Delete</button><br>
+            `<div class="popupWindow">Address:${m.address}<br><button class="editMarker" data-id="${m.marker_id}">Edit</button> <button class="deletMarker" data-id="${m.marker_id}">Delete</button><br>
                       
                     </div>`
           );
