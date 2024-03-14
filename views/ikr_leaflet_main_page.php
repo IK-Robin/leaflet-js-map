@@ -5,7 +5,7 @@
 <div class="container">
     <div> 
       <!-- add delet and Remove marker btn  -->
-    <button type="button" id ="add_marker"> Add Marker </button>
+    <button type="button" id ="add_marker"> Add New Marker </button>
 
     <button id="save"> Save </button>
     </div>
