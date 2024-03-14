@@ -201,7 +201,8 @@ window.addEventListener("DOMContentLoaded", function () {
         // fill the input  with lat and lng of clicked place
         latituide.value = ev.latlng.lat;
         langtuide.value = ev.latlng.lng;
-
+        latituide_edit.value = ev.latlng.lat;
+        longtuide_edit.value = ev.latlng.lng;
         // Add a click event listener to the map
 
         const latlng = ev.latlng;
@@ -218,6 +219,8 @@ window.addEventListener("DOMContentLoaded", function () {
           let randomMarkerId = Math.floor(Math.random() * 9000000 + 1000000);
           maphiddenId_add.value = randomMarkerId;
 
+          // add random id and detail text 
+          hiddenMarkerId.value = randomMarkerId;
           newMarker
             .bindPopup(
               `<div class="popupWindow"> hello popup <br><button class="editMarker" data-id="${randomMarkerId}">Edit</button> <button class="deletMarker" data-id="${randomMarkerId}">Delete</button><br>
@@ -271,7 +274,7 @@ window.addEventListener("DOMContentLoaded", function () {
               map.removeLayer(newMarker);
               // remove from db
               marker_id.value = deleteMarker.dataset.id;
-              makeAjaxRequestGlobal(deletemarker_form, get_url.deletMarker);
+              makeAjaxRequestGlobal(deletemarker_form, get_url.deletMarker,c =>{});
             });
           });
         }
@@ -365,10 +368,12 @@ window.addEventListener("DOMContentLoaded", function () {
 
   ikr_map_form_edit.addEventListener("submit", (evn) => {
     evn.preventDefault();
-    makeAjaxRequestGlobal(ikr_map_form_edit, get_url.editMarker);
-    setTimeout(() => {
-      markerBuind();
-    }, 100);
+    makeAjaxRequestGlobal(ikr_map_form_edit, get_url.editMarker,c =>{
+      if(c){
+        markerBuind();
+      }
+    });
+   
     ikr_edit_popup.style.display = "none";
   });
 
