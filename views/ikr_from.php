@@ -16,11 +16,11 @@
 
     
 
+    <input type="email" id="email" name="email"placeholder="Enter your email here" value=" ">
+
     <label for="url"> url</label>
     <input type="text" name="url" placeholder="Your site url" id="input_url">
 
-
-    <input type="email" id="popup_text" name="popup-text"placeholder="Enter your email here" value=" ">
     <input type="submit" value="Submit"/>
 </form>
 
