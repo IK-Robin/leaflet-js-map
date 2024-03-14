@@ -118,7 +118,7 @@ add_action('wp_ajax_nopriv_load_data_from_db', 'load_data_from_db');
             'address' => $address,
             'phone' => $phone,
             'email' =>$email,
-            'url' => $url
+            'urls' => $url
             
 
         ], array('marker_id' =>$markerid),
