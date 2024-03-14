@@ -4,6 +4,7 @@
 
 window.addEventListener("DOMContentLoaded", function () {
   const mapWidth = document.getElementById("map");
+  const submit_form = document.getElementById('submit_form');
   const ikr_map_form = document.getElementById("ikr_map_form");
   const maphiddenId_add = document.getElementById("maphiddenId_add");
   const langtuide = document.getElementById("langtuide");
@@ -551,9 +552,20 @@ ikr_edit_popup.style.display ='none';
   // ===================================
 
   const hideEdit = document.querySelector(".editClose_btn");
-  hideEdit.addEventListener("click", (ev) => {
+  const closeB = document.querySelector("#closeB");
+
+  hideEdit.addEventListener('click',() =>{
     ikr_edit_popup.style.display = "none";
+
   });
+  closeB.addEventListener('click',() =>{
+   submit_form.style.display = 'none';
+
+  });
+   
+
+
+  
 
   // close this.window
 });
