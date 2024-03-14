@@ -85,13 +85,13 @@ add_action('wp_ajax_nopriv_load_data_from_db', 'load_data_from_db');
 
     $longitude = isset($_POST['lng']) ? sanitize_text_field($_POST['lng']) : '';
 
-    $address = isset($_POST['address_edit']) ? sanitize_text_field($_POST['address_edit']) : '';
+    $address = isset($_POST['address']) ? sanitize_text_field($_POST['address']) : '';
 
-    $phone = isset($_POST['phone_edit']) ? sanitize_text_field($_POST['phone_edit']) : '';
+    $phone = isset($_POST['phone']) ? sanitize_text_field($_POST['phone']) : '';
     
-    $url = isset($_POST['url_edit']) ? sanitize_text_field($_POST['url_edit']) : '';
+    $url = isset($_POST['url']) ? sanitize_text_field($_POST['url']) : '';
 
-    $email = isset($_POST['email_edit']) ? sanitize_text_field($_POST['email_edit']) : '';
+    $email = isset($_POST['email']) ? sanitize_text_field($_POST['email']) : '';
 
 
 
