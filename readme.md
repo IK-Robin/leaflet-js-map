@@ -43,13 +43,14 @@ To get started with ikrMap, simply install this plugin in your wordpress directo
 7. Open any post/page where you have added shortcode `[IKRMAP]`
 8. You will now see an embedded map on your webpage!
 
+## Add Custom Marker Postion
+You can add new markers by using following steps: 
+1. Add Longitude Longitude and other detail and  save it.
+
+
 
    ## Edit The Map Detail 
   
-
-
-
-
 
    You can edit all details about the map by going into the Leaflet Map -> Edit -> Visual  tab. Here you can change the following settings : 
    You can edit the map details by following these steps:
@@ -59,10 +60,10 @@ To get started with ikrMap, simply install this plugin in your wordpress directo
    3. After Click on "Add New Marker"  Button Now You can click anyWhere  On The Map To Place A Marker.
    4. To fill Marker Detail you Can see a Popup Window Show on Top Right Corner you Can Enter All Details Of Your Marker Like Popup Text , Lat & Lng .
    5. Now Click on Save Marker button to save The Marker.
-   6. After saving the map Use The Shortcode any where your website like page or post.
+   6. After saving the map Use The Shortcode "[leaflet_map] any where your website like page or post.
 ## CHANGE MARKER POSITION
 You can change the position of a marker using the following method:
-  - Stape 1 jsut drag the marker  from the map to the desired location.
+  - step 1 jsut drag the marker  from the map to the desired location.
   - Step 2 Add the Latitude and Longitude of that place in the input field provided below the map click the update button.
 
 
@@ -76,13 +77,14 @@ You can change the position of a marker using the following method:
     of that marker.You Can Change Any Information There And Click The Update button to 
     save the change. 
 ## Delete 
-If you change your mind to delete the marker then you can  easily do it from here just click the marker it open a popup you just click "Delete" button to delete The  a marker from the map? 
+If you change your mind to delete the marker then you can  easily do it from here just click the marker it open a popup you just click "Delete" button to delete The  marker from the map? 
 
 ## Dashbord 
-The dashboard is indecate that  you can click on it to view more information about a location or zoom into a particular area. I
+The dashboard is indecate that  you can click on it to view more information about a location or zoom into a particular area. 
 
-The dashboard is where you can interact with the application. It includes:  
-1. Here you can add the deflult Latitude to see the map  at that location when the page loads.
+The dashboard is where you can interact with the application. It includes: 
+1.You can add the default latitude to view the map at that location when the page loads.
+
 2. default map zoom  level. You can use this feature to view different areas on the map by changing the zoom level.
 
  If you Want to Edit the Map marker or Default View  details.
@@ -95,6 +97,15 @@ The dashboard is where you can interact with the application. It includes:
   5. "Default URL" Default url for maps. Values can include any link such as your website link. You can also change this for each map url. 
 
 
+
+
+
+
+
+
+
+
+## work  with me!
 add data attribut to the edit button to get the exect match of the marker to featch and edit the data from db.
 
 1. add edit functionality
@@ -108,5 +119,10 @@ add data attribut to the edit button to get the exect match of the marker to fea
 
 
 
-## work
 add automaticly row in the bd 
+
+14 march  2024
+show the input fild in right cornner 
+add short code 
+style the map 
+and check error
