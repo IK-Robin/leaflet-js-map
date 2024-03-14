@@ -350,7 +350,7 @@ window.addEventListener("DOMContentLoaded", function () {
   ikr_map_form.addEventListener("submit", (evnt) => {
     evnt.preventDefault();
 
-    makeAjaxRequestGlobal(ikr_map_form, get_url.action);
+    makeAjaxRequestGlobal(ikr_map_form, get_url.action,c=>{});
 
     // featcht data and  add  marker
 
@@ -477,7 +477,7 @@ window.addEventListener("DOMContentLoaded", function () {
               popup_text_edit.value = m.popup_text;
               hiddenMarkerId.value = m.marker_id;
 
-              makeAjaxRequestGlobal(ikr_map_form_edit, get_url.editMarker);
+              makeAjaxRequestGlobal(ikr_map_form_edit, get_url.editMarker,c=>{});
             }
           });
         });
