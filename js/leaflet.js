@@ -561,6 +561,8 @@ window.addEventListener("DOMContentLoaded", function () {
   // ===================================
   save.addEventListener("click", (ev) => {
     markerBuind();
+    addMarker = false;
+    marker_add.innerText = 'Add New Marker';
   });
 
   //===================================
