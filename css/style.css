@@ -1,6 +1,6 @@
 #map{
-    width: 100%;
-    height: 100vh;
+    width:100%;
+    height: 60vh;
     margin-left: 0;
 }
 
@@ -48,11 +48,54 @@
 }
  
   /*==============================
-    Style the edit containe
+    style submit form
  ===============================*/
+.submit_form{
+  display: block;
+}
+
+
+
+
   /*==============================
-    Style the edit containe
+    Style the edit container
  ===============================*/
+
+
+
+ 
+.ikr_map_container {
+  display: block;
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.ikr_first_side {
+  width: 70%;
+  height: auto;
+}
+.ikr_second_side {
+  width: 30%;
+  background-color: #fff;
+  border: 1px solid;
+  padding:10px;
+}
+
+
+
+.align_inp {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+  margin: 0 auto;
+}
+.align_inp label {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
   /*==============================
     Style the edit containe
  ===============================*/
