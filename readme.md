@@ -45,14 +45,7 @@ To get started with ikrMap, simply install this plugin in your wordpress directo
 
 
    ## Edit The Map Detail 
-   If you Want to Edit the Map marker or Default View  details.
-   You can edit the map details by following these steps:
-   1. Go to -> leaflet map -> Dashboard.
-   2. Add to this page you can see default latitude, default longitude. Add your default map latitude, longitude view to the center point. "Latitude & Longitude": These set the center of the map.
-   3. "Default Zoom"  : This sets the zoom level of the map when it first loads.
-      
-      "Width & Height" : Set the width and height for the map on font end.
-
+  
 
 
 
@@ -61,23 +54,31 @@ To get started with ikrMap, simply install this plugin in your wordpress directo
    You can edit all details about the map by going into the Leaflet Map -> Edit -> Visual  tab. Here you can change the following settings : 
    You can edit the map details by following these steps:
    
-   1. Go to Dashboard -> leaflet map -> Edit
+   1. Go to Dashboard -> leaflet map -> Add-New-Map
    2. Click on "Add New Marker".
    3. After Click on "Add New Marker"  Button Now You can click anyWhere  On The Map To Place A Marker.
    4. To fill Marker Detail you Can see a Popup Window Show on Top Right Corner you Can Enter All Details Of Your Marker Like Popup Text , Lat & Lng .
    5. Now Click on Save Marker button to save The Marker.
+   6. After saving the map Use The Shortcode any where your website like page or post.
 
+  ## EASY EDIT
 
-  
  
 ## Dashbord 
-The dashboard is indecate that  you can click on it to view more information about a location or zoom into a particular area. It
+The dashboard is indecate that  you can click on it to view more information about a location or zoom into a particular area. I
 
 The dashboard is where you can interact with the application. It includes:  
 1. Here you can add the deflult Latitude to see the map  at that location when the page loads.
 2. default map zoom  level. You can use this feature to view different areas on the map by changing the zoom level.
-3. width  & height are used to set the size of the map on the screen.
-4. The zoom level is controlled by using "+", "-" buttons or dragging/zooming the map itself.
+
+ If you Want to Edit the Map marker or Default View  details.
+   You can edit the map details by following these steps:
+   1. Go to -> leaflet map -> Dashboard.
+   2. On this page you can see default latitude, default longitude. Add your default map latitude, longitude view to the center point. "Latitude & Longitude": These set the center of the map.
+   3. "Default Zoom"  This sets the zoom level of the map when it first loads.
+      
+  4. "Width & Height"  Set the width and height for the map on font end.
+  5. "Default URL" Default url for maps. Values can include any link such as your website link. You can also change this for each map url. 
 
 
 add data attribut to the edit button to get the exect match of the marker to featch and edit the data from db.
