@@ -54,12 +54,12 @@ To get started with ikrMap, simply install this plugin in your wordpress directo
         - Now You just Click  On Map To Set Lat & Lng For Your Marker And Type A Popup Text In The Field Below It.
         Fill up all fields including Latitude ,Longitude and Popup Text .
 
-        
-        - After Clicking  On This Button A Popup Will Appear Where You Can Enter All Details Of Your Marker Like
-      Fill up all the fields including Popup Text , Lat & Lng .
 
-   3. Click on it and then click on the pencil icon at the top right corner of the editor window. This will open up the full screen editor for
-   3. Double click on it to open  it for editing
+        - After Clicking  On This Button A Popup Will Appear Where You Can Enter All Details Of Your Marker Like
+          Fill up all the fields including Popup Text , Lat & Lng .
+        - 
+
+  
  
 ## Dashbord 
 The dashboard is indecate that  you can click on it to view more information about a location or zoom into a particular area. It
