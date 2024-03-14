@@ -27,7 +27,7 @@
 
 
         
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Save Marker" />
     </form>
     <div>
         <button id="deletMarker">delete marker </button>
