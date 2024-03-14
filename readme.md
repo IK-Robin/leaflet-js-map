@@ -12,15 +12,15 @@ IKRMAP Map is a simple web application that allows users to explore interactive 
 - Zoom in and out for detailed exploration
 - Default viwe to see the  whole world or focus on a particular region.
 - Customize map Width and Height 
--default Zoom 
--Default latitude and  Longitude (center point)
--Customizable map marker and popup  text
--Add custom markers 
--Add Custom marker detail  popups
--Add Default Url s that can be opened when clicking on links in popups
--Save current view as default view
--Edit marker popup text  directly from map
--Delete a marker or marker popup on click the marker you want
+- Default Zoom 
+- Default latitude and  Longitude (center point)
+- Customizable map marker and popup  text
+- Add custom markers 
+- Add Custom marker detail  popups
+- Add Default Url s that can be opened when clicking on links in popups
+- Save current view as default view
+- Edit marker popup text  directly from map
+- Delete a marker or marker popup on click the marker you want
 
 ## Technologies Used
 
