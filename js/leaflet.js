@@ -38,7 +38,7 @@ window.addEventListener("DOMContentLoaded", function () {
   const email_edit = document.getElementById('email_edit');
 
 
-
+  const deletMarker = document.getElementById('deletMarker');
 
 
 
@@ -496,14 +496,19 @@ window.addEventListener("DOMContentLoaded", function () {
               if (id == m.marker_id) {
                 latituide_edit.value = m.lat;
                 longtuide_edit.value = m.lng;
+                address_edit.value = m.address;
                 phone_edit.value = m.phone;
+                email_edit.value = m.email;
+                input_url_edit.value = m.phone;
+
                 hiddenMarkerId.value = m.marker_id;
               }
             });
 
             // delet the marker
             deleteMarker.addEventListener("click", (ev) => {
-              // remove the marker
+              // remove the marker   
+              ikr_edit_popup.style.display = "none";
               map.removeLayer(newMarker);
               // remove from db
               marker_id.value = deleteMarker.dataset.id;
