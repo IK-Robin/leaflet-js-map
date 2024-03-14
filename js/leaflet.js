@@ -18,7 +18,18 @@ window.addEventListener("DOMContentLoaded", function () {
   const hiddenMarkerId = document.getElementById("hiddenMarkerId");
   const latituide_edit = document.getElementById("latituide_edit");
   const longtuide_edit = this.document.getElementById("langtuide_edit");
-  const popup_text_edit = document.getElementById("popup_text_edit");
+  const phone_edit = document.getElementById("phone_edit");
+
+  const address_edit = document.getElementById('address_edit');
+  const input_url_edit = document.getElementById('input_url_edit');
+  const email_edit = document.getElementById('email_edit');
+
+
+
+
+
+
+
 
   // select the delete marker form
   const deletemarker_form = document.getElementById("deletemarker_form");
@@ -453,7 +464,7 @@ window.addEventListener("DOMContentLoaded", function () {
               if (id == m.marker_id) {
                 latituide_edit.value = m.lat;
                 longtuide_edit.value = m.lng;
-                popup_text_edit.value = m.popup_text;
+                phone_edit.value = m.phone;
                 hiddenMarkerId.value = m.marker_id;
               }
             });
@@ -479,7 +490,7 @@ window.addEventListener("DOMContentLoaded", function () {
             if (markerId == m.marker_id) {
               latituide_edit.value = position.lat;
               longtuide_edit.value = position.lng;
-              popup_text_edit.value = m.popup_text;
+              phone_edit.value = m.popup_text;
               hiddenMarkerId.value = m.marker_id;
 
               makeAjaxRequestGlobal(ikr_map_form_edit, get_url.editMarker,c=>{});
