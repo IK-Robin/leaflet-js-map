@@ -27,17 +27,17 @@
 
        <div class="align_inp">
        <label for="phone"> phone</label>
-    <input type="text" id="phone_edit" placeholder="your phone number" name="phone">
+    <input type="text" id="phone_edit" placeholder="Your Phone Number" name="phone">
 
        </div>
        <div class="align_inp">
        <label for="email_edit"> email</label>
-       <input type="email" id="email_edit" name="email"placeholder="Enter your email here" value=" ">
+       <input type="email" id="email_edit" name="email"placeholder="Enter Your Email Here" value=" ">
     
        </div>
        <div class="align_inp">
        <label for="url"> url</label>
-    <input type="text" name="url" placeholder="Your site url" id="input_url_edit">
+    <input type="text" name="url" placeholder="Your Website URL" id="input_url_edit">
 
        </div>
        <div class="align_inp">
@@ -53,10 +53,10 @@
 
 
 
-        
+  <!-- delete marker form         -->
        
-    </form>
+    <!-- </form>
     <div>
         <button id="deletMarker">delete marker </button>
-    </div>
+    </div> -->
 </div>
