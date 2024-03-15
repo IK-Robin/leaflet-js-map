@@ -2,12 +2,13 @@
  
  
 
-<div class="container">
-    <div> 
+<div class="ikr_container">
+   <div class="ikr_c_left">
+   <div class="action_btn"> 
       <!-- add delet and Remove marker btn  -->
     <button type="button" id ="add_marker"> Add New Marker </button>
 
-    <button id="save"> Save </button>
+   
     </div>
 
     <!-- add search  bar   -->
@@ -19,15 +20,17 @@
           placeholder="enter the city name"
         />
       </div>
+   </div>
+<div class="ikr_c_right">
 
-
+  <button id="save"> Save </button>
+</div>
 
     </div>
  
    
 
 
-    </div>
 
     
 
