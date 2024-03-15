@@ -1,10 +1,10 @@
 #map{
     width:100%;
-    height: 60vh;
+    height: 100%;
     margin-left: 0;
 }
 
-
+/* 
 
   
 
@@ -18,7 +18,7 @@
     display: flex;
     padding: 5px;
     gap: 50px;
-  }
+  } */
 
 
   /*==============================
@@ -64,23 +64,26 @@
 
 
  
-.ikr_map_container {
+.ikr_map_content {
   display: block;
   position: relative;
   width: 100%;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-content: center;
 }
 .ikr_first_side {
-  width: 70%;
+  width: 68%;
   height: auto;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+  border: 1px solid ;
 }
 .ikr_second_side {
-  width: 30%;
+  width: 28%;
   background-color: #fff;
-  border: 1px solid;
+  /* border: 1px solid; */
   padding:10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
 }
 
 
@@ -100,9 +103,72 @@
 	margin-bottom: 8px;
 	padding-left: 10px;
 }
+
+.align_inp [type="submit"]{
+
+    padding: 9px;
+    font-size: 16px;
+    background: #2271b1;
+    color: white;
+    font-weight: bold;
+    border: none;
+  
+}
   /*==============================
-    Style the edit containe
+    Style the edit search
  ===============================*/
+ .ikr_container {
+  display: flex;
+  justify-content: flex-start;
+  padding: 10px 0;
+  width: 99%;
+  gap: 16px;
+  align-items: center;
+  align-content: center;
+  
+}
+.ikr_c_right{
+  width: 28%;
+  text-align: right;
+}
+.ikr_c_left {
+  width: 68%;
+  display: flex;
+  gap: 45px;
+  justify-content: space-around;
+  padding: 0 45px 0 0;
+  align-items: center;
+  align-content: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+button#add_marker, #save {
+  color: #fff;
+  border: none;
+  background: #2271b1;
+  border-color: #2271b1;
+  text-decoration: none;
+  text-shadow: none;
+  padding: 11px;
+  font-weight: bold;
+
+}
+.action_btn{
+  width: 30%;
+
+}
+.auto-search-wrapper{
+  width: 70%;
+}
+#save{
+  width: 90px;
+}
+.loupe input {
+  padding: 5px 44px 5px 35px;
+}
+
+.action_btn {
+  width: 20%;
+}
   /*==============================
     Style the edit containe
  ===============================*/
