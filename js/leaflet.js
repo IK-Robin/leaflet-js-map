@@ -272,6 +272,9 @@ ikr_edit_popup.style.display ='none';
 
             // delet the marker
             deleteMarker.addEventListener("click", (ev) => {
+              
+              ikr_edit_popup.style.display = "none";
+              submit_form.style.display = 'block';
               // remove the marker
               map.removeLayer(newMarker);
               // remove from db
@@ -501,6 +504,7 @@ ikr_edit_popup.style.display ='none';
             deleteMarker.addEventListener("click", (ev) => {
               // remove the marker   
               ikr_edit_popup.style.display = "none";
+              submit_form.style.display = 'block';
               map.removeLayer(newMarker);
               // remove from db
               marker_id.value = deleteMarker.dataset.id;
