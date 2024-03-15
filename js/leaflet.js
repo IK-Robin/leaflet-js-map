@@ -313,16 +313,18 @@ ikr_edit_popup.style.display ='none';
     if (addMarker) {
       marker_add.innerText = "add marker";
 
-      ikr_edit_popup.style.display = "block";
+      ikr_edit_popup.style.display = "none";
       submit_form.style.display = "block";
       
       addMarker = false;
+      console.log(addMarker);
     } else {
       submit_form.style.display = "none";
-      marker_add.innerText = "stop adding marker";
       ikr_edit_popup.style.display = "block";
-      // ikr_map_form.style.display = "none";
+      marker_add.innerText = "stop adding marker";
       addMarker = true;
+      console.log(addMarker,'else');
+      // ikr_map_form.style.display = "none";
     }
   });
 
