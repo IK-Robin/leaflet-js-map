@@ -27,7 +27,7 @@
 
 </div>
 <div class="align_inp" >
-
+<label for="email"> Email</label>
 <input type="email" id="email" name="email"placeholder="Enter your email here" value=" ">
 </div>
 
