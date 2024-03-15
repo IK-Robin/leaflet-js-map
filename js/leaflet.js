@@ -399,6 +399,7 @@ ikr_edit_popup.style.display ='none';
     },100)
    
     ikr_edit_popup.style.display = "none";
+    submit_form.style.display ='block';
   });
 
 // delete the  marker 
