@@ -24,20 +24,7 @@
   /*==============================
     Style the edit containe
  ===============================*/
- .ikr_edit_popup {
-	width: 70%;
-	background-color: red;
-	margin: 0 auto;
-	height: 301px;
-	text-align: center;
-	opacity: 1;
-	position: relative;
-	z-index: 999;
-	/* top: 68px; */
-	/* left: 0; */
-	display: none;
-	/* right: 0; */
-}
+
 
 .editClose_btn {
 	display: none;
@@ -67,7 +54,7 @@
 .ikr_map_content {
   display: block;
   position: relative;
-  width: 100%;
+  width: 99%;
   display: flex;
   justify-content: space-between;
   align-content: center;
@@ -98,6 +85,7 @@
 .align_inp label {
   font-size: 15px;
   margin-bottom: 8px;
+  text-transform: capitalize;
 }
 .align_inp input {
 	margin-bottom: 8px;
@@ -112,6 +100,7 @@
     color: white;
     font-weight: bold;
     border: none;
+    margin: 0;
   
 }
   /*==============================
@@ -132,14 +121,14 @@
   text-align: right;
 }
 .ikr_c_left {
-  width: 68%;
+  width: 72%;
   display: flex;
   gap: 45px;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 0 45px 0 0;
   align-items: center;
   align-content: center;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+ 
 }
 button#add_marker, #save {
   color: #fff;
@@ -150,6 +139,8 @@ button#add_marker, #save {
   text-shadow: none;
   padding: 11px;
   font-weight: bold;
+  cursor: pointer;
+  text-transform: capitalize;
 
 }
 .action_btn{
@@ -167,7 +158,7 @@ button#add_marker, #save {
 }
 
 .action_btn {
-  width: 20%;
+  width:max-content;
 }
   /*==============================
     Style the edit containe
