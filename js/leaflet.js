@@ -206,7 +206,7 @@ ikr_edit_popup.style.display ='none';
         const latlng = ev.latlng;
 
         // Perform reverse geocoding using Leaflet's built-in method
-        console.log(ev);
+        maphiddenId_add.value = Math.floor(Math.random() * 9000000 + 1000000);
 
         var newMarker;
         if (addMarker) {
@@ -225,7 +225,7 @@ ikr_edit_popup.style.display ='none';
           submit_form.style.display ='none';
 
           let randomMarkerId = Math.floor(Math.random() * 9000000 + 1000000);
-          maphiddenId_add.value = randomMarkerId;
+          
 
           // add random id and detail text 
           hiddenMarkerId.value = randomMarkerId;
