@@ -49,6 +49,9 @@
  ===============================*/
 
 
+ #ikr_edit_popup{
+  display: none;
+ }
 
  
 .ikr_map_content {
