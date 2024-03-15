@@ -23,22 +23,22 @@
 <div class="align_inp" >
 
 <label for="phone"> phone</label>
-<input type="text" id="phone" placeholder="your phone number" name="phone">
+<input type="text" id="phone" placeholder="Your Phone Number" name="phone">
 
 </div>
 <div class="align_inp" >
 <label for="email"> Email</label>
-<input type="email" id="email" name="email"placeholder="Enter your email here" value=" ">
+<input type="email" id="email" name="email"placeholder="Enter Your Email Here" value=" ">
 </div>
 
 <div class="align_inp" >
-<label for="url"> url</label>
-<input type="text" name="url" placeholder="Your site url" id="input_url">
+<label for="url"> Website URL</label>
+<input type="text" name="url" placeholder="Your Site URL" id="input_url">
 </div>
 
 
 <div class="align_inp" >
-<input type="submit" value="Submit"/>
+<input type="submit" value="Add New"/>
 </div>
 
 
