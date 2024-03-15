@@ -201,8 +201,6 @@ ikr_edit_popup.style.display ='none';
         // fill the input  with lat and lng of clicked place
         latituide.value = ev.latlng.lat;
         langtuide.value = ev.latlng.lng;
-        latituide_edit.value = ev.latlng.lat;
-        longtuide_edit.value = ev.latlng.lng;
         // Add a click event listener to the map
 
         const latlng = ev.latlng;
@@ -212,6 +210,12 @@ ikr_edit_popup.style.display ='none';
 
         var newMarker;
         if (addMarker) {
+          // asign the marker lat lng on click 
+          
+        latituide_edit.value = ev.latlng.lat;
+        longtuide_edit.value = ev.latlng.lng;
+
+
           // Add new marker
           newMarker = L.marker(ev.latlng).addTo(map);
 
