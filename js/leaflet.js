@@ -39,7 +39,7 @@ window.addEventListener("DOMContentLoaded", function () {
   const email_edit = document.getElementById('email_edit');
 
 
-  const deletMarker_edit = document.getElementById('deletMarker');
+  // const deletMarker_edit = document.getElementById('deletMarker');
 
 
 
@@ -401,16 +401,17 @@ ikr_edit_popup.style.display ='none';
     ikr_edit_popup.style.display = "none";
   });
 
+// delete the  marker 
+  // deletMarker_edit.addEventListener('click',(ev) =>{
+  //   makeAjaxRequestGlobal(deletemarker_form, get_url.deletMarker,c =>{
+  //     if(c){
+  //       markerBuind();
+  //     }
+  //   });
+  //   ikr_edit_popup.style.display ='none';
+  //   submit_form.style.display ='block';
 
-  deletMarker_edit.addEventListener('click',(ev) =>{
-    makeAjaxRequestGlobal(deletemarker_form, get_url.deletMarker,c =>{
-      if(c){
-        markerBuind();
-      }
-    });
-    ikr_edit_popup.style.display ='none';
-
-  });  
+  // });  
 
   // make a function to add marker to the map
   function markerBuind() {
