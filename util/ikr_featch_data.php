@@ -17,32 +17,25 @@ function load_data_from_db() {
 
     // Sanitize the input fields 
     $latitude = isset($_POST['lat']) ? sanitize_text_field($_POST['lat']) : '';
-
     $longitude = isset($_POST['lng']) ? sanitize_text_field($_POST['lng']) : '';
-    
     $address = isset($_POST['address']) ? sanitize_text_field($_POST['address']) : '';
-
     $phone = isset($_POST['phone']) ? sanitize_text_field($_POST['phone']) : '';
-    
     $url = isset($_POST['url']) ? sanitize_text_field($_POST['url']) : '';
-
-   
-
-
-
     $email = isset($_POST['email']) ? sanitize_text_field($_POST['email']) : '';
-
     $mapHiddenId = isset($_POST['mapHiddenId']) ? sanitize_text_field($_POST['mapHiddenId']) : '';
 
-
-
-
-
-
-   
     $table_name = $wpdb->prefix . "ikr_leaflet_js_db";
-    $query = $wpdb->prepare("SELECT * FROM `$table_name` WHERE 1");
 
+    // Check if the marker_id already exists
+    $existing_row = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$table_name` WHERE marker_id = %s", $mapHiddenId));
+
+    if ($existing_row) {
+        // If the row already exists, return error
+        wp_send_json_error('Marker ID already exists in the database.');
+        return;
+    }
+
+    // If the row doesn't exist, proceed with insertion
     $wpdb->insert(
         $table_name,
         [
@@ -52,18 +45,20 @@ function load_data_from_db() {
             'phone' => $phone,
             'email' =>$email,
             'urls' => $url,
-            'marker_id' => $mapHiddenId  ,
+            'marker_id' => $mapHiddenId,
         ]
     );
-    $result = $wpdb->get_row($query);
-    $data = $wpdb->get_results("SELECT * FROM $table_name", ARRAY_A);
-   
+
+    // Get the inserted row
+    $result = $wpdb->get_row($wpdb->prepare("SELECT * FROM `$table_name` WHERE marker_id = %s", $mapHiddenId));
+
     if ($result) {
         wp_send_json_success($result);
     } else {
         wp_send_json_error('Failed to save form data.');
     }
 }
+
 add_action('wp_ajax_load_data_from_db', 'load_data_from_db');
 add_action('wp_ajax_nopriv_load_data_from_db', 'load_data_from_db');
 
