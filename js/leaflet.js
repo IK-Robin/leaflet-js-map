@@ -216,6 +216,10 @@ ikr_edit_popup.style.display ='none';
           newMarker = L.marker(ev.latlng).addTo(map);
 
           newMarker.dragging.enable();
+
+          ikr_edit_popup.style.display = "block";
+          submit_form.style.display ='none';
+
           let randomMarkerId = Math.floor(Math.random() * 9000000 + 1000000);
           maphiddenId_add.value = randomMarkerId;
 
@@ -257,6 +261,8 @@ ikr_edit_popup.style.display ='none';
 
             editMarker.addEventListener("click", (editM) => {
               ikr_edit_popup.style.display = "block";
+              submit_form.style.display = "none";
+
               // hide the popup on click edit btn
               marker.closePopup();
               // get the dataset id of clicked button
@@ -303,15 +309,15 @@ ikr_edit_popup.style.display ='none';
     if (addMarker) {
       marker_add.innerText = "add marker";
 
-      ikr_edit_popup.style.display = "none";
-      ikr_map_form.style.display = "block";
-
+      ikr_edit_popup.style.display = "block";
+      submit_form.style.display = "block";
+      
       addMarker = false;
     } else {
+      submit_form.style.display = "none";
       marker_add.innerText = "stop adding marker";
       ikr_edit_popup.style.display = "block";
-
-      ikr_map_form.style.display = "none";
+      // ikr_map_form.style.display = "none";
       addMarker = true;
     }
   });
@@ -483,7 +489,9 @@ ikr_edit_popup.style.display ='none';
        
 
             editMarker.addEventListener("click", (editM) => {
+              // hide and show the input fild 
               ikr_edit_popup.style.display = "block";
+              submit_form.style.display = "none";
               // hide the popup on click edit btn
               marker.closePopup();
               // get the dataset id of clicked button
