@@ -17,7 +17,7 @@
           type="text"
           autocomplete="off"
           id="search"
-          placeholder="enter the city name"
+          placeholder="Enter The City Name"
         />
       </div>
    </div>
