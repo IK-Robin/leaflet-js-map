@@ -1,3 +1,7 @@
+:root{
+  --hover-content:'';
+}
+
 #map{
     width:100%;
     height: 100%;
@@ -166,3 +170,29 @@ button#add_marker, #save {
   /*==============================
     Style the edit containe
  ===============================*/
+
+
+ #add_marker {
+  position: relative; /* Required for positioning the hover text */
+}
+
+#add_marker::after {
+  content: "Click On The Map To Add Marker"; /* Text to display on hover */
+  position: absolute;
+  top: 100%; /* Position it just below the button */
+  left: 100%; /* Align it horizontally centered */
+  transform: translateX(-50%); /* Center it horizontally */
+  background-color: rgba(0, 0, 0, 0.8); /* Background color of hover text */
+  color: white; /* Text color of hover text */
+  padding: 4px 8px; /* Padding for hover text */
+  border-radius: 4px; /* Border radius for hover text */
+  font-size: 14px; /* Font size for hover text */
+  white-space: nowrap; /* Ensure hover text stays on a single line */
+  opacity: 0; /* Initially hide the hover text */
+  transition: opacity 0.3s; /* Add transition for smooth animation */
+  z-index: 99999;
+}
+
+#add_marker:hover::after {
+  opacity: 1; /* Show the hover text on button hover */
+}
