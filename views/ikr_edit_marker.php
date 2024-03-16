@@ -41,7 +41,7 @@
 
        </div>
        <div class="align_inp">
-       <input type="submit" value="Save Marker" />
+       <input type="submit" value="Update" />
        </div>
      
     
