@@ -268,7 +268,7 @@ ikr_edit_popup.style.display ='none';
               submit_form.style.display = "none";
 
               // hide the popup on click edit btn
-              marker.closePopup();
+              // marker.closePopup();
               // get the dataset id of clicked button
               let id = editMarker.dataset.id;
 
@@ -309,15 +309,22 @@ ikr_edit_popup.style.display ='none';
 
   const marker_add = document.getElementById("add_marker");
 
+  const root = document.documentElement;
+
+// Function to change the value of --hover-content
+function changeHoverContent(property,newValue) {
+  root.style.setProperty(`--${property} `, `"${newValue}"`);
+}
+
   marker_add.addEventListener("click", (madd) => {
     if (addMarker) {
       marker_add.innerText = "add marker";
 
       ikr_edit_popup.style.display = "none";
       submit_form.style.display = "block";
-      
+      changeHoverContent('hover-content','hello');
       addMarker = false;
-      console.log(addMarker);
+      
     } else {
       submit_form.style.display = "none";
       ikr_edit_popup.style.display = "block";
@@ -501,7 +508,7 @@ ikr_edit_popup.style.display ='none';
               ikr_edit_popup.style.display = "block";
               submit_form.style.display = "none";
               // hide the popup on click edit btn
-              marker.closePopup();
+              // marker.closePopup();
               // get the dataset id of clicked button
               let id = editMarker.dataset.id;
               if (id == m.marker_id) {
