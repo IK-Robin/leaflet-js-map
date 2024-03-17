@@ -189,10 +189,17 @@ ikr_edit_popup.style.display ='none';
         map.setView([config.lat, config.lng], config.zoom);
         // Used to load and display tile layers on the map
         // Most tile servers require attribution, which you can set under `Layer`
-        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-          attribution:
-            '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        }).addTo(map);
+        // openStreetmap is a popular option.
+        // L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        //   attribution:
+        //     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        // }).addTo(map);
+        
+        // add google map 
+         L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}',{
+    maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']
+}).addTo(map);
       });
       markerBuind();
      
