@@ -36,6 +36,11 @@ function ikr_leaflet_Add_New_Map()
 
         </div>
         </div>
+
+        
+        <!-- show map documentation -->
+        <?php include_once ROBIN_DIR_PATH . './views/documentation.php';?>
+
     </div>
     <!-- add input form    -->
     <?php
