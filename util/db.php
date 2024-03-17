@@ -22,14 +22,32 @@ function ikr_leaflet_js_db_connection() {
             email VARCHAR(100) NOT NULL,
             urls VARCHAR(1000) NOT NULL,
             marker_id VARCHAR(100) NOT NULL,
+         
             PRIMARY KEY (id)
         ) $charset_collate;";
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
         dbDelta($sql_1);
     }
 
+    if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_1'") == $table_name_1) {
+        // If the table already exists, add the new fields if they don't exist
+        $fields_to_add = array('id', 'lat', 'lng', 'address', 'phone','email','urls','marker_id');
+        
+        foreach ($fields_to_add as $field) {
+            $field_exists = $wpdb->get_var("SHOW COLUMNS FROM $table_name_1 LIKE '$field'");
+            if (!$field_exists) {
+                $alter_sql = "ALTER TABLE $table_name_1 ADD $field VARCHAR(100) NOT NULL AFTER marker_id";
+                $wpdb->query($alter_sql);
+            }
+        }
+    }
+    
+    
+
     // Table 2: ikr_default_setting
     $table_name_2 =  $wpdb->prefix . 'ikr_default_setting';
+
+
     if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_2'") != $table_name_2) {
         // If the table doesn't exist, create it
         $sql_2 = "CREATE TABLE $table_name_2 (
