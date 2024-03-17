@@ -42,7 +42,7 @@
             
             <div class="default_f_section">
               <label for="default_link">Default url: </label>
-              <input type="number"  name="default_link" id="default_link">
+              <input type="text"  name="default_link" id="default_link">
 
             <p>   Default url for maps. Values can include any link such as your website link. You can also change this for each map url. </p>
             </div>
