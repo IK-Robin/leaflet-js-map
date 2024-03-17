@@ -1,0 +1,48 @@
+
+.default_setting_form {
+}
+#defaultSetting {
+}
+.default_setting_form .default_f_section {
+	width: 100%;
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	/* gap: 10px; */
+	justify-content: flex-start;
+	align-content: center;
+	width: 60%;
+	padding: 10px;
+	background-color: #fff;
+	margin: 20px 0;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+.default_setting_form .default_f_section:nth-child(2n) {
+   background-color: rgba(0,0,0,.07);
+}
+.default_f_section label {
+
+  height: auto;
+  padding: 2px 0;
+  font-size: 22px;
+  font-weight: 400;
+  padding-bottom: 13px;
+}
+.default_f_section input {
+
+  padding: 10px 10px 10px 15px;
+}
+.default_f_section p {
+  margin: 0;
+  padding: 11px 0;
+
+  font-size: 14px;
+}
+.ikr_dahsbord [type="submit"] {
+	padding: 9px 48px;
+	line-height: 17px;
+	background-color: #2271b1;
+	border: none;
+	color: #fff;
+	font-size: 17px;
+}
