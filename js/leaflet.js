@@ -455,7 +455,7 @@ function changeHoverContent(property,newValue) {
             <p>  <strong>Sales Phone : </strong>  ${m.phone}</p>
            <p> <strong> GeneralHours :</strong>   ${m.email} </p>
             
-           <p>  <strong> Website:</strong> ${m.urls} </p>
+           <p>  <strong> Website:</strong> <a href="${m.urls}" target="_blunk">${m.urls}</a> </p>
             
             
             <br>
