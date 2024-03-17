@@ -43,7 +43,7 @@ To get started with ikrMap, simply install this plugin in your wordpress directo
 7. Open any post/page where you have added shortcode `[IKRMAP]`
 8. You will now see an embedded map on your webpage!
 
-## Add Custom Marker Postion
+## Add Custom Marker 
 You can add new markers by using following steps: 
 1. Add Longitude Longitude and other detail and  save it.
 
@@ -53,7 +53,7 @@ You can add new markers by using following steps:
   
 
    You can edit all details about the map by going into the Leaflet Map -> Edit -> Visual  tab. Here you can change the following settings : 
-   You can edit the map details by following these steps:
+ 
    
    1. Go to Dashboard -> leaflet map -> Add-New-Map
    2. Click on "Add New Marker".
