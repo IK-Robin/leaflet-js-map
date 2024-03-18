@@ -1,3 +1,7 @@
+<?php
+
+?>  
+
 <div class="submit_form" id="ikr_edit_popup">
     <a class="editClose_btn" href="#close">×</a>
     <form action="" id="ikr_map_form_edit">
@@ -52,11 +56,13 @@
    
 
 
-
+    
+    </form>
   <!-- delete marker form         -->
-       
-    <!-- </form>
-    <div>
-        <button id="deletMarker">delete marker </button>
-    </div> -->
+   
+   
 </div>
+<?php
+
+
+?>

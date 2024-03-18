@@ -1,3 +1,6 @@
+<?php
+
+?> 
 <div id="submit_form" class="submit_form">
 <a class="editClose_btn" id="closeB" href="#close">×</a>
 <form action="" id="ikr_map_form">
@@ -51,3 +54,7 @@
 <input id="marker_id" type="hidden" name="markerID">
 </form>
 </div>
+<?php
+
+
+?>
