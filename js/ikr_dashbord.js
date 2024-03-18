@@ -1,6 +1,6 @@
 // load the content  after loading the page 
 
-document.addEventListener("DOMContentLoaded",() =>{
+
     const defaultSetting_form = document.getElementById('defaultSetting');
 
     const default_lat = document.getElementById('default_lat');
@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded",() =>{
 async function getDefault_data (){
     
     try{
-        const default_data= await fetchAjaxRequest(get_url.featchdata);
+        const default_data= await fetchAjaxRequest(get_default.featchdata);
   default_data.map(d=>{
     default_lat.value = d.Latitude; 
     default_lng.value =d.Longitude; 
@@ -34,9 +34,9 @@ getDefault_data();
     defaultSetting_form.addEventListener("submit",(ev) =>{
         ev.preventDefault();
       
-      makeAjaxRequestGlobal(defaultSetting_form,get_url.default_form,call =>{
+      makeAjaxRequestGlobal(defaultSetting_form,get_default.default_form,call =>{
    if( call){
-     window.location.href = "admin.php?page=wp-store-locator-map";
+     window.location.reload();
    }
       });
       
@@ -44,4 +44,3 @@ getDefault_data();
     });
  
 
-});
