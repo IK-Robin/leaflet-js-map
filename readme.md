@@ -53,7 +53,7 @@ You can add new markers by using following steps:
   
 
    You can edit all details about the map by going into the Leaflet Map -> Edit -> Visual  tab. Here you can change the following settings : 
-   You can edit the map details by following these steps:
+ 
    
    1. Go to Dashboard -> leaflet map -> Add-New-Map
    2. Click on "Add New Marker".
