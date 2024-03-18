@@ -11,21 +11,13 @@ function leaflet_js_map_enqueue_scripts()
 // enque ue global js  
   wp_enqueue_script( 'ikr_global', plugin_dir_url( __FILE__ ) . '../js/ikr_global.js', [], '1.0.0', false );
 
-
-
-   if ($page_param == "setting") {
-
-    wp_enqueue_script('ikr_leaflet_dahsbord', plugin_dir_url(__FILE__) . '../js/ikr_dashbord.js', array(), '1.0.0', true);
-    wp_localize_script( 'ikr_leaflet_dahsbord', 'get_url', [
-      'default_form' => 'ikr_default_setting',
-      'featchdata' =>'fetch_data_server_default',
-    ] );
-    
-
-
+  wp_enqueue_script('ikr_leaflet_dahsbord', plugin_dir_url(__FILE__) . '../js/ikr_dashbord.js', array(), '1.0.0', true);
+  wp_localize_script( 'ikr_leaflet_dahsbord', 'get_default', [
+    'default_form' => 'ikr_default_setting',
+    'featchdata' =>'fetch_data_server_default',
+  ] );
 
  
-  }
 
   // enqueue dahsbodr page js 
   if($page_param == 'wp-store-locator-map'){
@@ -55,12 +47,8 @@ function leaflet_js_map_enqueue_scripts()
   wp_enqueue_script('autocomplete-script', 'https://cdn.jsdelivr.net/gh/tomickigrzegorz/autocomplete@1.8.6/dist/js/autocomplete.min.js', array(), '1.8.6', true);
 
 
-  wp_enqueue_script('ikr_leaflet_dahsbord', plugin_dir_url(__FILE__) . '../js/ikr_dashbord.js', array(), '1.0.0', true);
-  wp_localize_script( 'ikr_leaflet_dahsbord', 'get_default', [
-    'default_form' => 'ikr_default_setting',
-    'featchdata' =>'fetch_data_server_default',
-  ] );
-  }
+}
+
 
 
 }
@@ -86,4 +74,32 @@ wp_enqueue_style( 'ikr_dahsbord_css', plugin_dir_url( __FILE__ ) . '../css/ikr_d
 }
 
 add_action( "admin_enqueue_scripts","ikr_enqueue_css_leaflet_map" );
+
+
+
+/*******************************
+ * enqueue script in font end 
+ *******************************/
+
+
+ 
+function enqueue_frontend_js() {
+
+
+
+  // Enqueue Leaflet JS directly from CDN
+  wp_enqueue_script('leaflet-js', 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js', array(), '1.7.1', true);
+    // Enqueue Leaflet CSS
+    wp_enqueue_style('leaflet-css', 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css');
+
+
+  
+  // Enqueue the script
+  wp_enqueue_script('font_end_js', plugin_dir_url( __FILE__ ). '../js/font_end_js.js', array('jquery'), '1.0', true);
+
+
+
+}
+// Hook the function to the appropriate action
+add_action('wp_enqueue_scripts', 'enqueue_frontend_js');
 ?>

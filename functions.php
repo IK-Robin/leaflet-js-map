@@ -29,4 +29,10 @@ include_once ROBIN_DIR_PATH .'util/pages_func.php';
 
   include_once ROBIN_DIR_PATH .'util/ikr_featch_data.php';
 
+  
+/*********************
+ * add shortcode related code  here
+ ********************/
+
+ include_once ROBIN_DIR_PATH .'/util/short_code.php';
 ?>

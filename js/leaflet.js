@@ -50,6 +50,7 @@ window.addEventListener("DOMContentLoaded", function () {
   const marker_id = document.getElementById("marker_id");
 
   const save = document.getElementById("save");
+  
 
   // Autocomplete
   new Autocomplete("search", {
