@@ -36,7 +36,7 @@ getDefault_data();
       
       makeAjaxRequestGlobal(defaultSetting_form,get_url.default_form,call =>{
    if( call){
-     window.location.href = "admin.php?page=Add-New-Map";
+     window.location.href = "admin.php?page=wp-store-locator-map";
    }
       });
       
