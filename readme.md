@@ -43,7 +43,7 @@ To get started with ikrMap, simply install this plugin in your wordpress directo
 7. Open any post/page where you have added shortcode `[IKRMAP]`
 8. You will now see an embedded map on your webpage!
 
-## Add Custom Marker Postion
+## Add Custom Marker 
 You can add new markers by using following steps: 
 1. Add Longitude Longitude and other detail and  save it.
 
