@@ -30,7 +30,8 @@ function leaflet_js_map_enqueue_scripts()
   // enqueue dahsbodr page js 
   if($page_param == 'wp-store-locator-map'){
     
-
+   
+    
 
   // Enqueue Leaflet JS directly from CDN
   wp_enqueue_script('leaflet-js', 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js', array(), '1.7.1', true);
@@ -53,6 +54,12 @@ function leaflet_js_map_enqueue_scripts()
   // enqeue autocomplite 
   wp_enqueue_script('autocomplete-script', 'https://cdn.jsdelivr.net/gh/tomickigrzegorz/autocomplete@1.8.6/dist/js/autocomplete.min.js', array(), '1.8.6', true);
 
+
+  wp_enqueue_script('ikr_leaflet_dahsbord', plugin_dir_url(__FILE__) . '../js/ikr_dashbord.js', array(), '1.0.0', true);
+  wp_localize_script( 'ikr_leaflet_dahsbord', 'get_default', [
+    'default_form' => 'ikr_default_setting',
+    'featchdata' =>'fetch_data_server_default',
+  ] );
   }
 
 
