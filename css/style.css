@@ -69,15 +69,15 @@
 .ikr_first_side {
   width: 68%;
   height: auto;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	box-shadow: 0 0px 1px rgba(0,0,0,0.19), 0 2px 5px rgba(0,0,0,0.23);
   border: 1px solid ;
 }
 .ikr_second_side {
-  width: 28%;
-  background-color: #fff;
-  /* border: 1px solid; */
-  padding:10px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+	width: 28%;
+	background-color: #fff;
+	/* border: 1px solid; */
+	padding: 10px;
+	box-shadow: 0 0px 1px rgba(0,0,0,0.19), 0 2px 5px rgba(0,0,0,0.23);
 }
 
 
