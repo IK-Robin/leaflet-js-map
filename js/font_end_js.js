@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
         defaultUrl = data.link
      
 // add height and width control 
-mapWidth.style.widows = data.width + '%'; 
+mapWidth.style.width = data.width + '%'; 
 mapWidth.style.height= data.height +'px';
 
         function getConfigData() {
