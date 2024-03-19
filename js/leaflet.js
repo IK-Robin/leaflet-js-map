@@ -3,7 +3,7 @@
  */
 
 window.addEventListener("DOMContentLoaded", function () {
-  const mapWidth = document.getElementById("map");
+
   const submit_form = document.getElementById('submit_form');
   const ikr_map_form = document.getElementById("ikr_map_form");
   const maphiddenId_add = document.getElementById("maphiddenId_add");
@@ -447,12 +447,16 @@ function changeHoverContent(property,newValue) {
     async function createMarkers() {
       try {
         const data = await fetchAjaxRequest(get_url.dataF);
-      
+      const markers = []
+      const markerPositions = [];
 
         data.forEach((m) => {
-          const newMarker = L.marker([m.lat, m.lng], { id: m.marker_id }).addTo(
+       const  newMarker = L.marker([m.lat, m.lng], { id: m.marker_id }).addTo(
             map
           );
+
+
+
 
           // enable dragging for each marker
           newMarker.dragging.enable();
@@ -566,7 +570,24 @@ function changeHoverContent(property,newValue) {
               makeAjaxRequestGlobal(ikr_map_form_edit, get_url.editMarker,c=>{});
             }
           });
+          // push the marker 
+          markers.push(newMarker);
+          markerPositions.push(newMarker.getLatLng());
         });
+        var bounds = new L.LatLngBounds();
+        markers.forEach(marker => {
+          bounds.extend(marker.getLatLng());
+      });
+      map.fitBounds(bounds);
+
+
+    // Calculate the center position of all markers
+    const centerPosition = L.latLngBounds(markerPositions).getCenter();
+
+    // Zoom map to the calculated center position
+    map.setView(centerPosition, map.getZoom());
+
+
       } catch (err) {
         console.log(err);
       }
@@ -576,6 +597,10 @@ function changeHoverContent(property,newValue) {
 
     // Fetch new data and add markers
   }
+
+
+
+
 
   //===================================
   // save the map
