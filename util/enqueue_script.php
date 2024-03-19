@@ -96,7 +96,12 @@ function enqueue_frontend_js() {
   
   // Enqueue the script
   wp_enqueue_script('font_end_js', plugin_dir_url( __FILE__ ). '../js/font_end_js.js', array('jquery'), '1.0', true);
-
+  wp_localize_script('font_end_js', 'get_url', [
+    'featchdata' =>'fetch_data_server_default',
+    'ajaxurl' => admin_url('admin-ajax.php'),
+    'dataF' => 'fetch_data_from_server',
+  ] );
+wp_enqueue_style( 'ikr_font_endcss', plugin_dir_url( __FILE__ ) .'../css/fontend_css.css', [], '1.0.1', 'all');
 
 
 }
