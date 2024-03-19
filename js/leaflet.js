@@ -155,7 +155,7 @@ ikr_edit_popup.style.display ='none';
   // add default setting on load
   // Create a map instance
   const map = L.map("map");
-
+let defaultUrl =null;
   // Set the view of the map using the configuration data
   async function add_defaultView() {
     let lat,lng;
@@ -181,12 +181,14 @@ ikr_edit_popup.style.display ='none';
             lat: lat,
             lng: lng,
             zoom: zoom,
+          
           };
         }
-
+      
+        defaultUrl= data.link;
         // Get the configuration data
         const config = getConfigData();
-
+        console.log(config.defaultUrl);
         map.setView([config.lat, config.lng], config.zoom);
         // Used to load and display tile layers on the map
         // Most tile servers require attribution, which you can set under `Layer`
@@ -201,9 +203,10 @@ ikr_edit_popup.style.display ='none';
     maxZoom: 20,
     subdomains:['mt0','mt1','mt2','mt3']
 }).addTo(map);
-      });
-      markerBuind();
-     
+
+});
+markerBuind();
+     console.log(defaultUrl);
       
 
       map.on("click", (ev) => {
@@ -444,7 +447,7 @@ function changeHoverContent(property,newValue) {
     async function createMarkers() {
       try {
         const data = await fetchAjaxRequest(get_url.dataF);
-        console.log(data);
+      
 
         data.forEach((m) => {
           const newMarker = L.marker([m.lat, m.lng], { id: m.marker_id }).addTo(
@@ -462,9 +465,9 @@ function changeHoverContent(property,newValue) {
             
           <p> <strong> Address:</strong>  ${m.address}</p> 
             <p>  <strong>Sales Phone : </strong>  ${m.phone}</p>
-           <p> <strong> GeneralHours :</strong>   ${m.email} </p>
-            
-           <p>  <strong> Website:</strong> <a href="${m.urls}" target="_blunk">${m.urls}</a> </p>
+           <p> <strong> Email :</strong>   ${m.email} </p>
+         
+           <p>  <strong> Website:</strong> <a href="${m.urls ==''?defaultUrl:m.urls}" target="_blunk">${ m.urls ==''?defaultUrl:m.urls}</a> </p>
             
             
             <br>
@@ -507,7 +510,7 @@ function changeHoverContent(property,newValue) {
 
             const editMarker =popupContent._contentNode.childNodes[0].querySelector('.editMarker')
              
-            console.log(editMarker);
+     
               const deleteMarker =popupContent._contentNode.childNodes[0].querySelector('.deletMarker');
              
        
@@ -521,12 +524,14 @@ function changeHoverContent(property,newValue) {
               // get the dataset id of clicked button
               let id = editMarker.dataset.id;
               if (id == m.marker_id) {
+               
                 latituide_edit.value = m.lat;
                 longtuide_edit.value = m.lng;
                 address_edit.value = m.address;
-                phone_edit.value = m.phone;
+                phone_edit.value = m.phone ;
+                console.log( m);
                 email_edit.value = m.email;
-                input_url_edit.value = m.phone;
+                input_url_edit.value = m.urls;
                 marker_id.value =  m.marker_id;
                 hiddenMarkerId.value = m.marker_id;
               }
