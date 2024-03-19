@@ -587,6 +587,21 @@ function changeHoverContent(property,newValue) {
     // Zoom map to the calculated center position
     map.setView(centerPosition, map.getZoom());
 
+        // Find the marker closest to the center of the map
+        let closestMarker;
+        let minDistance = Infinity;
+
+        markers.forEach(marker => {
+            const distance = marker.getLatLng().distanceTo(centerPosition);
+            if (distance < minDistance) {
+                closestMarker = marker;
+                minDistance = distance;
+            }
+        });
+
+        // Open the popup of the closest marker
+        closestMarker.openPopup();
+
 
       } catch (err) {
         console.log(err);
