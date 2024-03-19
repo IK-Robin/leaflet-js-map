@@ -22,8 +22,8 @@
       </div>
    </div>
 <div class="ikr_c_right">
+ <p>Use The Shortcode <strong>[ikr_leflet_map] </strong></p>
 
-  <button id="save"> Save </button>
 </div>
 
     </div>
