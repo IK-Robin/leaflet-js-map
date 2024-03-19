@@ -7,7 +7,7 @@ function my_shortcode_function() {
     ?>
     <!-- Output the <div> element with the specified ID "map" -->
     <div id="map">
-        This is my map content.
+
     </div>
     <?php
     // Get the buffered output and clean (flush) the buffer

@@ -70,7 +70,8 @@ mapWidth.style.height= data.height +'px';
     async function createMarkers() {
       try {
         const data = await fetchAjaxRequest(get_url.dataF,get_url.ajaxurl);
-        
+        const markerPositions = [];
+        const markers = [];
       
         data.forEach((m) => {
           const newMarker = L.marker([m.lat, m.lng], { id: m.marker_id }).addTo(
@@ -104,8 +105,31 @@ mapWidth.style.height= data.height +'px';
           // Open popup for each marker
 
 
+          markers.push(newMarker);
+          markerPositions.push(newMarker.getLatLng());
         
         });
+
+
+
+        
+          
+          // push the marker 
+          var bounds = new L.LatLngBounds();
+          markers.forEach(marker => {
+            bounds.extend(marker.getLatLng());
+        });
+       
+  
+  
+      // Calculate the center position of all markers
+      const centerPosition = L.latLngBounds(markerPositions).getCenter();
+  
+      // Zoom map to the calculated center position
+   map.setView(centerPosition, defaultZoom);
+  // console.log(map.getZoom());
+          // Find the marker closest to the center of the map
+          map.fitBounds(bounds);
       } catch (err) {
         console.log(err);
       }

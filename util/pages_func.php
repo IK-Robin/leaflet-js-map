@@ -44,7 +44,18 @@ function ikr_leaflet_Add_New_Map()
 
 function ikr_leaflet_shortcode()
 {
-    echo 'robin';
+?> 
+    <div > <h1>
+      Map Shortcode 
+    </h1>
+    <p> Use this shortcode to show the map </p>
+    <div class="shortcode">
+    <h3> [ikr_leflet_map] </h3>
+    </div>
+
+
+    </div>
+<?php
 }
 
 ?>

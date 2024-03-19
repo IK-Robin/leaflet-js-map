@@ -213,3 +213,22 @@ button#add_marker, #save {
 #add_marker:hover::after {
   opacity: 1; /* Show the hover text on button hover */
 }
+
+
+/* ================================ 
+shortcode css 
+===================================
+*/
+.shortcode{
+ 
+    background-color: #fff;
+    width: 200px;
+    padding: 14px;
+    text-align: center;
+  
+}
+.shortcode h3{
+  margin: 0;
+  padding: 0;
+
+}
