@@ -156,6 +156,7 @@ ikr_edit_popup.style.display ='none';
   // Create a map instance
   const map = L.map("map");
 let defaultUrl =null;
+let defaultZoom = null;
   // Set the view of the map using the configuration data
   async function add_defaultView() {
     let lat,lng;
@@ -170,6 +171,7 @@ let defaultUrl =null;
         const zoom = data.zoom;
         const width = data.width;
         const height = data.height;
+        defaultZoom = zoom;
         // calling map
         // stop width and height  is not set in config file
         // mapWidth.style.width = width + "%";
@@ -578,29 +580,17 @@ function changeHoverContent(property,newValue) {
         markers.forEach(marker => {
           bounds.extend(marker.getLatLng());
       });
-      map.fitBounds(bounds);
+     
 
 
     // Calculate the center position of all markers
     const centerPosition = L.latLngBounds(markerPositions).getCenter();
 
     // Zoom map to the calculated center position
-    map.setView(centerPosition, map.getZoom());
-
+ map.setView(centerPosition, defaultZoom);
+// console.log(map.getZoom());
         // Find the marker closest to the center of the map
-        let closestMarker;
-        let minDistance = Infinity;
-
-        markers.forEach(marker => {
-            const distance = marker.getLatLng().distanceTo(centerPosition);
-            if (distance < minDistance) {
-                closestMarker = marker;
-                minDistance = distance;
-            }
-        });
-
-        // Open the popup of the closest marker
-        closestMarker.openPopup();
+        map.fitBounds(bounds);
 
 
       } catch (err) {
@@ -647,7 +637,7 @@ function changeHoverContent(property,newValue) {
 
 
   
-
+  window.scrollTo(0, 0);
   // close this.window
 });
 
