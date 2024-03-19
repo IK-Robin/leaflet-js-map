@@ -5,11 +5,11 @@
     ?>
 
     <div class="ikr_dahsbord"> 
-      <h1>Leaflet Map</h1>  
+      <h1>Leaflet Map Default Setting</h1>  
       
-      <h3> Default Setting</h3>
       <div class="default_setting_form">
          <form  id="defaultSetting">
+            <div id="defaultSettings">
             <div class="default_f_section">
                <label for="default_lat"> Default Latitude </label> 
                <input type="text" name="default_lat"  id ="default_lat">
@@ -48,9 +48,11 @@
             </div>
 
 
+            </div>
             <input type="submit" value="Save">
 
             
          </form>
+
       </div>
    </div>
