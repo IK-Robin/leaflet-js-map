@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-
+  const mapWidth = document.getElementById("map");
+  
     const map = L.map("map");
    let defaultUrl  = null;
   // Set the view of the map using the configuration data
@@ -19,6 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
         const height = data.height;
         defaultUrl = data.link
      
+// add height and width control 
+mapWidth.style.widows = data.width + '%'; 
+mapWidth.style.height= data.height +'px';
+
         function getConfigData() {
           return {
             lat: lat,
@@ -30,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Get the configuration data
         const config = getConfigData();
 
+        
         map.setView([config.lat, config.lng], config.zoom);
         // Used to load and display tile layers on the map
         // Most tile servers require attribution, which you can set under `Layer`
@@ -65,7 +71,7 @@ document.addEventListener("DOMContentLoaded", () => {
       try {
         const data = await fetchAjaxRequest(get_url.dataF,get_url.ajaxurl);
         
-
+      
         data.forEach((m) => {
           const newMarker = L.marker([m.lat, m.lng], { id: m.marker_id }).addTo(
             map
@@ -93,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
             
        
                     </div>`
-          );
+         ,{ autoPan: true } );
 
           // Open popup for each marker
 
