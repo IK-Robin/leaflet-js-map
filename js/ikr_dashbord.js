@@ -4,7 +4,6 @@ document.addEventListener("DOMContentLoaded",() =>{
 
 
   const defaultSetting_form = document.getElementById('defaultSetting');
-
   const default_lat = document.getElementById('default_lat');
   const default_lng = document.getElementById('default_lng');
   const default_zoom = document.getElementById('default_zoom');
@@ -26,7 +25,7 @@ default_data.map(d=>{
   default_zoom.value = d.zoom;
   default_width.value = d.width;
   default_height.value =d.height;
-  defaultUrl = d.link;
+
 
 });
   }catch (err) {
@@ -35,7 +34,7 @@ default_data.map(d=>{
 }
 
 getDefault_data();
-console.log(defaultUrl);
+
   defaultSetting_form.addEventListener("submit",(ev) =>{
       ev.preventDefault();
     
