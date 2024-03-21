@@ -163,6 +163,18 @@ let defaultZoom = null;
     try {
       const data1 = await fetchAjaxRequest(get_url.featchdata);
 
+      const googlUrl = 'http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}';
+      const osmUrl = "http://tile.openstreetmap.org/{z}/{x}/{y}.png";
+      
+      const osmLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+
+      const googleAttribution = { maxZoom: 20,
+        subdomains:['mt0','mt1','mt2','mt3']}
+
+      const osmAttrib = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+
+     const googleMpa =  L.tileLayer(googlUrl,googleAttribution);
+     const osmMap = L.tileLayer(osmUrl, { attribution: osmAttrib });
       data1.forEach((data) => {
         console.log(data);
          lat = data.Latitude;
@@ -201,11 +213,12 @@ let defaultZoom = null;
         // }).addTo(map);
         
         // add google map 
-         L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}',{
-    maxZoom: 20,
-    subdomains:['mt0','mt1','mt2','mt3']
-}).addTo(map);
-
+      
+       let baseLayers = {
+        'OMS MAP':osmMap,
+        'GOOGLE MAP' :googleMpa,
+       }
+       L.control.layers(baseLayers).addTo(map);
 });
 markerBuind();
      console.log(defaultUrl);
@@ -580,17 +593,33 @@ function changeHoverContent(property,newValue) {
         markers.forEach(marker => {
           bounds.extend(marker.getLatLng());
       });
-     
+      map.fitBounds(bounds);
+if(markers.length >0){
+// Calculate the center position of all markers
+const centerPosition = bounds.getCenter();
+
+// Set a default zoom level
+let customZoomLevel = 1; // Set your desired default zoom level
+
+// Adjust zoom level based on the number of markers
+const markerCount = markers.length;
+if (markerCount > 1) {
+    // Set a lower zoom level if there are multiple markers
+    customZoomLevel = 1; // Adjust as needed
+} else if (markerCount === 1) {
+    // Set a higher zoom level if there is only one marker
+    customZoomLevel = 11; // Adjust as needed
+}
+
+// Set the map view to the custom center position and zoom level
 
 
-    // Calculate the center position of all markers
-    const centerPosition = L.latLngBounds(markerPositions).getCenter();
 
-    // Zoom map to the calculated center position
- map.setView(centerPosition, defaultZoom);
-// console.log(map.getZoom());
-        // Find the marker closest to the center of the map
-        map.fitBounds(bounds);
+    }
+
+    console.log(map.getZoom());
+
+  
 
 
       } catch (err) {
@@ -610,13 +639,13 @@ function changeHoverContent(property,newValue) {
   //===================================
   // save the map
   // ===================================
-  save.addEventListener("click", (ev) => {
-    markerBuind();
-    addMarker = false;
-    marker_add.innerText = 'Add New Marker';
-    ikr_edit_popup.style.display ='none';
+  // save.addEventListener("click", (ev) => {
+  //   markerBuind();
+  //   addMarker = false;
+  //   marker_add.innerText = 'Add New Marker';
+  //   ikr_edit_popup.style.display ='none';
 
-  });
+  // });
 
   //===================================
   // hide the edit popup
