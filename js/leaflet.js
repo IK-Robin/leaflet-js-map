@@ -153,8 +153,23 @@ ikr_edit_popup.style.display ='none';
   // co-ordinates
 
   // add default setting on load
+  
+  const googlUrl = 'http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}';
+  const osmUrl = "http://tile.openstreetmap.org/{z}/{x}/{y}.png";
+  
+  const osmLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
+
+  const googleAttribution = { maxZoom: 20,
+    subdomains:['mt0','mt1','mt2','mt3']}
+
+  const osmAttrib = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
+
+ const config ={}
+
+ const googleMpa =  L.tileLayer(googlUrl,googleAttribution);
+ const osmMap = L.tileLayer(osmUrl, { attribution: osmAttrib });
   // Create a map instance
-  const map = L.map("map");
+  const map = L.map("map" ,{layers: [googleMpa],});
 let defaultUrl =null;
 let defaultZoom = null;
   // Set the view of the map using the configuration data
@@ -163,18 +178,6 @@ let defaultZoom = null;
     try {
       const data1 = await fetchAjaxRequest(get_url.featchdata);
 
-      const googlUrl = 'http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}';
-      const osmUrl = "http://tile.openstreetmap.org/{z}/{x}/{y}.png";
-      
-      const osmLink = '<a href="http://openstreetmap.org">OpenStreetMap</a>';
-
-      const googleAttribution = { maxZoom: 20,
-        subdomains:['mt0','mt1','mt2','mt3']}
-
-      const osmAttrib = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
-
-     const googleMpa =  L.tileLayer(googlUrl,googleAttribution);
-     const osmMap = L.tileLayer(osmUrl, { attribution: osmAttrib });
       data1.forEach((data) => {
         console.log(data);
          lat = data.Latitude;
@@ -192,9 +195,10 @@ let defaultZoom = null;
         function getConfigData() {
           // This function should return an object with latitude, longitude, and zoom level
           return {
+            layers: [osmMap],
             lat: lat,
             lng: lng,
-            zoom: zoom,
+            tileLayer: zoom,
           
           };
         }
@@ -203,6 +207,7 @@ let defaultZoom = null;
         // Get the configuration data
         const config = getConfigData();
         console.log(config.defaultUrl);
+        map
         map.setView([config.lat, config.lng], config.zoom);
         // Used to load and display tile layers on the map
         // Most tile servers require attribution, which you can set under `Layer`
@@ -219,6 +224,11 @@ let defaultZoom = null;
         'GOOGLE MAP' :googleMpa,
        }
        L.control.layers(baseLayers).addTo(map);
+       // Listen for baselayerchange event
+map.on('baselayerchange', function (eventLayer) {
+  let selectedLayer = eventLayer.name;
+  console.log('Base layer changed to: ' + selectedLayer);
+});
 });
 markerBuind();
      console.log(defaultUrl);
