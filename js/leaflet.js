@@ -590,7 +590,11 @@ function changeHoverContent(property,newValue) {
  map.setView(centerPosition, defaultZoom);
 // console.log(map.getZoom());
         // Find the marker closest to the center of the map
-        map.fitBounds(bounds);
+        if (markers.length <2){
+
+        }else{
+          map.fitBounds(bounds);
+        }
 
 
       } catch (err) {
