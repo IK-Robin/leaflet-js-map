@@ -10,9 +10,12 @@ document.addEventListener("DOMContentLoaded",() =>{
   const default_zoom = document.getElementById('default_zoom');
   const default_width = document.getElementById('default_width');
   const default_height = document.getElementById('default_height');
-  const default_url = document.getElementById('default_link');
-  
 
+  
+const customZoom = document.getElementById('customZoom');
+const autoZoom = document.getElementById('autoZoom');
+
+console.log(customZoom);
  
 
 
@@ -27,7 +30,6 @@ default_data.map(d=>{
   default_zoom.value = d.zoom;
   default_width.value = d.width;
   default_height.value =d.height;
-  default_url.value = d.link;
 
 
 });
