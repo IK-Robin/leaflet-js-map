@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded",() =>{
 const customZoom = document.getElementById('customZoom');
 const autoZoom = document.getElementById('autoZoom');
 const zoomOption  = document.getElementById('zoomOption');
-
+const showOption  = document.querySelectorAll('.showOption');
  
 
 
@@ -30,7 +30,7 @@ default_data.map(d=>{
   default_zoom.value = d.zoom;
   default_width.value = d.width;
   default_height.value =d.height;
-
+  zoomOption.value= d.zoom_option;
 
 });
   }catch (err) {
@@ -45,7 +45,9 @@ customZoom.addEventListener('click', (e) => {
     // Set the value of customZoom
     customZoom.value = 'custom_zoom';
 
-
+    showOption.forEach(show =>{
+      show.style.display ='flex';
+    });
     // Clear the value of autoZoom and uncheck it
     autoZoom.value = '';
     autoZoom.checked = false;
@@ -61,7 +63,9 @@ autoZoom.addEventListener('click', (e) => {
     // Set the value of autoZoom
     autoZoom.value = 'auto_zoom';
 
-
+    showOption.forEach(show =>{
+      show.style.display ='none';
+    });
     // Clear the value of customZoom and uncheck it
     customZoom.value = '';
     customZoom.checked = false;
