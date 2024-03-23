@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded",() =>{
 
   const defaultSetting_form = document.getElementById('defaultSetting');
   const default_lat = document.getElementById('default_lat');
+
   const default_lng = document.getElementById('default_lng');
   const default_zoom = document.getElementById('default_zoom');
   const default_width = document.getElementById('default_width');
