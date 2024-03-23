@@ -31,6 +31,13 @@ default_data.map(d=>{
   default_width.value = d.width;
   default_height.value =d.height;
   zoomOption.value= d.zoom_option;
+  if(d.zoom_option == 'auto_zoom'){
+    autoZoom.checked = true;
+    customZoom.checked = false;
+  }else{
+    autoZoom.checked = false;
+    customZoom.checked = true;
+  }
 
 });
   }catch (err) {
@@ -83,7 +90,8 @@ autoZoom.addEventListener('click', (e) => {
     
     makeAjaxRequestGlobal(defaultSetting_form,get_default.default_form,call =>{
  if( call){
-  //  window.location.reload();
+  window.location.href = 'admin.php?page=wp-store-locator-map';
+
  }
     });
     
