@@ -49,7 +49,6 @@ window.addEventListener("DOMContentLoaded", function () {
   const deletemarker_form = document.getElementById("deletemarker_form");
   const marker_id = document.getElementById("marker_id");
 
-  const save = document.getElementById("save");
   
 
   // Autocomplete
@@ -610,13 +609,7 @@ function changeHoverContent(property,newValue) {
   //===================================
   // save the map
   // ===================================
-  save.addEventListener("click", (ev) => {
-    markerBuind();
-    addMarker = false;
-    marker_add.innerText = 'Add New Marker';
-    ikr_edit_popup.style.display ='none';
 
-  });
 
   //===================================
   // hide the edit popup
