@@ -182,7 +182,7 @@ function ikr_default_setting() {
     $zoom = isset($_POST['default_zoom']) ? sanitize_text_field($_POST['default_zoom']) : '';
     $width = isset($_POST['default_width']) ? sanitize_text_field($_POST['default_width']) : '';
     $height = isset($_POST['default_height']) ? sanitize_text_field($_POST['default_height']) : '';
-    $link = isset($_POST['default_link']) ? sanitize_text_field($_POST['default_link']) : '';
+    $zoomOption = isset($_POST['zoomOption']) ? sanitize_text_field($_POST['zoomOption']) : '';
     
     // Update the data in the database
     $wpdb->update(
@@ -193,7 +193,7 @@ function ikr_default_setting() {
             'zoom' => $zoom,
             'width' => $width,
             'height' => $height,
-            'link' =>$link,
+            'zoom_option' =>$zoomOption,
         ),
         array( 'id' => 1 ), // Update row with id = 1
         array(
