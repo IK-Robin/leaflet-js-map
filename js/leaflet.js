@@ -587,7 +587,7 @@ function changeHoverContent(property,newValue) {
     const centerPosition = L.latLngBounds(markerPositions).getCenter();
 
     // Zoom map to the calculated center position
- map.setView(centerPosition, defaultZoom);
+ 
 // console.log(map.getZoom());
         // Find the marker closest to the center of the map
         if (markers.length <2){
@@ -596,9 +596,10 @@ function changeHoverContent(property,newValue) {
           map.setZoom(defaultZoom);
         }else{
           map.fitBounds(bounds,{ maxZoom: 16 });
+          map.setView(centerPosition, defaultZoom);
           // Define your bounds
+          const zoom_lavel = map.getZoom() ;
 
-          // map.setZoom(defaultZoom);
           
         }
 
