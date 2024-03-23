@@ -54,7 +54,7 @@ customZoom.addEventListener('click', (e) => {
     if (!customZoom.checked) {
         customZoom.checked = true;
     }
-    customZoom.value= 'custom_zoom';
+    zoomOption.value= 'custom_zoom';
 });
 
 autoZoom.addEventListener('click', (e) => {
@@ -65,12 +65,12 @@ autoZoom.addEventListener('click', (e) => {
     // Clear the value of customZoom and uncheck it
     customZoom.value = '';
     customZoom.checked = false;
-
+    zoomOption.value= 'auto_zoom';
     // Check autoZoom
     if (!autoZoom.checked) {
         autoZoom.checked = true;
     }
-    zoomOption.value= 'auto_zoom';
+ 
 });
 
 
