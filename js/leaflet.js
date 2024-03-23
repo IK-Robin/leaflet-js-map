@@ -157,6 +157,7 @@ ikr_edit_popup.style.display ='none';
   const map = L.map("map");
 let defaultUrl =null;
 let defaultZoom = null;
+let zoom_option = null;
   // Set the view of the map using the configuration data
   async function add_defaultView() {
     let lat,lng;
@@ -171,6 +172,8 @@ let defaultZoom = null;
         const zoom = data.zoom;
         const width = data.width;
         const height = data.height;
+        zoom_option = data.zoom_option;
+        console.log(zoom_option);
         defaultZoom = zoom;
         // calling map
         // stop width and height  is not set in config file
@@ -190,7 +193,7 @@ let defaultZoom = null;
         defaultUrl= data.link;
         // Get the configuration data
         const config = getConfigData();
-        console.log(config.defaultUrl);
+    
         map.setView([config.lat, config.lng], config.zoom);
         // Used to load and display tile layers on the map
         // Most tile servers require attribution, which you can set under `Layer`
@@ -208,7 +211,7 @@ let defaultZoom = null;
 
 });
 markerBuind();
-     console.log(defaultUrl);
+
       
 
       map.on("click", (ev) => {
@@ -590,18 +593,25 @@ function changeHoverContent(property,newValue) {
  
 // console.log(map.getZoom());
         // Find the marker closest to the center of the map
-        if (markers.length <2){
-
-          map.fitBounds(bounds,{maxZoom:13});
+        if(zoom_option == 'custom_zoom'){
           map.setZoom(defaultZoom);
-        }else{
-          map.fitBounds(bounds,{ maxZoom: 16 });
-          map.setView(centerPosition, defaultZoom);
-          // Define your bounds
-          const zoom_lavel = map.getZoom() ;
+          console.log('custom');
+        }else if (zoom_option =='auto_zoom'){
+          console.log('atu');
+          if (markers.length <2){
 
-          
+            map.fitBounds(bounds,{maxZoom:13});
+            map.setZoom(defaultZoom);
+          }else{
+            map.fitBounds(bounds,{ maxZoom: 16 });
+            map.setView(centerPosition, map.getZoom());
+            // Define your bounds
+            const zoom_lavel = map.getZoom() ;
+  
+            
+          }
         }
+     
 
 
       } catch (err) {
