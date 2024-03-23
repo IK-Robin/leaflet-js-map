@@ -24,7 +24,7 @@ function ikr_leafletjs_map()
         </div>
 
         <!-- Add input form -->
-        <?php include_once ROBIN_DIR_PATH . './views/ikr_dashbord.php' ?>
+  
 
     </div>
     <?php
