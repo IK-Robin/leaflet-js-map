@@ -57,7 +57,7 @@ function ikr_leaflet_js_db_connection() {
             zoom FLOAT NOT NULL DEFAULT 12,
             width FLOAT NOT NULL DEFAULT 50,
             height FLOAT NOT NULL DEFAULT 50,
-            link VARCHAR(1000) DEFAULT NULL,
+            zoom_option VARCHAR(100) DEFAULT NULL,
             PRIMARY KEY (id)
         ) $charset_collate;";
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
