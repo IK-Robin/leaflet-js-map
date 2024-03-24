@@ -13,6 +13,7 @@
       <div id="defaultSettings">
 
         <div class="default_f_section">
+        <p> Add (latitude and longitude) to set the center point of the map view. </p>
           <input type="hidden" name="zoomOption" id="zoomOption" value="auto_zoom">
           <div class="form-check">
             <label class="form-check-label">
@@ -27,7 +28,7 @@
             </label>
           </div>
 
-          <p> select the map center point </p>
+          
         </div>
         <div class="default_f_section">
           <label for="default_width"> Width: </label>
