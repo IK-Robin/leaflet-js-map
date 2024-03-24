@@ -3,13 +3,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const mapWidth = document.getElementById("map");
   
     const map = L.map("map");
-   let defaultUrl  = null;
+
+   let zoom_option = null;
   // Set the view of the map using the configuration data
   async function add_defaultView() {
     let lat,lng;
     try {
       const data1 = await fetchAjaxRequest(get_url.featchdata,get_url.ajaxurl);
-
+      
       data1.forEach((data) => {
         console.log(data);
          lat = data.Latitude;
@@ -18,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const zoom = data.zoom;
         const width = data.width;
         const height = data.height;
-        defaultUrl = data.link
+        zoom_option = data.zoom_option;
      
 // add height and width control 
 mapWidth.style.width = data.width + '%'; 
@@ -36,20 +37,22 @@ mapWidth.style.height= data.height +'px';
         const config = getConfigData();
 
         
-        map.setView([config.lat, config.lng], config.zoom);
         // Used to load and display tile layers on the map
         // Most tile servers require attribution, which you can set under `Layer`
         // openStreetmap is a popular option.
         // L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        //   attribution:
-        //     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-        // }).addTo(map);
-        
-        // add google map 
-         L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}',{
-    maxZoom: 20,
-    subdomains:['mt0','mt1','mt2','mt3']
-}).addTo(map);
+          //   attribution:
+          //     '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+          // }).addTo(map);
+          map.setView([config.lat, config.lng], config.zoom);
+
+          // Add Google map tiles with minimum and maximum zoom levels
+          L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}', {
+              maxZoom: 20,
+              minZoom: 3,
+              subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
+          }).addTo(map);
+          
       });
       markerBuind();
 
@@ -73,42 +76,49 @@ mapWidth.style.height= data.height +'px';
         const markerPositions = [];
         const markers = [];
       
-        data.forEach((m) => {
-          const newMarker = L.marker([m.lat, m.lng], { id: m.marker_id }).addTo(
-            map
-          );
-
-        
-          // Hide the popup
-
-          // Bind popup with text and add marker ID to it
-          newMarker.bindPopup(
-            `<div class="popupWindow">
-            
-          <p> <strong> Address:</strong>  ${m.address}</p> 
-            <p>  <strong>Sales Phone : </strong>  ${m.phone}</p>
-           <p> <strong> GeneralHours :</strong>   ${m.email} </p>
-            
-    
-           <p>  <strong> Website:</strong> <a href="${m.urls ==''?defaultUrl:m.urls}" target="_blunk">${ m.urls ==''?defaultUrl:m.urls}</a> </p>
-            
-            
-            <br>
-            
-            
-            
-            
-       
-                    </div>`
-         ,{ autoPan: true } );
-
-          // Open popup for each marker
+        if (data.length ==0){
+         
+        }else{
+          data.forEach((m) => {
+            const newMarker = L.marker([m.lat, m.lng], { id: m.marker_id }).addTo(
+              map
+            );
+  
+          
+            // Hide the popup
+  
+            // Bind popup with text and add marker ID to it
+            newMarker.bindPopup(
+              `<div class="popupWindow">
+              
+            <p> <strong> Address:</strong>  ${m.address}</p> 
+              <p>  <strong>Sales Phone : </strong>  ${m.phone}</p>
+             <p> <strong> GeneralHours :</strong>   ${m.email} </p>
+              
+             ${m.urls ==''?'':`        <p>  <strong> Website:</strong> <a href="${m.urls}" target="_blunk">${ m.urls}</a> </p>`}
 
 
-          markers.push(newMarker);
-          markerPositions.push(newMarker.getLatLng());
-        
-        });
+     
+              
+              
+              <br>
+              
+              
+              
+              
+         
+                      </div>`
+           ,{ autoPan: true } );
+  
+            // Open popup for each marker
+  
+  
+            markers.push(newMarker);
+            markerPositions.push(newMarker.getLatLng());
+          
+          });
+        }
+      
 
 
 
@@ -126,10 +136,29 @@ mapWidth.style.height= data.height +'px';
       const centerPosition = L.latLngBounds(markerPositions).getCenter();
   
       // Zoom map to the calculated center position
-   map.setView(centerPosition, defaultZoom);
-  // console.log(map.getZoom());
-          // Find the marker closest to the center of the map
-          map.fitBounds(bounds);
+  //  map.setView(centerPosition, map.getZoom());
+  // // console.log(map.getZoom());
+  //         // Find the marker closest to the center of the map
+  //         map.fitBounds(bounds);
+
+  if(zoom_option == 'custom_zoom'){
+    map.setZoom(defaultZoom);
+    console.log('custom');
+  }else if (zoom_option =='auto_zoom'){
+    console.log('atu');
+    if (markers.length <2){
+
+      map.fitBounds(bounds,{maxZoom:13});
+      map.setZoom(defaultZoom);
+    }else{
+      map.fitBounds(bounds,{ maxZoom: 16 });
+      map.setView(centerPosition, map.getZoom());
+      // Define your bounds
+     
+      
+    }
+  }
+
       } catch (err) {
         console.log(err);
       }
