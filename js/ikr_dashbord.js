@@ -94,7 +94,8 @@ autoZoom.addEventListener('click', (e) => {
     
     makeAjaxRequestGlobal(defaultSetting_form,get_default.default_form,call =>{
  if( call){
-  window.location.href = 'admin.php?page=wp-store-locator-map';
+  // window.location.href = 'admin.php?page=wp-store-locator-map';
+  window.location.reload();
 
  }
     });
