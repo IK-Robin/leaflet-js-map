@@ -37,6 +37,10 @@ default_data.map(d=>{
   }else{
     autoZoom.checked = false;
     customZoom.checked = true;
+    
+    showOption.forEach(show =>{
+      show.style.display ='flex';
+    });
   }
 
 });
