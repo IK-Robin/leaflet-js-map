@@ -190,7 +190,7 @@ let zoom_option = null;
           };
         }
       
-        defaultUrl= data.link;
+
         // Get the configuration data
         const config = getConfigData();
     
@@ -454,131 +454,135 @@ function changeHoverContent(property,newValue) {
         const data = await fetchAjaxRequest(get_url.dataF);
       const markers = []
       const markerPositions = [];
-
+        if(data.length ==0){
+          
+        }else{
+           // console.log(data);
         data.forEach((m) => {
-       const  newMarker = L.marker([m.lat, m.lng], { id: m.marker_id }).addTo(
-            map
-          );
-
-
-
-
-          // enable dragging for each marker
-          newMarker.dragging.enable();
-
-          // Hide the popup
-
-          // Bind popup with text and add marker ID to it
-          newMarker.bindPopup(
-            `<div class="popupWindow">
-            
-          <p> <strong> Address:</strong>  ${m.address}</p> 
-            <p>  <strong>Sales Phone : </strong>  ${m.phone}</p>
-           <p> <strong> Email :</strong>   ${m.email} </p>
-         
-           <p>  <strong> Website:</strong> <a href="${m.urls ==''?defaultUrl:m.urls}" target="_blunk">${ m.urls ==''?defaultUrl:m.urls}</a> </p>
-            
-            
-            <br>
-            
-            
-            
-            
-            
-            <button class="editMarker" data-id="${m.marker_id}">Edit</button> <button class="deletMarker" data-id="${m.marker_id}">Delete</button><br>
-                      
-                    </div>`
-          );
-
-          // Open popup for each marker
-
-          newMarker.on("click", function (e) {
-            // Get the popup content
-
-            const markerPosition = e.target.getLatLng();
-            const zoomLevel = map.getZoom(); // Get the current zoom level
-
-            // if (zoomLevel < 13) {
-            //   map.setView(markerPosition, 18); // Set the view to the marker position with a zoom level of 18
-            // } else {
-            //   const currentCenter = map.getCenter();
-            //   const isSamePosition = markerPosition.equals(currentCenter);
-
-            //   if (!isSamePosition) {
-            //     map.flyTo(markerPosition, 18, {
-            //       duration: 0.5, // Adjust the duration of the animation as needed
-            //     });
-            //   }
-            // }
-
-            const popupContent = e.target.getPopup();
-
-            const marker = e.target._popup._source;
-
-            // Close the popup
-
-            const editMarker =popupContent._contentNode.childNodes[0].querySelector('.editMarker')
-             
-     
-              const deleteMarker =popupContent._contentNode.childNodes[0].querySelector('.deletMarker');
-             
-       
-
-            editMarker.addEventListener("click", (editM) => {
-              // hide and show the input fild 
-              ikr_edit_popup.style.display = "block";
-              submit_form.style.display = "none";
-              // hide the popup on click edit btn
-              // marker.closePopup();
-              // get the dataset id of clicked button
-              let id = editMarker.dataset.id;
-              if (id == m.marker_id) {
+          const  newMarker = L.marker([m.lat, m.lng], { id: m.marker_id }).addTo(
+               map
+             );
+   
+   
+   
+   
+             // enable dragging for each marker
+             newMarker.dragging.enable();
+   
+             // Hide the popup
+   
+             // Bind popup with text and add marker ID to it
+             newMarker.bindPopup(
+               `<div class="popupWindow">
                
-                latituide_edit.value = m.lat;
-                longtuide_edit.value = m.lng;
-                address_edit.value = m.address;
-                phone_edit.value = m.phone ;
-                console.log( m);
-                email_edit.value = m.email;
-                input_url_edit.value = m.urls;
-                marker_id.value =  m.marker_id;
-                hiddenMarkerId.value = m.marker_id;
-              }
-            });
-
-            // delet the marker
-            deleteMarker.addEventListener("click", (ev) => {
-              // remove the marker   
-              ikr_edit_popup.style.display = "none";
-              submit_form.style.display = 'block';
-              map.removeLayer(newMarker);
-              // remove from db
-              marker_id.value = deleteMarker.dataset.id;
-              makeAjaxRequestGlobal(deletemarker_form, get_url.deletMarker,callback =>{});
-            });
-          });
-
-          // add marker draging event  listener
-          newMarker.on("dragend", function (event) {
-            const marker = event.target;
-            const position = marker.getLatLng();
-            // get the marker id from the marker
-            const popupContent = event.target.getPopup();
-            const markerId = popupContent._source.options.id;
-
-            if (markerId == m.marker_id) {
-              latituide_edit.value = position.lat;
-              longtuide_edit.value = position.lng;
-              phone_edit.value = m.popup_text;
-              hiddenMarkerId.value = m.marker_id;
-
-              makeAjaxRequestGlobal(ikr_map_form_edit, get_url.editMarker,c=>{});
-            }
-          });
-          // push the marker 
-          markers.push(newMarker);
-          markerPositions.push(newMarker.getLatLng());
-        });
+             <p> <strong> Address:</strong>  ${m.address}</p> 
+               <p>  <strong>Sales Phone : </strong>  ${m.phone}</p>
+              <p> <strong> Email :</strong>   ${m.email} </p>
+            
+              <p>  <strong> Website:</strong> <a href="${m.urls ==''?'#':m.urls}" target="_blunk">${ m.urls ==''?'#':m.urls}</a> </p>
+               
+               
+               <br>
+               
+               
+               
+               
+               
+               <button class="editMarker" data-id="${m.marker_id}">Edit</button> <button class="deletMarker" data-id="${m.marker_id}">Delete</button><br>
+                         
+                       </div>`
+             );
+   
+             // Open popup for each marker
+   
+             newMarker.on("click", function (e) {
+               // Get the popup content
+   
+               const markerPosition = e.target.getLatLng();
+               const zoomLevel = map.getZoom(); // Get the current zoom level
+   
+               // if (zoomLevel < 13) {
+               //   map.setView(markerPosition, 18); // Set the view to the marker position with a zoom level of 18
+               // } else {
+               //   const currentCenter = map.getCenter();
+               //   const isSamePosition = markerPosition.equals(currentCenter);
+   
+               //   if (!isSamePosition) {
+               //     map.flyTo(markerPosition, 18, {
+               //       duration: 0.5, // Adjust the duration of the animation as needed
+               //     });
+               //   }
+               // }
+   
+               const popupContent = e.target.getPopup();
+   
+               const marker = e.target._popup._source;
+   
+               // Close the popup
+   
+               const editMarker =popupContent._contentNode.childNodes[0].querySelector('.editMarker')
+                
+        
+                 const deleteMarker =popupContent._contentNode.childNodes[0].querySelector('.deletMarker');
+                
+          
+   
+               editMarker.addEventListener("click", (editM) => {
+                 // hide and show the input fild 
+                 ikr_edit_popup.style.display = "block";
+                 submit_form.style.display = "none";
+                 // hide the popup on click edit btn
+                 // marker.closePopup();
+                 // get the dataset id of clicked button
+                 let id = editMarker.dataset.id;
+                 if (id == m.marker_id) {
+                  
+                   latituide_edit.value = m.lat;
+                   longtuide_edit.value = m.lng;
+                   address_edit.value = m.address;
+                   phone_edit.value = m.phone ;
+                   console.log( m);
+                   email_edit.value = m.email;
+                   input_url_edit.value = m.urls;
+                   marker_id.value =  m.marker_id;
+                   hiddenMarkerId.value = m.marker_id;
+                 }
+               });
+   
+               // delet the marker
+               deleteMarker.addEventListener("click", (ev) => {
+                 // remove the marker   
+                 ikr_edit_popup.style.display = "none";
+                 submit_form.style.display = 'block';
+                 map.removeLayer(newMarker);
+                 // remove from db
+                 marker_id.value = deleteMarker.dataset.id;
+                 makeAjaxRequestGlobal(deletemarker_form, get_url.deletMarker,callback =>{});
+               });
+             });
+   
+             // add marker draging event  listener
+             newMarker.on("dragend", function (event) {
+               const marker = event.target;
+               const position = marker.getLatLng();
+               // get the marker id from the marker
+               const popupContent = event.target.getPopup();
+               const markerId = popupContent._source.options.id;
+   
+               if (markerId == m.marker_id) {
+                 latituide_edit.value = position.lat;
+                 longtuide_edit.value = position.lng;
+                 phone_edit.value = m.popup_text;
+                 hiddenMarkerId.value = m.marker_id;
+   
+                 makeAjaxRequestGlobal(ikr_map_form_edit, get_url.editMarker,c=>{});
+               }
+             });
+             // push the marker 
+             markers.push(newMarker);
+             markerPositions.push(newMarker.getLatLng());
+           });
+           
         var bounds = new L.LatLngBounds();
         markers.forEach(marker => {
           bounds.extend(marker.getLatLng());
@@ -609,6 +613,9 @@ function changeHoverContent(property,newValue) {
             
           }
         }
+        }
+
+     
      
 
 
