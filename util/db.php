@@ -27,6 +27,16 @@ function ikr_leaflet_js_db_connection() {
         ) $charset_collate;";
         require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
         dbDelta($sql_1);
+         // Add default row values
+         $wpdb->insert($table_name_1, array(
+            'lat' => 23.8536047088421,
+            'lng' => 89.24606323242189,
+            'address' => 2,
+            'phone' => 100,
+            'email' => 300,
+            'urls' => 'https://hamjaiu.com',
+            'marker_id' => '88759345',
+        ));
     }
 
     if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_1'") == $table_name_1) {
@@ -70,8 +80,22 @@ function ikr_leaflet_js_db_connection() {
             'zoom' => 2,
             'width' => 100,
             'height' => 300,
-            'link' => '',
+            'zoom_option' => 'auto_zoom',
         ));
+    }
+
+
+    if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_2'") == $table_name_2) {
+        // If the table already exists, add the new fields if they don't exist
+        $fields_to_add = array('id', 'Latitude', 'Longitude', 'zoom', 'width','height','zoom_option');
+        
+        foreach ($fields_to_add as $field) {
+            $field_exists = $wpdb->get_var("SHOW COLUMNS FROM $table_name_2 LIKE '$field'");
+            if (!$field_exists) {
+                $alter_sql = "ALTER TABLE $table_name_2 ADD $field VARCHAR(100) NOT NULL AFTER marker_id";
+                $wpdb->query($alter_sql);
+            }
+        }
     }
 }
 
