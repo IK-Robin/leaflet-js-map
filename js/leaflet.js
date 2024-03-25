@@ -271,7 +271,7 @@ markerBuind();
             // });
             // map.setView(markerPosition, 18);
             const popupContent = e.target.getPopup();
-            console.log(e);
+  
 
             const marker = e.target._popup._source;
 
@@ -295,7 +295,7 @@ markerBuind();
 
               hiddenMarkerId.value = editMarker.dataset.id;
               marker_id.value = editMarker.dataset.id;
-              console.log(marker_id);
+              
             });
 
             // delet the marker

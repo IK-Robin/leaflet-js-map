@@ -24,7 +24,10 @@ function ikr_leafletjs_map()
         </div>
 
         <!-- Add input form -->
-  
+        <div class="ikr_c_right">
+ <p>Use The Shortcode <strong>[ikr_leflet_map] </strong></p>
+
+</div>
 
     </div>
     <?php
