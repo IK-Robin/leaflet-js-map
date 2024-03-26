@@ -32,27 +32,37 @@ function ikr_leafletjs_map()
         </div>
               <div class="ikr_accordion__item">
           <div class="ikr_accordion__item__header">
-           Title of your item / Question
+            add custom marker 
           </div>
       
           <div class="iaccordion__item__content">
-            <p> Explain of your item goes here...</p>
+          <?php include ROBIN_DIR_PATH . '/views/ikr_from.php' ?>
            </div>
         </div>
               <div class="ikr_accordion__item">
           <div class="ikr_accordion__item__header">
-           Title of your item / Question
+           Add marker by search
           </div>
       
           <div class="iaccordion__item__content">
-            <p> Explain of your item goes here...</p>
+   <!-- add search  bar   -->
+   <div class="auto-search-wrapper loupe">
+        <input
+          type="text"
+          autocomplete="off"
+          id="search"
+          placeholder="Enter The City Name"
+        />
+
+    </div>
+    <button class="add_by_search" id="add_by_search"> add marker</button>
            </div>
         </div>
   </div> <!-- id accordion end -->
 
 
 
-                <?php include ROBIN_DIR_PATH . '/views/ikr_from.php' ?>
+               
                 
                
             </div>
@@ -61,7 +71,7 @@ function ikr_leafletjs_map()
         <!-- Add input form -->
         <div class="ikr_c_right">
             <p>Use The Shortcode <strong>[ikr_leflet_map] </strong></p>
-            <button id="save"> Save</button>
+            <button  id="save"> Save</button>
 
 </div>
 
