@@ -65,6 +65,7 @@
   display: flex;
   justify-content: space-between;
   align-content: center;
+  min-height: 400px;
 }
 .ikr_first_side {
   width: 68%;
@@ -154,7 +155,7 @@
   align-content: center;
  
 }
-button#add_marker, #save {
+button#add_marker, #save,.add_by_search {
   color: #fff;
   border: none;
   background: #2271b1;
@@ -167,12 +168,17 @@ button#add_marker, #save {
   text-transform: capitalize;
 
 }
+.add_by_search{
+  margin-top: 10px;
+  display: none;
+}
 .action_btn{
   width: 30%;
 
 }
-.auto-search-wrapper{
-  width: 70%;
+.auto-search-wrapper {
+	width: 99%;
+	margin-top: 14px;
 }
 #save{
   width: 90px;
@@ -287,7 +293,7 @@ shortcode css
 }
 
 .iaccordion__item__content {
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
   padding: 0;
   display: none
 }
