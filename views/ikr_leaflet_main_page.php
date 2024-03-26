@@ -24,6 +24,8 @@
 <div class="ikr_c_right">
  <p>Use The Shortcode <strong>[ikr_leflet_map] </strong></p>
 
+
+
 </div>
 
     </div>

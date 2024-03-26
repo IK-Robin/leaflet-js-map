@@ -17,15 +17,51 @@ function ikr_leafletjs_map()
                 <div id="map"> </div>
             </div>
             <div class="ikr_second_side">
+
+            <!-- add accordion menu  -->
+
+            <div class="ikr_accordion">
+        <div class="ikr_accordion__item">
+          <div class="ikr_accordion__item__header">
+            Add Marker clicking  on the map
+          </div>
+      
+          <div class="iaccordion__item__content">
+          <?php include_once ROBIN_DIR_PATH . './views/ikr_edit_marker.php' ?>
+           </div>
+        </div>
+              <div class="ikr_accordion__item">
+          <div class="ikr_accordion__item__header">
+           Title of your item / Question
+          </div>
+      
+          <div class="iaccordion__item__content">
+            <p> Explain of your item goes here...</p>
+           </div>
+        </div>
+              <div class="ikr_accordion__item">
+          <div class="ikr_accordion__item__header">
+           Title of your item / Question
+          </div>
+      
+          <div class="iaccordion__item__content">
+            <p> Explain of your item goes here...</p>
+           </div>
+        </div>
+  </div> <!-- id accordion end -->
+
+
+
                 <?php include ROBIN_DIR_PATH . '/views/ikr_from.php' ?>
-                <?php include_once ROBIN_DIR_PATH . './views/ikr_edit_marker.php' ?>
+                
                
             </div>
         </div>
 
         <!-- Add input form -->
         <div class="ikr_c_right">
- <p>Use The Shortcode <strong>[ikr_leflet_map] </strong></p>
+            <p>Use The Shortcode <strong>[ikr_leflet_map] </strong></p>
+            <button id="save"> Save</button>
 
 </div>
 
