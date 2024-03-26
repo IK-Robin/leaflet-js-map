@@ -14,7 +14,7 @@ window.addEventListener("DOMContentLoaded", function () {
   const email = document.getElementById("email");
   const input_url = document.getElementById("input_url");
   
-
+const add_by_search = document.getElementById('add_by_search');
 
 
 
@@ -144,9 +144,9 @@ ikr_edit_popup.style.display ='none';
     },
 
     onSubmit: ({ object }) => {
-      console.log(object);
+
       const { display_name,name } = object.properties;
-      console.log(name);
+
       const cord = object.geometry.coordinates;
 
      const  [lng,lat ] = cord;
@@ -159,6 +159,7 @@ ikr_edit_popup.style.display ='none';
     let randomMarkerId = Math.floor(Math.random() * 9000000 + 1000000);
           maphiddenId_add.value = randomMarkerId;
 
+          add_by_search.style.display = 'block';
 
       // custom id for marker
       const customId = Math.random();
@@ -167,8 +168,7 @@ ikr_edit_popup.style.display ='none';
         title: display_name,
         id: customId,
       });
-
-      marker.addTo(map).bindPopup(display_name);
+      marker.addTo(map).bindPopup(display_name).addTo(map);
 
       map.setView([cord[1], cord[0]], 8);
 
@@ -192,6 +192,17 @@ ikr_edit_popup.style.display ='none';
     noResults: ({ currentValue, template }) =>
       template(`<li>No results found: "${currentValue}"</li>`),
   });
+
+
+// add marker by search 
+add_by_search.addEventListener('click', ()=>{
+  makeAjaxRequestGlobal(ikr_map_form, get_url.action,callbac =>{
+    if(callbac)markerBuind();
+  });
+  add_by_search.style.display = 'none';
+});
+
+
 
   // MAP
 
