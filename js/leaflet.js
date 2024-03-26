@@ -48,9 +48,56 @@ window.addEventListener("DOMContentLoaded", function () {
   // select the delete marker form
   const deletemarker_form = document.getElementById("deletemarker_form");
   const marker_id = document.getElementById("marker_id");
-
+  let addMarker = false;
 
   
+// add a accordion  effect 
+
+
+// Check if there are elements with the class "accordion__item__header"
+const  accordionHeaders = document.querySelectorAll(".ikr_accordion__item__header");
+
+if (accordionHeaders.length > 0) {
+  var active = "active";
+
+  // Iterate through each header and attach a click event listener
+  accordionHeaders.forEach(function(header,index) {
+    header.addEventListener("click", function() {
+      // Toggle the "active" class on the clicked header
+      if (this.classList.contains(active)) {
+        this.classList.remove(active);
+        addMarker = false;
+      } else {
+        // Close all other accordion items
+        accordionHeaders.forEach(function(otherHeader) {
+          if (otherHeader !== header && otherHeader.classList.contains(active)) {
+            otherHeader.classList.remove(active);
+            otherHeader.nextElementSibling.style.display = "none";
+          }
+        });
+
+        this.classList.add(active);
+        if(index == 0 && this.classList.contains('active')){
+          addMarker =true;
+          ikr_edit_popup.style.display = "block";
+        }
+          
+        
+      }
+
+      // Toggle the visibility of the next sibling element (div)
+      var content = this.nextElementSibling;
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    });
+  });
+}
+
+
+
 
   // Autocomplete
   new Autocomplete("search", {
@@ -321,7 +368,7 @@ markerBuind();
 
   // Array to store marker references
 
-  let addMarker = false;
+  
 
   // get the html element
 
@@ -652,6 +699,19 @@ function changeHoverContent(property,newValue) {
   });
    
 
+
+
+    //===================================
+   // save the map
+    // ===================================
+  save.addEventListener("click", (ev) => {
+    markerBuind();
+    addMarker = false;
+    marker_add.innerText = 'Add New Marker';
+    ikr_edit_popup.style.display ='none';
+    window.location.reload();
+  
+  });
 
   
   window.scrollTo(0, 0);
