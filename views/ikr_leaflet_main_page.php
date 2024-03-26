@@ -12,14 +12,14 @@
     </div>
 
     <!-- add search  bar   -->
-      <div class="auto-search-wrapper loupe">
+      <!-- <div class="auto-search-wrapper loupe">
         <input
           type="text"
           autocomplete="off"
           id="search"
           placeholder="Enter The City Name"
         />
-      </div>
+      </div> -->
    </div>
 <div class="ikr_c_right">
  <p>Use The Shortcode <strong>[ikr_leflet_map] </strong></p>
