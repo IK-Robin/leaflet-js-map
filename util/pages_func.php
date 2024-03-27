@@ -17,17 +17,18 @@ function ikr_leafletjs_map()
                 <div id="map"> </div>
             </div>
             <div class="ikr_second_side">
-
+            <?php include_once ROBIN_DIR_PATH . './views/ikr_edit_marker.php' ?>
             <!-- add accordion menu  -->
-
-            <div class="ikr_accordion">
+        
+            <div class="ikr_accordion" id="ikr_accordion">
         <div class="ikr_accordion__item">
           <div class="ikr_accordion__item__header">
             Add Marker clicking  on the map
           </div>
       
           <div class="iaccordion__item__content">
-          <?php include_once ROBIN_DIR_PATH . './views/ikr_edit_marker.php' ?>
+          
+          <?php include_once ROBIN_DIR_PATH . './views/update_on_add_new.php' ?>
            </div>
         </div>
               <div class="ikr_accordion__item">
@@ -36,16 +37,7 @@ function ikr_leafletjs_map()
           </div>
       
           <div class="iaccordion__item__content">
-          <?php include ROBIN_DIR_PATH . '/views/ikr_from.php' ?>
-           </div>
-        </div>
-              <div class="ikr_accordion__item">
-          <div class="ikr_accordion__item__header">
-           Add marker by search
-          </div>
-      
-          <div class="iaccordion__item__content">
-   <!-- add search  bar   -->
+              <!-- add search  bar   -->
    <div class="auto-search-wrapper loupe">
         <input
           type="text"
@@ -55,9 +47,10 @@ function ikr_leafletjs_map()
         />
 
     </div>
-    <button class="add_by_search" id="add_by_search"> add marker</button>
+          <?php include ROBIN_DIR_PATH . '/views/ikr_from.php' ?>
            </div>
         </div>
+          
   </div> <!-- id accordion end -->
 
 
