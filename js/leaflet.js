@@ -16,15 +16,14 @@ window.addEventListener("DOMContentLoaded", function () {
   
 
 const ikr_accordion  = document.getElementById('ikr_accordion');
+const edit_on_add_new = document.getElementById('edit_on_add_new');
+const edit_on_add_new_sub  = document.getElementById('edit_on_add_new_sub');
 
+const latituide_edit_add  = document.getElementById('latituide_edit_add');
 
-
-
-
-
-
-
+const longtuide_edit_add =document.getElementById("langtuide_edit_add");
   const ikr_edit_popup = document.getElementById("ikr_edit_popup");
+
 
   //select edit form element
   const ikr_map_form_edit = document.getElementById("ikr_map_form_edit");
@@ -67,7 +66,7 @@ if (accordionHeaders.length > 0) {
       if (this.classList.contains(active)) {
         this.classList.remove(active);
         addMarker = false;
-      } else {
+      } else { 
         // Close all other accordion items
         accordionHeaders.forEach(function(otherHeader) {
           if (otherHeader !== header && otherHeader.classList.contains(active)) {
@@ -79,7 +78,7 @@ if (accordionHeaders.length > 0) {
         this.classList.add(active);
         if(index == 0 && this.classList.contains('active')){
           addMarker =true;
-          ikr_edit_popup.style.display = "block";
+          edit_on_add_new.style.display = "block";
         }
           
         
@@ -269,8 +268,8 @@ markerBuind();
 
       map.on("click", (ev) => {
         // fill the input  with lat and lng of clicked place
-        latituide.value = ev.latlng.lat;
-        langtuide.value = ev.latlng.lng;
+        latituide_edit_add.value = ev.latlng.lat;
+        longtuide_edit_add.value = ev.latlng.lng;
         // Add a click event listener to the map
 
         const latlng = ev.latlng;
@@ -291,7 +290,7 @@ markerBuind();
 
           newMarker.dragging.enable();
 
-          ikr_edit_popup.style.display = "block";
+          // ikr_edit_popup.style.display = "block";
           submit_form.style.display ='none';
 
           let randomMarkerId = Math.floor(Math.random() * 9000000 + 1000000);
@@ -336,7 +335,8 @@ markerBuind();
             editMarker.addEventListener("click", (editM) => {
               ikr_edit_popup.style.display = "block";
               submit_form.style.display = "none";
-
+              
+              ikr_accordion.style.display ='none';
               // hide the popup on click edit btn
               // marker.closePopup();
               // get the dataset id of clicked button
@@ -355,6 +355,7 @@ markerBuind();
               
               ikr_edit_popup.style.display = "none";
               submit_form.style.display = 'block';
+              ikr_accordion.style.display ='block';
               // remove the marker
               map.removeLayer(newMarker);
               // remove from db
@@ -599,6 +600,7 @@ function changeHoverContent(property,newValue) {
                  // remove the marker   
                  ikr_edit_popup.style.display = "none";
                  submit_form.style.display = 'block';
+                 ikr_accordion.style.display ='block';
                  map.removeLayer(newMarker);
                  // remove from db
                  marker_id.value = deleteMarker.dataset.id;
