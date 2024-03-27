@@ -58,7 +58,7 @@
         <div class="default_f_section showOption">
       
           <label class="zoomLavel" for="default_zoom"> Zoom: </label>
-          <input type="number" min="3" max="18" name="default_zoom" id="default_zoom">
+          <input type="number" min="1" max="18" name="default_zoom" id="default_zoom">
           <p class="zoomP"> The default zoom for maps sets how close or far away the map appears when you first open it. You can
             adjust this zoom level for each map, with values ranging from 1 to 18, allowing you to customize the view
             according to your preference. </p>
