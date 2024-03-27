@@ -6,7 +6,7 @@
    <div class="ikr_c_left">
    <div class="action_btn"> 
       <!-- add delet and Remove marker btn  -->
-    <button type="button" id ="add_marker"> Add New Marker </button>
+   <h1>  Simple map Store  Locator</h1>
 
    
     </div>
