@@ -80,6 +80,10 @@ if (accordionHeaders.length > 0) {
           addMarker =true;
           // ikr_edit_popup.style.display = "block";
         }
+        if(index == 1 && this.classList.contains('active')){
+          addMarker =false;
+          ikr_map_form.style.display = 'block';
+        }
           
         
       }
@@ -289,7 +293,7 @@ markerBuind();
           newMarker.dragging.enable();
 
           // ikr_edit_popup.style.display = "block";
-          submit_form.style.display ='none';
+          // submit_form.style.display ='none';
 
           let randomMarkerId = Math.floor(Math.random() * 9000000 + 1000000);
           
@@ -385,24 +389,7 @@ function changeHoverContent(property,newValue) {
   root.style.setProperty(`--${property} `, `"${newValue}"`);
 }
 
-  marker_add.addEventListener("click", (madd) => {
-    if (addMarker) {
-      marker_add.innerText = "add marker";
 
-      ikr_edit_popup.style.display = "none";
-      submit_form.style.display = "block";
-      changeHoverContent('hover-content','hello');
-      addMarker = false;
-      
-    } else {
-      submit_form.style.display = "none";
-      ikr_edit_popup.style.display = "block";
-      marker_add.innerText = "stop adding marker";
-      addMarker = true;
-      console.log(addMarker,'else');
-      // ikr_map_form.style.display = "none";
-    }
-  });
 
   // featch data on load and add marker
 
@@ -442,8 +429,9 @@ function changeHoverContent(property,newValue) {
 
   // add from functionality
   // ===================================
-
+console.log(ikr_map_form);
   ikr_map_form.addEventListener("submit", (evnt) => {
+
     evnt.preventDefault();
 
     makeAjaxRequestGlobal(ikr_map_form, get_url.action,c=>{});
@@ -476,6 +464,7 @@ function changeHoverContent(property,newValue) {
    
     ikr_edit_popup.style.display = "none";
     submit_form.style.display ='block';
+    ikr_accordion.style.display = 'block';
   });
 
 // delete the  marker 
