@@ -27,8 +27,8 @@ function ikr_leafletjs_map()
           </div>
       
           <div class="iaccordion__item__content">
-          
-          <?php include_once ROBIN_DIR_PATH . './views/update_on_add_new.php' ?>
+          click on the map to add new marke
+         
            </div>
         </div>
               <div class="ikr_accordion__item">
