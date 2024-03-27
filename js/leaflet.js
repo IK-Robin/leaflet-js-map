@@ -380,7 +380,6 @@ markerBuind();
 
   // get the html element
 
-  const marker_add = document.getElementById("add_marker");
 
   const root = document.documentElement;
 
@@ -702,7 +701,7 @@ console.log(ikr_map_form);
   save.addEventListener("click", (ev) => {
     markerBuind();
     addMarker = false;
-    marker_add.innerText = 'Add New Marker';
+  
     ikr_edit_popup.style.display ='none';
     window.location.reload();
   
