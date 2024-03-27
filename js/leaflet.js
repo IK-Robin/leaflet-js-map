@@ -14,8 +14,8 @@ window.addEventListener("DOMContentLoaded", function () {
   const email = document.getElementById("email");
   const input_url = document.getElementById("input_url");
   
-const add_by_search = document.getElementById('add_by_search');
 
+const ikr_accordion  = document.getElementById('ikr_accordion');
 
 
 
@@ -159,7 +159,7 @@ ikr_edit_popup.style.display ='none';
     let randomMarkerId = Math.floor(Math.random() * 9000000 + 1000000);
           maphiddenId_add.value = randomMarkerId;
 
-          add_by_search.style.display = 'block';
+     
 
       // custom id for marker
       const customId = Math.random();
@@ -194,13 +194,7 @@ ikr_edit_popup.style.display ='none';
   });
 
 
-// add marker by search 
-add_by_search.addEventListener('click', ()=>{
-  makeAjaxRequestGlobal(ikr_map_form, get_url.action,callbac =>{
-    if(callbac)markerBuind();
-  });
-  add_by_search.style.display = 'none';
-});
+
 
 
 
@@ -264,7 +258,7 @@ let zoom_option = null;
         // add google map 
          L.tileLayer('http://{s}.google.com/vt?lyrs=m&x={x}&y={y}&z={z}',{
     maxZoom: 20,
-    minZoom:3,
+
     subdomains:['mt0','mt1','mt2','mt3']
 }).addTo(map);
 
@@ -483,6 +477,7 @@ function changeHoverContent(property,newValue) {
    
     ikr_edit_popup.style.display = "none";
     submit_form.style.display ='block';
+    ikr_accordion.style.display = 'block';
   });
 
 // delete the  marker 
@@ -560,18 +555,7 @@ function changeHoverContent(property,newValue) {
                const markerPosition = e.target.getLatLng();
                const zoomLevel = map.getZoom(); // Get the current zoom level
    
-               // if (zoomLevel < 13) {
-               //   map.setView(markerPosition, 18); // Set the view to the marker position with a zoom level of 18
-               // } else {
-               //   const currentCenter = map.getCenter();
-               //   const isSamePosition = markerPosition.equals(currentCenter);
-   
-               //   if (!isSamePosition) {
-               //     map.flyTo(markerPosition, 18, {
-               //       duration: 0.5, // Adjust the duration of the animation as needed
-               //     });
-               //   }
-               // }
+        
    
                const popupContent = e.target.getPopup();
    
@@ -590,6 +574,8 @@ function changeHoverContent(property,newValue) {
                  // hide and show the input fild 
                  ikr_edit_popup.style.display = "block";
                  submit_form.style.display = "none";
+                 ikr_accordion.style.display = "none";
+                 
                  // hide the popup on click edit btn
                  // marker.closePopup();
                  // get the dataset id of clicked button
