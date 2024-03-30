@@ -22,7 +22,7 @@
       </div> -->
    </div>
 <div class="ikr_c_right">
- <p>Use The Shortcode <strong>[ikr_leflet_map] </strong></p>
+ <h1>Map setting</h1>
 
 
 

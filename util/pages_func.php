@@ -23,7 +23,7 @@ function ikr_leafletjs_map()
             <div class="ikr_accordion" id="ikr_accordion">
         <div class="ikr_accordion__item">
           <div class="ikr_accordion__item__header">
-            Add Marker clicking  on the map
+           click on map to  Add Marker   
           </div>
       
           <div class="iaccordion__item__content">
@@ -63,7 +63,7 @@ function ikr_leafletjs_map()
 
         <!-- Add input form -->
         <div class="ikr_c_right">
-            <p>Use The Shortcode <strong>[ikr_leflet_map] </strong></p>
+         
             <button  id="save"> Save</button>
 
 </div>
@@ -87,16 +87,19 @@ function ikr_leaflet_Add_New_Map()
 function ikr_leaflet_shortcode()
 {
 ?> 
-    <div > <h1>
+    <div class="shortcod_container" > <h1>
       Map Shortcode 
     </h1>
     <p> Use this shortcode to show the map </p>
     <div class="shortcode">
+        
     <h3> [ikr_leflet_map] </h3>
-    </div>
+</div>
 
 
+
     </div>
+    <?php include_once  ROBIN_DIR_PATH . '/views/map example.php' ?>
 <?php
 }
 

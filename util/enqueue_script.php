@@ -75,7 +75,11 @@ wp_enqueue_style( 'ikr_dahsbord_css', plugin_dir_url( __FILE__ ) . '../css/ikr_d
 
  // enqueue Css 
  wp_enqueue_style('leaflet-custom-css', plugin_dir_url(__FILE__) . '../css/style.css', array(), '1.0.0', 'all');
-//  enqueue dashbord css 
+ //  enqueue dashbord css 
+
+ // enqueue shortcode css 
+ wp_enqueue_style('ikr_shortcode', plugin_dir_url(__FILE__) . '../css/ikr_shortcode.css', array(), '1.0.0', 'all');
+
 
 }
 
