@@ -1,0 +1,36 @@
+
+.shortcod_container{
+    width: 100%;
+   
+}
+.ikr_leaflet_example{
+width: 100%;
+height: auto;
+padding: 0;
+margin: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+align-content: center;
+flex-wrap: wrap;
+flex-direction: column;
+position: relative;
+}
+
+.ikr_example_map{
+    display: flex;
+justify-content: center;
+align-items: center;
+align-content: center;
+flex-direction: row;
+width: 100%;
+
+}
+
+.ikr_map_item{
+
+    width: 30.33%;
+    height: 200px;
+    margin: 5px;
+    background-color: red;
+}

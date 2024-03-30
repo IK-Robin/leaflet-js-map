@@ -125,8 +125,11 @@
   
 }
 .ikr_c_right {
-	width: 30%;
+	width: 32.99%;
 	text-align: left;
+}
+.ikr_c_right h1{
+  padding-left: 3px;
 }
 .ikr_c_right p {
 	font-size: 17px;
@@ -179,9 +182,11 @@ button#add_marker, #save,.add_by_search {
 .auto-search-wrapper {
 	width: 99%;
 	margin-top: 14px;
+	margin-bottom: 8px;
 }
 #save{
   width: 90px;
+  margin-top: 30px;
 }
 .loupe input {
   padding: 5px 44px 5px 35px;
