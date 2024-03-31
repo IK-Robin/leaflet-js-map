@@ -34,3 +34,7 @@ width: 100%;
     margin: 5px;
     background-color: red;
 }
+.ikr_map_item h1{
+    line-height: 30px;
+    color: white;
+}
