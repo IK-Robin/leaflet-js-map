@@ -124,6 +124,60 @@ add_action('wp_ajax_nopriv_load_data_from_db', 'load_data_from_db');
 add_action('wp_ajax_ikr_edit_marker_detail', 'ikr_edit_marker_detail');
 add_action('wp_ajax_nopriv_ikr_edit_marker_detail', 'ikr_edit_marker_detail');
 
+ function ikr_edit_marker_detail_on_add() {
+    global $wpdb;
+
+    error_log('Form data received: ' . print_r($_POST, true)); // Debug
+
+    // Sanitize the input fields 
+    $latitude = isset($_POST['lat']) ? sanitize_text_field($_POST['lat']) : '';
+
+    $longitude = isset($_POST['lng']) ? sanitize_text_field($_POST['lng']) : '';
+
+    $address = isset($_POST['address']) ? sanitize_text_field($_POST['address']) : '';
+
+    $phone = isset($_POST['phone']) ? sanitize_text_field($_POST['phone']) : '';
+    
+    $url = isset($_POST['url']) ? sanitize_text_field($_POST['url']) : '';
+
+    $email = isset($_POST['email']) ? sanitize_text_field($_POST['email']) : '';
+
+
+
+
+
+
+
+
+    $markerid = isset($_POST['markeridaddnew']) ? sanitize_text_field($_POST['markeridaddnew']) : '';
+
+
+
+var_dump($markerid);
+
+    $table_name = $wpdb->prefix . "ikr_leaflet_js_db";
+    
+   
+
+    $wpdb->update(
+        $table_name,
+        [
+            'lat' => $latitude,
+            'lng' => $longitude,
+            'address' => $address,
+            'phone' => $phone,
+            'email' =>$email,
+            'urls' => $url
+            
+
+        ], array('marker_id' =>$markerid),
+    );
+    
+}
+
+add_action('wp_ajax_ikr_edit_marker_detail_on_add', 'ikr_edit_marker_detail_on_add');
+add_action('wp_ajax_nopriv_ikr_edit_marker_detail_on_add', 'ikr_edit_marker_detail_on_add');
+
 
 // featch data from server 
 
