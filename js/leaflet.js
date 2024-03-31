@@ -47,6 +47,39 @@ const ikr_accordion = document.getElementById('ikr_accordion');
   // select the delete marker form
   const deletemarker_form = document.getElementById("deletemarker_form");
   const marker_id = document.getElementById("marker_id");
+
+
+
+
+  // get all add new marker form element 
+  
+const ikr_add_new_form_edit = document.getElementById('ikr_add_new_form_edit');
+
+const ikr_add_new_form  = document.getElementById('ikr_add_new_form');
+const add_new_marker_id =document.getElementById('add_new_marker_id');
+
+const add_newlatituide_edit =document.getElementById('add_newlatituide_edit');
+
+const add_new_langtuide_edit =document.getElementById('add_new_langtuide_edit');
+
+const add_new_address_edit =document.getElementById('add_new_address_edit');
+
+const add_new_phone_edit =document.getElementById('add_new_phone_edit');
+const add_new_email_edit =document.getElementById('add_new_email_edit');
+const add_new_input_url_edit =document.getElementById('add_new_input_url_edit');
+
+
+
+
+
+
+
+
+
+
+
+
+  // get all add new marker form element 
   let addMarker = false;
 
   
@@ -275,9 +308,10 @@ markerBuind();
         // Add a click event listener to the map
 
         const latlng = ev.latlng;
-
+        let randomMarkerId = Math.floor(Math.random() * 9000000 + 1000000);
         // Perform reverse geocoding using Leaflet's built-in method
-        maphiddenId_add.value = Math.floor(Math.random() * 9000000 + 1000000);
+        maphiddenId_add.value = randomMarkerId;
+
 
         var newMarker;
         if (addMarker) {
@@ -285,8 +319,8 @@ markerBuind();
           
         latituide_edit.value = ev.latlng.lat;
         longtuide_edit.value = ev.latlng.lng;
-
-
+        add_newlatituide_edit.value =ev.latlng.lat;
+        add_new_langtuide_edit.value = ev.latlng.lng;
           // Add new marker
           newMarker = L.marker(ev.latlng).addTo(map);
 
@@ -295,8 +329,9 @@ markerBuind();
           // ikr_edit_popup.style.display = "block";
           // submit_form.style.display ='none';
 
-          let randomMarkerId = Math.floor(Math.random() * 9000000 + 1000000);
-          
+          //  add hidden marker id  in form
+    
+          add_new_marker_id.value = randomMarkerId;
 
           // add random id and detail text 
           hiddenMarkerId.value = randomMarkerId;
@@ -465,6 +500,21 @@ console.log(ikr_map_form);
     submit_form.style.display ='block';
     ikr_accordion.style.display = 'block';
   });
+  ikr_add_new_form.addEventListener("submit", (evn) => {
+    evn.preventDefault();
+    makeAjaxRequestGlobal(ikr_add_new_form, get_url.add_new_marker,c =>{
+    });
+    setTimeout(() =>{
+      markerBuind();
+
+    },100)
+   
+    ikr_edit_popup.style.display = "none";
+    submit_form.style.display ='block';
+    ikr_accordion.style.display = 'block';
+  });
+
+
 
 // delete the  marker 
   // deletMarker_edit.addEventListener('click',(ev) =>{
