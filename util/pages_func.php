@@ -23,12 +23,13 @@ function ikr_leafletjs_map()
             <div class="ikr_accordion" id="ikr_accordion">
         <div class="ikr_accordion__item">
           <div class="ikr_accordion__item__header">
-           click on map to  Add Marker   
+          click here to add new marke 
           </div>
       
           <div class="iaccordion__item__content">
-          click on the map to add new marke
          
+            <h3>click on map to Add Marker</h3>
+            <?php include ROBIN_DIR_PATH . '/views/add_new_marker_form.php' ?>
            </div>
         </div>
               <div class="ikr_accordion__item">
@@ -98,8 +99,7 @@ function ikr_leaflet_shortcode()
 
 
 
-    </div>
-    <?php include_once  ROBIN_DIR_PATH . '/views/map example.php' ?>
+</div>
 <?php
 }
 
