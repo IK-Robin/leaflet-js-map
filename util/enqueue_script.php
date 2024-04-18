@@ -107,7 +107,7 @@ function enqueue_frontend_js() {
   
   // Enqueue the script
   if(is_single(  ) && has_shortcode(get_the_content(), 'ikr_leflet_map')){
-    wp_enqueue_script('font_end_js', plugin_dir_url( __FILE__ ). '../js/font_end_js.js', array('jquery'), '1.0', true);
+    wp_enqueue_script('font_end_js', plugin_dir_url( __FILE__ ). '../js/font_end_js.js', array(), '1.0', true);
     wp_localize_script('font_end_js', 'get_url', [
       'featchdata' =>'fetch_data_server_default',
       'ajaxurl' => admin_url('admin-ajax.php'),
