@@ -27,6 +27,7 @@ IKRMAP Map is a simple web application that allows users to explore interactive 
 - HTML
 - CSS
 - JavaScript
+- PHP
 - Leaflet.js (for map rendering)
 - Mapbox API (for map data)
 
