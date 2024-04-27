@@ -11,15 +11,15 @@ function leaflet_js_map_enqueue_scripts()
 
 
   
-  wp_enqueue_script( 'ikr_global', plugin_dir_url( __FILE__ ) . '../js/ikr_global.js', [], '1.0.0', false );
- 
-// enque ue global js  
-
-
- 
-
+  
+  // enque ue global js  
+  
+  
+  
+  
   // enqueue dahsbodr page js 
   if($page_param == 'wp-store-locator-map'){
+    wp_enqueue_script( 'ikr_global', plugin_dir_url( __FILE__ ) . '../js/ikr_global.js', [], '1.0.0', false );
     
    
     

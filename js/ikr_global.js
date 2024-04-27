@@ -24,7 +24,7 @@
 
   // create ajax function
 
-function makeAjaxRequestGlobal(fromdata, action, callback) {
+function leaflet_makeAjaxRequestGlobal(fromdata, action, callback) {
     var formData = new FormData(fromdata);
     formData.append("action", action);
   
@@ -69,7 +69,7 @@ function makeAjaxRequestGlobal(fromdata, action, callback) {
   
 // ajax call with  multiple actions: async  await method
   
-function fetchAjaxRequest(actions) {
+function leaflet_fetchAjaxRequest(actions,ajaxurl) {
   return new Promise((resolve, reject) => {
     var xhr = new XMLHttpRequest();
     xhr.open("POST", ajaxurl, true);

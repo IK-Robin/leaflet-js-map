@@ -248,7 +248,8 @@ let zoom_option = null;
   async function add_defaultView() {
     let lat,lng;
     try {
-      const data1 = await fetchAjaxRequest(get_url.featchdata);
+
+      const data1 = await leaflet_fetchAjaxRequest(get_url.featchdata,get_url.ajaxurl);
 
       data1.forEach((data) => {
         console.log(data);
@@ -348,7 +349,7 @@ markerBuind();
           // Make this marker draggable
           newMarker.dragging.enable();
 
-          makeAjaxRequestGlobal(ikr_map_form, get_url.action,callbac =>{});
+          leaflet_makeAjaxRequestGlobal(ikr_map_form, get_url.action,callbac =>{});
 
           newMarker.on("click", function (e) {
             // Get the popup content
@@ -397,7 +398,7 @@ markerBuind();
               map.removeLayer(newMarker);
               // remove from db
               marker_id.value = deleteMarker.dataset.id;
-              makeAjaxRequestGlobal(deletemarker_form, get_url.deletMarker,c =>{});
+              leaflet_makeAjaxRequestGlobal(deletemarker_form, get_url.deletMarker,c =>{});
             });
           });
         }
@@ -468,7 +469,7 @@ console.log(ikr_map_form);
 
     evnt.preventDefault();
 
-    makeAjaxRequestGlobal(ikr_map_form, get_url.action,c=>{});
+    leaflet_makeAjaxRequestGlobal(ikr_map_form, get_url.action,c=>{});
 
     // featcht data and  add  marker
 
@@ -489,7 +490,7 @@ console.log(ikr_map_form);
 
   ikr_map_form_edit.addEventListener("submit", (evn) => {
     evn.preventDefault();
-    makeAjaxRequestGlobal(ikr_map_form_edit, get_url.editMarker,c =>{
+    leaflet_makeAjaxRequestGlobal(ikr_map_form_edit, get_url.editMarker,c =>{
     });
     setTimeout(() =>{
       markerBuind();
@@ -502,7 +503,7 @@ console.log(ikr_map_form);
   });
   ikr_add_new_form.addEventListener("submit", (evn) => {
     evn.preventDefault();
-    makeAjaxRequestGlobal(ikr_add_new_form, get_url.add_new_marker,c =>{
+    leaflet_makeAjaxRequestGlobal(ikr_add_new_form, get_url.add_new_marker,c =>{
     });
     setTimeout(() =>{
       markerBuind();
@@ -518,7 +519,7 @@ console.log(ikr_map_form);
 
 // delete the  marker 
   // deletMarker_edit.addEventListener('click',(ev) =>{
-  //   makeAjaxRequestGlobal(deletemarker_form, get_url.deletMarker,c =>{
+  //   leaflet_makeAjaxRequestGlobal(deletemarker_form, get_url.deletMarker,c =>{
   //     if(c){
   //       markerBuind();
   //     }
@@ -538,10 +539,11 @@ console.log(ikr_map_form);
         // Open the popup associated with the marker
       }
     });
-
+    console.log(get_url);
     async function createMarkers() {
       try {
-        const data = await fetchAjaxRequest(get_url.dataF);
+   
+        const data = await leaflet_fetchAjaxRequest(get_url.dataF,get_url.ajaxurl);
       const markers = []
       const markerPositions = [];
         if(data.length ==0){
@@ -649,7 +651,7 @@ console.log(ikr_map_form);
                  map.removeLayer(newMarker);
                  // remove from db
                  marker_id.value = deleteMarker.dataset.id;
-                 makeAjaxRequestGlobal(deletemarker_form, get_url.deletMarker,callback =>{});
+                 leaflet_makeAjaxRequestGlobal(deletemarker_form, get_url.deletMarker,callback =>{});
                });
              });
    
@@ -667,7 +669,7 @@ console.log(ikr_map_form);
                  phone_edit.value = m.popup_text;
                  hiddenMarkerId.value = m.marker_id;
    
-                 makeAjaxRequestGlobal(ikr_map_form_edit, get_url.editMarker,c=>{});
+                 leaflet_makeAjaxRequestGlobal(ikr_map_form_edit, get_url.editMarker,c=>{});
                }
              });
              // push the marker 

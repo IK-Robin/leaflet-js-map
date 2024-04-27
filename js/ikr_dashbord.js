@@ -23,7 +23,7 @@ const showOption  = document.querySelectorAll('.showOption');
 async function getDefault_data (){
   
   try{
-      const default_data= await fetchAjaxRequest(get_default.featchdata);
+      const default_data= await leaflet_fetchAjaxRequest(get_default.featchdata);
 default_data.map(d=>{
   default_lat.value = d.Latitude; 
   default_lng.value =d.Longitude; 

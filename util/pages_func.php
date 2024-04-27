@@ -23,7 +23,7 @@ function ikr_leafletjs_map()
             <div class="ikr_accordion" id="ikr_accordion">
         <div class="ikr_accordion__item">
           <div class="ikr_accordion__item__header">
-          click here to add new marke 
+          add new marke 
           </div>
       
           <div class="iaccordion__item__content">
@@ -63,7 +63,7 @@ function ikr_leafletjs_map()
         </div>
 
         <!-- Add input form -->
-        <div class="ikr_c_right">
+        <div class="ikr_c_save">
          
             <button  id="save"> Save</button>
 
