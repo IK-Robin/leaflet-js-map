@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   async function add_defaultView() {
     let lat, lng;
     try {
-      const data1 = await fetchAjaxRequest(get_url.featchdata, get_url.ajaxurl);
+      const data1 = await leaflet_fetchAjaxRequest(get_url.featchdata, get_url.ajaxurl);
       console.log(data1);
       data1.forEach((data) => {
         console.log(data);
@@ -60,7 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     async function createMarkers() {
       try {
-        const data = await fetchAjaxRequest(get_url.dataF, get_url.ajaxurl);
+        const data = await leaflet_fetchAjaxRequest(get_url.dataF, get_url.ajaxurl);
         const markerPositions = [];
         const markers = [];
 
@@ -74,23 +74,29 @@ document.addEventListener("DOMContentLoaded", () => {
             // Hide the popup
 
             // Bind popup with text and add marker ID to it
-            newMarker.bindPopup(
-              `<div class="popupWindow">
+            if( m.address == "" && m.phone == "" && m.email == "" && m.urls == "" ){
+              newMarker.unbindPopup();
+            }else{
+              newMarker.bindPopup(
+                `<div class="popupWindow">
+                ${m.address ==""? "":` <p> <strong> Address:</strong>  ${m.address}</p> ` }
+                ${m.phone =="" ? "": `  <p>  <strong>Sales Phone : </strong>  ${m.phone}</p>`}
+                ${m.email =="" ? "": ` <p> <strong> GeneralHours :</strong>   ${m.email} </p>`}
               
-            <p> <strong> Address:</strong>  ${m.address}</p> 
-              <p>  <strong>Sales Phone : </strong>  ${m.phone}</p>
-             <p> <strong> GeneralHours :</strong>   ${m.email} </p>
               
-             ${
-               m.urls == ""
-                 ? ""
-                 : `        <p>  <strong> Website:</strong> <a href="${m.urls}" target="_blunk">${m.urls}</a> </p>`
-             }
-
-
-                      </div>`,
-              { autoPan: true }
-            );
+                
+               ${
+                 m.urls == ""
+                   ? ""
+                   : `        <p>  <strong> Website:</strong> <a href="${m.urls}" target="_blunk">${m.urls}</a> </p>`
+               }
+  
+  
+                        </div>`,
+                { autoPan: true }
+              );
+            }
+          
 
             // Open popup for each marker
 
@@ -138,31 +144,4 @@ document.addEventListener("DOMContentLoaded", () => {
     // Fetch new data and add markers
   }
 
-  function fetchAjaxRequest(actions, ajaxurl) {
-    return new Promise((resolve, reject) => {
-      var xhr = new XMLHttpRequest();
-      xhr.open("POST", ajaxurl, true);
-      xhr.setRequestHeader(
-        "Content-Type",
-        "application/x-www-form-urlencoded; charset=UTF-8"
-      );
-
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-          if (xhr.status === 200) {
-            var response = JSON.parse(xhr.responseText);
-            if (response.success) {
-              resolve(response.data);
-            } else {
-              reject(response.error);
-            }
-          } else {
-            reject(xhr.statusText);
-          }
-        }
-      };
-
-      xhr.send(`action=${actions}`);
-    });
-  }
 });
