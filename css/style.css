@@ -2,12 +2,15 @@
   --hover-content:'';
 }
 
-#map{
-    width:100%;
-    height: 100%;
-    margin-left: 0;
+.ikr_map_container{
+  font-family: "Roboto",sans-serif;
 }
-
+#map {
+	width: 100%;
+	height: 100%;
+	margin-left: 0;
+	border-radius: 6px;
+}
 /* 
 
   
@@ -68,17 +71,19 @@
   min-height: 400px;
 }
 .ikr_first_side {
-  width: 68%;
-  height: auto;
+	width: 68%;
+	height: auto;
 	box-shadow: 0 0px 1px rgba(0,0,0,0.19), 0 2px 5px rgba(0,0,0,0.23);
-  border: 1px solid ;
+	border: 1px solid;
+	border-radius: 6px;
 }
 .ikr_second_side {
 	width: 28%;
-	background-color: #fff;
+	background-color: #F4F4F4;
 	/* border: 1px solid; */
 	padding: 10px;
 	box-shadow: 0 0px 1px rgba(0,0,0,0.19), 0 2px 5px rgba(0,0,0,0.23);
+  border-radius: 6px;
 }
 
 
@@ -98,18 +103,17 @@
 .align_inp input {
 	margin-bottom: 8px;
 	padding-left: 10px;
+	border: none;
 }
 
-.align_inp [type="submit"]{
-
-    padding: 9px;
-    font-size: 16px;
-    background: #2271b1;
-    color: white;
-    font-weight: bold;
-    border: none;
-    margin: 0;
-  
+.align_inp [type="submit"] {
+	padding: 9px;
+	font-size: 16px;
+	background: #49ADFF;
+	color: white;
+	font-weight: bold;
+	border: none;
+	margin: 0;
 }
   /*==============================
     Style the edit search
@@ -124,10 +128,17 @@
   align-content: center;
   
 }
-.ikr_c_right {
-	width: 32.99%;
+.ikr_c_save {
+	width: 67.5%;
 	text-align: left;
+	border-radius: 6px;
 }
+.ikr_c_right {
+	width: 31.5%;
+	text-align: left;
+	border-radius: 6px;
+}
+
 .ikr_c_right h1{
   padding-left: 3px;
 }
@@ -184,9 +195,12 @@ button#add_marker, #save,.add_by_search {
 	margin-top: 14px;
 	margin-bottom: 8px;
 }
-#save{
-  width: 90px;
-  margin-top: 30px;
+#save {
+	width: 100%;
+	margin-top: 30px;
+	border-radius: 6px;
+  background-color: #49ADFF;
+  color: white;
 }
 .loupe input {
   padding: 5px 44px 5px 35px;
@@ -263,14 +277,16 @@ shortcode css
 }
 
 .ikr_accordion__item__header {
-  background-color: #003349;
-  padding: 15px;
-  cursor: pointer;
-  position: relative;
-  color: #fff;
-  font-family: Arial;
-  font-weight: 400;
-  font-size: 20px
+	background-color: #003349;
+	padding: 15px;
+	cursor: pointer;
+	position: relative;
+	color: #fff;
+	font-family: Arial;
+	font-weight: 400;
+	font-size: 20px;
+	border-radius: 6px;
+  text-transform: capitalize;
 }
 
 .ikr_accordion__item__header::before {
@@ -305,3 +321,24 @@ shortcode css
 
 
 
+/* ===================
+popupWindow popup 
+========================
+*/
+
+
+.popupWindow{
+  
+}
+.popupWindow p{
+  margin: 0;
+  padding: 2px 0;
+}
+.popupWindow button {
+	background-color: #49ADFF;
+	border: 0;
+	padding: 5px 6px;
+	color: white;
+	border-radius: 6px;
+	display: inline-block;
+}

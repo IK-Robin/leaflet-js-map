@@ -1,7 +1,18 @@
-
-.default_setting_form {
+.ikr_dahsbord h1{
+	font-family: "Roboto", sans-serif;
 }
-
+.default_setting_form {
+	font-family: "Roboto",sans-serif;
+}
+.default_f_section h3 {
+	padding: 10px 0;
+}
+.ikr_map_data_settings h1, h2, h3 {
+	margin: 9px 0;
+	text-transform: capitalize;
+	border-radius: 10px ;
+	padding: 10px 0 !important;
+}
 #defaultSettings {
 	display: flex;
 	width: 100%;
@@ -21,11 +32,13 @@
 	width: 60%;
 	padding: 8px;
 	background-color: #fff;
-	/*! margin: 6px; */
+	/* margin: 6px; */
 	box-shadow: 0 0px 1px rgba(0,0,0,0.19), 0 2px 5px rgba(0,0,0,0.23);
 	border-radius: 0px;
-}
+	border-radius: 4px;
 
+	overflow: hidden;
+}
 
 
 .default_setting_form .default_f_section:nth-child(1){
@@ -33,13 +46,15 @@
 	gap: 10px;
 }
 
+.default_setting_form .default_f_section:nth-child(1) p{
+padding-top: 0;
+}
 
 
 .dimantion_container {
-	
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: flex-start;
 	align-content: center;
 	align-items: center;
 }
@@ -50,19 +65,20 @@
 
 
 .dimantion_item {
-	text-align: center;
-	width: 50%;
+	text-align: left;
+	width: 144px;
 	display: flex;
 	gap: 9px;
 	padding-left: 10px;
 	align-content: center;
 	align-items: center;
+	justify-content: start;
 }
 .dimantion_item:nth-child(2n-1){
 	padding-left: 0;
 }
 .dimantion_item input {
-	width: 85%;
+	width: 100%;
 }
 /* .default_setting_form .default_f_section:nth-child(2n) {
    background-color: rgba(0,0,0,.07);
@@ -107,15 +123,17 @@
 
   font-size: 12px;
 }
+
 .ikr_dahsbord [type="submit"] {
-	padding: 9px 48px;
+	padding: 9px;
 	line-height: 17px;
-	background-color: #2271b1;
+	background-color: #49ADFF;
 	border: none;
 	color: #fff;
 	font-size: 17px;
 	margin-top: 10px;
-	
+	width: 61.5%;
+	border-radius: 6px;
 }
 
 .default_setting_form .showOption {
