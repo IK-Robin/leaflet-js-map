@@ -7,7 +7,7 @@ Version: 1.0.0
 Author: Your Name
 Author URI: https://example.com/
 License: GPLv2 or later
-Text Domain: leaflet-js-map
+Text Domain: leaflet-js-wp
 */
 
 // Enqueue Leaflet JS library and related scripts
