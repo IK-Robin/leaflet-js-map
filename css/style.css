@@ -75,15 +75,19 @@
 	height: auto;
 	box-shadow: 0 0px 1px rgba(0,0,0,0.19), 0 2px 5px rgba(0,0,0,0.23);
 	border: 1px solid;
-	border-radius: 6px;
+	border-radius: 6px 0 0 6px;
 }
 .ikr_second_side {
-	width: 28%;
-	background-color: #F4F4F4;
-	/* border: 1px solid; */
-	padding: 10px;
-	box-shadow: 0 0px 1px rgba(0,0,0,0.19), 0 2px 5px rgba(0,0,0,0.23);
-  border-radius: 6px;
+  width: 30%;
+  background-color: #F4F4F4;
+  /*border: 1px solid;
+  */padding: 10px;
+  box-shadow: 0 0px 1px rgba(0,0,0,0.19), 0 2px 5px rgba(0,0,0,0.23);
+  border-radius: 1px;
+  -webkit-border-radius: 1px;
+  -moz-border-radius: 1px;
+  -ms-border-radius: 1px;
+  -o-border-radius: 1px;
 }
 
 
@@ -284,7 +288,7 @@ shortcode css
 	color: #fff;
 	font-family: Arial;
 	font-weight: 400;
-	font-size: 20px;
+	font-size: 15px;
 	border-radius: 6px;
   text-transform: capitalize;
 }

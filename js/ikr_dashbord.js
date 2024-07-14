@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded",() =>{
   // load the content  after loading the page 
 
-
+console.log('robin');
   const defaultSetting_form = document.getElementById('defaultSetting');
   const default_lat = document.getElementById('default_lat');
 
@@ -23,7 +23,8 @@ const showOption  = document.querySelectorAll('.showOption');
 async function getDefault_data (){
   
   try{
-      const default_data= await leaflet_fetchAjaxRequest(get_default.featchdata);
+      const default_data= await leaflet_fetchAjaxRequest(get_default.featchdata,get_default.ajaxurl);
+      console.log(default_data);
 default_data.map(d=>{
   default_lat.value = d.Latitude; 
   default_lng.value =d.Longitude; 
@@ -92,7 +93,7 @@ autoZoom.addEventListener('click', (e) => {
   defaultSetting_form.addEventListener("submit",(ev) =>{
       ev.preventDefault();
     
-    makeAjaxRequestGlobal(defaultSetting_form,get_default.default_form,call =>{
+      leaflet_makeAjaxRequestGlobal(defaultSetting_form,get_default.default_form,call =>{
  if( call){
   // window.location.href = 'admin.php?page=wp-store-locator-map';
   window.location.reload();

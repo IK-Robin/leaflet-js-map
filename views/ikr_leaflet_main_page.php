@@ -6,7 +6,7 @@
    <div class="ikr_c_left">
    <div class="action_btn"> 
       <!-- add delet and Remove marker btn  -->
-   <h1>  Simple map Store  Locator</h1>
+   <h1> Easy & Simple Locator Map </h1>
 
    
     </div>
@@ -22,7 +22,7 @@
       </div> -->
    </div>
 <div class="ikr_c_right">
- <h1>Map setting</h1>
+ <h1>Add Map Marker</h1>
 
 
 

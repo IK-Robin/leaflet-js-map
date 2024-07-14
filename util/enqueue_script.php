@@ -18,8 +18,8 @@ function leaflet_js_map_enqueue_scripts()
   
   
   // enqueue dahsbodr page js 
+  wp_enqueue_script( 'ikr_global', plugin_dir_url( __FILE__ ) . '../js/ikr_global.js', [], '1.0.0', false );
   if($page_param == 'wp-store-locator-map'){
-    wp_enqueue_script( 'ikr_global', plugin_dir_url( __FILE__ ) . '../js/ikr_global.js', [], '1.0.0', false );
     
    
     
@@ -50,10 +50,11 @@ function leaflet_js_map_enqueue_scripts()
 }
 
 
-if( $page_param == 'setting' ){
+if( $page_param == 'map-setting' ){
 
   wp_enqueue_script('ikr_leaflet_dahsbord', plugin_dir_url(__FILE__) . '../js/ikr_dashbord.js', array(), '1.0.0', true);
   wp_localize_script( 'ikr_leaflet_dahsbord', 'get_default', [
+    'ajaxurl' => admin_url('admin-ajax.php'),
     'default_form' => 'ikr_default_setting',
     'featchdata' =>'fetch_data_server_default',
   ] );

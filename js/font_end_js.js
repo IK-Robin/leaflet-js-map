@@ -9,9 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
     let lat, lng;
     try {
       const data1 = await leaflet_fetchAjaxRequest(get_url.featchdata, get_url.ajaxurl);
-      console.log(data1);
+
       data1.forEach((data) => {
-        console.log(data);
+       
         lat = data.Latitude;
 
         lng = data.Longitude;
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   add_defaultView();
-
+ 
   function markerBuind() {
     // Clear existing markers from the map
 
@@ -135,7 +135,7 @@ document.addEventListener("DOMContentLoaded", () => {
           }
         }
       } catch (err) {
-        console.log(err);
+        // console.log(err);
       }
     }
 
@@ -144,4 +144,31 @@ document.addEventListener("DOMContentLoaded", () => {
     // Fetch new data and add markers
   }
 
+  function leaflet_fetchAjaxRequest(actions,ajaxurl) {
+    return new Promise((resolve, reject) => {
+      var xhr = new XMLHttpRequest();
+      xhr.open("POST", ajaxurl, true);
+      xhr.setRequestHeader(
+        "Content-Type",
+        "application/x-www-form-urlencoded; charset=UTF-8"
+      );
+  
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status === 200) {
+            var response = JSON.parse(xhr.responseText);
+            if (response.success) {
+              resolve(response.data);
+            } else {
+              reject(response.error);
+            }
+          } else {
+            reject(xhr.statusText);
+          }
+        }
+      };
+  
+      xhr.send(`action=${actions}`);
+    });
+  }
 });

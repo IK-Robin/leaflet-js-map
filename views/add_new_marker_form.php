@@ -38,8 +38,8 @@
     
        </div>
        <div class="align_inp">
-       <label for="url"> url</label>
-    <input type="text" name="url" placeholder="Your Website URL" id="add_new_input_url_edit">
+       <label for="url"> Button URL</label>
+    <input type="text" name="url" placeholder="URL" id="add_new_input_url_edit">
 
        </div>
        <div class="align_inp">

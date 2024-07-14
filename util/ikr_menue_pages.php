@@ -11,11 +11,11 @@
  
    // Add submenu for 'All Map'
    
-   add_submenu_page('wp-store-locator-map', "Dashboard", "Dashboard", 'manage_options', 'wp-store-locator-map', 'ikr_leafletjs_map');
+   add_submenu_page('wp-store-locator-map', "Map Dashboard", "Map Dashboard", 'manage_options', 'wp-store-locator-map', 'ikr_leafletjs_map');
  
    // Add submenu for 'All Maps'
-   add_submenu_page('wp-store-locator-map', 'Setting', 'Setting', 'manage_options', 'setting', 'ikr_leaflet_Add_New_Map');
-   add_submenu_page('wp-store-locator-map', 'Shortcode', 'Shortcode', 'manage_options', 'Shortcode', 'ikr_leaflet_shortcode');
+   add_submenu_page('wp-store-locator-map', 'Map Setting', 'Map Setting', 'manage_options', 'map-setting', 'ikr_leaflet_Add_New_Map');
+   add_submenu_page('wp-store-locator-map', 'Shortcodes', 'Shortcodes', 'manage_options', 'Shortcodes', 'ikr_leaflet_shortcode');
  }
 
 ?>
