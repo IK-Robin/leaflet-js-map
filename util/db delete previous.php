@@ -11,7 +11,7 @@ function ikr_leaflet_js_db_connection() {
     $table_name_1 = $wpdb->prefix . 'ikr_leaflet_js_db';
     $charset_collate = $wpdb->get_charset_collate();
 
-    if ($wpdb->get_var("SHOW TABLES LIKE '$table_name_1'") != $table_name_1) {
+    if ($wpdb->get_var("SHOW TABLES LIKE %s '$table_name_1'") != $table_name_1) {
         // If the table doesn't exist, create it
         $sql_1 = "CREATE TABLE $table_name_1 (
             id INT(10) NOT NULL AUTO_INCREMENT,
